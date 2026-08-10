@@ -27,7 +27,7 @@
   .mid{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);gap:clamp(24px,4vw,72px);
        align-items:end;border-top:1px solid var(--ink);padding-top:clamp(18px,2.4vw,30px)}
   .tag{margin:0;font-family:"Didot","Bodoni 72","Hoefler Text",Georgia,serif;font-style:italic;
-       font-weight:400;font-size:clamp(38px,7.2vw,104px);line-height:.9;letter-spacing:-.012em}
+       font-weight:400;font-size:clamp(36px,5.6vw,82px);line-height:.94;letter-spacing:-.012em}
   .cta{text-align:right}
   .cta a{display:block;margin-top:6px;font-size:clamp(15px,1.3vw,18px);color:var(--ink);
          text-decoration:none;border-bottom:1px solid var(--rule)}
@@ -61,15 +61,15 @@
       <p class="label">New York · Los Angeles</p>
     </div>
 
-    <div class="mid">
-      <p class="tag">One room at a time.</p>
-      <div class="cta"><span class="label">General inquiries</span><a href="mailto:hello@frontier-film.com">hello@frontier-film.com</a></div>
-    </div>
-
     <div class="cols">
       <section><h2>01<i> / </i>Placement</h2><p>“Original features, booked into single screens, museum auditoria, civic theatres, and large chains alike.”</p></section>
       <section><h2>02<i> / </i>Campaigns</h2><p>“Each release carries its own identity, materials, and calendar, made in-house.”</p></section>
       <section><h2>03<i> / </i>Presentation</h2><p>“Format, sound, and seating agreed with every room before it goes on sale.”</p></section>
+    </div>
+
+    <div class="mid">
+      <p class="tag">One room<br>at a time.</p>
+      <div class="cta"><span class="label">General inquiries</span><a href="mailto:hello@frontier-film.com">hello@frontier-film.com</a></div>
     </div>
 
     <div class="end">
@@ -81,7 +81,7 @@
 
 <script>
 (function(){
-  var NS='http://www.w3.org/2000/svg', svg=document.getElementById('band'), M=120, INK='#14120E', ACC='#6E2A22';
+  var NS='http://www.w3.org/2000/svg', svg=document.getElementById('band'), M=180, INK='#14120E', ACC='#6E2A22';
 
   function arc(g,x0,y0,x1,y1,r,col,w){
     var e=document.createElementNS(NS,'path');
@@ -93,56 +93,71 @@
     g.appendChild(e);
     return e;
   }
-  /* quarter-circle nest: arcs centred on one corner of the module */
-  function quarter(g,ox,oy,corner,col){
+  /* quarter-circle nest: three arcs centred on one corner of the module */
+  function quarter(g,ox,corner,col){
     var cx = (corner===0||corner===3)? ox : ox+M;
-    var cy = (corner===0||corner===1)? oy : oy+M;
-    var sx = (corner===0||corner===3)? 1 : -1;   /* toward inside, horizontally */
-    var sy = (corner===0||corner===1)? 1 : -1;   /* toward inside, vertically */
-    var rs=[M,M*0.75,M*0.5,M*0.25], i;
+    var cy = (corner===0||corner===1)? 0 : M;
+    var sx = (corner===0||corner===3)? 1 : -1;
+    var sy = (corner===0||corner===1)? 1 : -1;
+    var rs=[M,M*0.66,M*0.33], i;
     for(i=0;i<rs.length;i++){
-      var r=rs[i];
-      var a=[cx+sx*r, cy], b=[cx, cy+sy*r];
-      /* keep sweep consistent so the arc always bows into the module */
-      var e=arc(g,a[0],a[1],b[0],b[1],r,col,i===0?0.85:0.6);
-      if(sx*sy>0) e.setAttribute('d','M'+a[0]+','+a[1]+'A'+r+','+r+' 0 0 1 '+b[0]+','+b[1]);
-      else        e.setAttribute('d','M'+a[0]+','+a[1]+'A'+r+','+r+' 0 0 0 '+b[0]+','+b[1]);
+      var r=rs[i], sweep=(sx*sy>0)?1:0;
+      var e=document.createElementNS(NS,'path');
+      e.setAttribute('d','M'+(cx+sx*r).toFixed(2)+','+cy+'A'+r.toFixed(2)+','+r.toFixed(2)+
+        ' 0 0 '+sweep+' '+cx+','+(cy+sy*r).toFixed(2));
+      e.setAttribute('fill','none'); e.setAttribute('stroke',col);
+      e.setAttribute('stroke-width', i===0?0.9:0.6);
+      e.setAttribute('vector-effect','non-scaling-stroke');
+      g.appendChild(e);
     }
   }
-  /* half-circle nest: arcs centred on the mid-point of an edge */
-  function half(g,ox,oy,up,col){
-    var cx=ox+M/2, cy = up? oy+M : oy;
-    var rs=[M/2,M*0.375,M*0.25,M*0.125], i;
+  /* half-circle nest: three arcs centred on the mid-point of an edge */
+  function half(g,ox,up,col){
+    var cx=ox+M/2, cy = up? M : 0;
+    var rs=[M/2,M/3,M/6], i;
     for(i=0;i<rs.length;i++){
-      var r=rs[i];
-      var sweep = up? 1 : 0;
-      arc(g,cx-r,cy,cx+r,cy,r,col,i===0?0.85:0.6).setAttribute('d',
-        'M'+(cx-r)+','+cy+'A'+r+','+r+' 0 0 '+sweep+' '+(cx+r)+','+cy);
+      var r=rs[i], sweep = up? 1 : 0;
+      var e=document.createElementNS(NS,'path');
+      e.setAttribute('d','M'+(cx-r).toFixed(2)+','+cy+'A'+r.toFixed(2)+','+r.toFixed(2)+
+        ' 0 0 '+sweep+' '+(cx+r).toFixed(2)+','+cy);
+      e.setAttribute('fill','none'); e.setAttribute('stroke',col);
+      e.setAttribute('stroke-width', i===0?0.9:0.6);
+      e.setAttribute('vector-effect','non-scaling-stroke');
+      g.appendChild(e);
     }
   }
 
   function draw(){
     while(svg.firstChild) svg.removeChild(svg.firstChild);
-    var cols = window.innerWidth < 760 ? 6 : 12;
-    var W = cols*M, H = 2*M, half_n = cols/2;
+    var cols = window.innerWidth < 760 ? 4 : 8;
+    var PAD = 20, W = cols*M, H = M + PAD, hn = cols/2;
     svg.setAttribute('viewBox','0 0 '+W+' '+H);
 
-    var mirror={0:1,1:0,2:3,3:2}, base=[3,0,1,2], top=[], bot=[], i;
-    for(i=0;i<half_n;i++){ top[i]=base[i%4]; bot[i]=i%2; }
-    for(i=0;i<half_n;i++){ top[cols-1-i]=mirror[top[i]]; bot[cols-1-i]=bot[i]; }
-
-    var g=document.createElementNS(NS,'g'); svg.appendChild(g);
-    var accentCol = cols===12 ? 8 : 4;
-    for(i=0;i<cols;i++){
-      quarter(g, i*M, 0,   top[i], (i===accentCol)? ACC : INK);
-      half   (g, i*M, M,   bot[i]===1, INK);
+    /* strictly symmetrical sequence: quarter / half alternating, mirrored about the centre */
+    var mirror={0:1,1:0,2:3,3:2}, kind=[], form=[], i;
+    var baseKind=['q','h','q','h'], baseForm=[3,1,2,0];   /* corner index, or bulge flag */
+    for(i=0;i<hn;i++){ kind[i]=baseKind[i%4]; form[i]=baseForm[i%4]; }
+    for(i=0;i<hn;i++){
+      kind[cols-1-i]=kind[i];
+      form[cols-1-i]= (kind[i]==='q') ? mirror[form[i]] : form[i];
     }
-    /* hairline module rules */
-    var mid=document.createElementNS(NS,'path');
-    mid.setAttribute('d','M0,'+M+'H'+W);
-    mid.setAttribute('stroke',INK); mid.setAttribute('stroke-width','0.5');
-    mid.setAttribute('fill','none'); mid.setAttribute('vector-effect','non-scaling-stroke');
-    svg.appendChild(mid);
+
+    var g=document.createElementNS(NS,'g'); g.setAttribute('transform','translate(0,'+PAD+')');
+    svg.appendChild(g);
+    var accentCol = hn;                       /* first module right of centre */
+    for(i=0;i<cols;i++){
+      var col = (i===accentCol)? ACC : INK;
+      if(kind[i]==='q') quarter(g, i*M, form[i], col);
+      else              half   (g, i*M, form[i]===1, col);
+    }
+    /* hairline module divisions */
+    for(i=1;i<cols;i++){
+      var v=document.createElementNS(NS,'path');
+      v.setAttribute('d','M'+(i*M)+','+PAD+'V'+H);
+      v.setAttribute('stroke','#C9BFA8'); v.setAttribute('stroke-width','0.5');
+      v.setAttribute('fill','none'); v.setAttribute('vector-effect','non-scaling-stroke');
+      svg.appendChild(v);
+    }
   }
   draw();
   var t; window.addEventListener('resize',function(){clearTimeout(t);t=setTimeout(draw,140);});

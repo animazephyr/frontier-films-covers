@@ -1,0 +1,208 @@
+<!-- Option 40 — Four Plate Series: four bordered plates in a row, each a hairline wireframe study — mesh funnel, interlocked torus, capsule cluster, nested polygons — captioned like a poster series. -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Frontier Films — 40 Four Plate Series</title>
+<style>
+  :root{ --paper:#F7F3E9; --ink:#14120E; --muted:#6B6355; --rule:#CBC2AE; --accent:#223040; }
+  *{box-sizing:border-box}
+  html,body{margin:0}
+  body{background:var(--paper);color:var(--ink);
+    font-family:"Iowan Old Style","Palatino",serif;-webkit-font-smoothing:antialiased}
+
+  .page{min-height:100vh;display:flex;flex-direction:column;
+    padding:clamp(20px,2.8vw,40px) clamp(20px,4vw,58px) clamp(16px,2.2vw,30px)}
+  .inner{width:100%;max-width:1240px;margin:0 auto;display:flex;flex-direction:column;flex:1}
+
+  .caps{font-size:10px;letter-spacing:.24em;text-transform:uppercase;color:var(--muted);margin:0}
+
+  .top{display:flex;justify-content:space-between;align-items:baseline;gap:24px;
+    border-bottom:1px solid var(--ink);padding-bottom:11px}
+
+  .banner{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;
+    margin:clamp(16px,2.6vh,32px) 0 clamp(14px,2.2vh,26px)}
+  h1{margin:0;font-family:"Hoefler Text","Bodoni 72","Didot",Georgia,serif;font-weight:400;
+    font-size:clamp(36px,5.2vw,74px);line-height:.94;letter-spacing:-.01em}
+  .banner .note{text-align:right;max-width:26ch}
+
+  .plates{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:clamp(12px,1.8vw,24px)}
+  figure{margin:0}
+  .plate{border:1px solid var(--ink);background:transparent;padding:clamp(8px,1.1vw,14px)}
+  .plate svg{display:block;width:100%;height:auto}
+  figcaption{margin:9px 0 0;font-size:9.5px;letter-spacing:.24em;text-transform:uppercase;color:var(--muted)}
+  figcaption b{font-weight:400;color:var(--ink);letter-spacing:.24em}
+
+  .items{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(16px,3vw,44px);
+    margin-top:clamp(20px,3.4vh,42px)}
+  .items section{border-top:1px solid var(--ink);padding-top:11px}
+  .items h2{margin:0 0 7px;font-size:10px;letter-spacing:.24em;text-transform:uppercase;font-weight:400}
+  .items h2 span{color:var(--accent)}
+  .items p{margin:0;font-size:13.5px;line-height:1.6;color:#413B32}
+
+  .foot{display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:16px;
+    margin-top:auto;padding-top:clamp(18px,3vh,34px)}
+  .foot .tag{margin:0;font-family:"Hoefler Text","Bodoni 72","Didot",Georgia,serif;
+    font-style:italic;font-size:clamp(18px,2.3vw,30px)}
+  .foot a{color:var(--ink);text-decoration:none;text-transform:none;letter-spacing:.05em;
+    font-size:13px;border-bottom:1px solid var(--rule);margin-left:.9em}
+
+  @media(max-width:900px){
+    .plates{grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(12px,3vw,20px)}
+    .banner{flex-direction:column;align-items:flex-start;gap:10px}
+    .banner .note{text-align:left}
+    .items{grid-template-columns:1fr;gap:0}
+    .items section{margin-top:14px}
+    .top{flex-direction:column;gap:8px;align-items:flex-start}
+  }
+  @media(max-width:460px){ .plates{grid-template-columns:1fr} }
+</style>
+</head>
+<body>
+  <div class="page"><div class="inner">
+
+    <div class="top">
+      <p class="caps">Frontier Films · An independent theatrical distribution company · New York · Los Angeles</p>
+      <p class="caps">Plates I–IV</p>
+    </div>
+
+    <div class="banner">
+      <h1>Frontier Films</h1>
+      <p class="caps note">Four wireframe studies, drawn for the 2026 season</p>
+    </div>
+
+    <div class="plates">
+      <figure><div class="plate"><svg id="p1" viewBox="0 0 300 300" aria-hidden="true"></svg></div>
+        <figcaption><b>Plate I</b> — Mesh Funnel</figcaption></figure>
+      <figure><div class="plate"><svg id="p2" viewBox="0 0 300 300" aria-hidden="true"></svg></div>
+        <figcaption><b>Plate II</b> — Interlocked Torus</figcaption></figure>
+      <figure><div class="plate"><svg id="p3" viewBox="0 0 300 300" aria-hidden="true"></svg></div>
+        <figcaption><b>Plate III</b> — Capsule Cluster</figcaption></figure>
+      <figure><div class="plate"><svg id="p4" viewBox="0 0 300 300" aria-hidden="true"></svg></div>
+        <figcaption><b>Plate IV</b> — Nested Polygons</figcaption></figure>
+    </div>
+
+    <div class="items">
+      <section><h2><span>01 /</span> Placement</h2><p>“Original features, booked into single screens, museum auditoria, civic theatres, and large chains alike.”</p></section>
+      <section><h2><span>02 /</span> Campaigns</h2><p>“Each release carries its own identity, materials, and calendar, made in-house.”</p></section>
+      <section><h2><span>03 /</span> Presentation</h2><p>“Format, sound, and seating agreed with every room before it goes on sale.”</p></section>
+    </div>
+
+    <div class="foot">
+      <p class="tag">“One room at a time.”</p>
+      <p class="caps">General inquiries<a href="mailto:hello@frontier-film.com">hello@frontier-film.com</a></p>
+      <p class="caps">© 2026 Frontier Films</p>
+    </div>
+
+  </div></div>
+
+<script>
+(function(){
+  var NS='http://www.w3.org/2000/svg', INK='#14120E';
+  function grp(id){
+    var svg=document.getElementById(id);
+    var g=document.createElementNS(NS,'g');
+    g.setAttribute('fill','none'); g.setAttribute('stroke',INK);
+    g.setAttribute('stroke-width','0.55'); g.setAttribute('stroke-linejoin','round');
+    svg.appendChild(g); return g;
+  }
+  function add(g,t,a){var e=document.createElementNS(NS,t);for(var k in a)e.setAttribute(k,a[k]);g.appendChild(e);return e;}
+  function poly(g,pts,close){
+    add(g,'path',{d:'M'+pts.map(function(q){return q[0].toFixed(1)+','+q[1].toFixed(1);}).join('L')+(close?'Z':'')});
+  }
+  // 3D helpers: rotate about X then Y, then project with a mild perspective
+  function rot(p,ax,ay){
+    var c=Math.cos(ax), s=Math.sin(ax);
+    var y=p[1]*c-p[2]*s, z=p[1]*s+p[2]*c;
+    var c2=Math.cos(ay), s2=Math.sin(ay);
+    return [p[0]*c2+z*s2, y, -p[0]*s2+z*c2];
+  }
+  function proj(p,cx,cy,f){ var k=f/(f+p[2]); return [cx+p[0]*k, cy+p[1]*k]; }
+
+  /* ---- Plate I · mesh funnel receding to a vanishing point ---- */
+  (function(){
+    var g=grp('p1'), N=26, SP=34, R0=132, AX=150, AY=48, VX=158, VY=236, i, s;
+    function ring(t){ var e=Math.pow(t,0.8);
+      return {r:R0*Math.pow(1-t,1.95)+1, cx:AX+(VX-AX)*e, cy:AY+(VY-AY)*e, k:0.34+0.18*t}; }
+    for(i=0;i<=N;i++){ var R=ring(i/N);
+      add(g,'ellipse',{cx:R.cx.toFixed(1),cy:R.cy.toFixed(1),rx:R.r.toFixed(1),ry:(R.r*R.k).toFixed(1)}); }
+    for(s=0;s<SP;s++){
+      var a=s/SP*2*Math.PI, pts=[];
+      for(i=0;i<=N;i++){ var Q=ring(i/N); pts.push([Q.cx+Q.r*Math.cos(a), Q.cy+Q.r*Q.k*Math.sin(a)]); }
+      poly(g,pts,false);
+    }
+    add(g,'circle',{cx:VX,cy:VY,r:2.2,fill:'#223040',stroke:'none'});
+  })();
+
+  /* ---- Plate II · two interlocked tori as quad mesh ---- */
+  (function(){
+    var g=grp('p2'), R=54, r=20, AX=0.98, AY=0.46, NU=22, NV=10, i, j;
+    function pA(u,v){ var w=R+r*Math.cos(v);
+      return [w*Math.cos(u)-R/2, w*Math.sin(u), r*Math.sin(v)]; }
+    function pB(u,v){ var w=R+r*Math.cos(v);
+      return [R+w*Math.cos(u)-R/2, r*Math.sin(v), w*Math.sin(u)]; }
+    function draw(fn){
+      var u,v,pts;
+      for(i=0;i<NU;i++){ u=i/NU*2*Math.PI; pts=[];
+        for(j=0;j<=28;j++){ v=j/28*2*Math.PI; pts.push(proj(rot(fn(u,v),AX,AY),150,150,900)); }
+        poly(g,pts,true); }
+      for(i=0;i<NV;i++){ v=i/NV*2*Math.PI; pts=[];
+        for(j=0;j<=60;j++){ u=j/60*2*Math.PI; pts.push(proj(rot(fn(u,v),AX,AY),150,150,900)); }
+        poly(g,pts,true); }
+    }
+    draw(pA); draw(pB);
+  })();
+
+  /* ---- Plate III · cluster of lat/long meshed capsules ---- */
+  (function(){
+    var g=grp('p3');
+    function profile(r,L,capN,cylN){
+      var p=[],i,th;
+      for(i=0;i<=capN;i++){ th=Math.PI/2*(1-i/capN); p.push([r*Math.cos(th), L/2+r*Math.sin(th)]); }
+      for(i=1;i<cylN;i++){ p.push([r, L/2-L*i/cylN]); }
+      for(i=0;i<=capN;i++){ th=-Math.PI/2*(i/capN); p.push([r*Math.cos(th), -L/2+r*Math.sin(th)]); }
+      return p;
+    }
+    function capsule(r,L,ax,ay,cx,cy){
+      var pr=profile(r,L,4,3), M=16, i, j, pts, ph;
+      function P(k,phi){ var rho=pr[k][0], z=pr[k][1];
+        return proj(rot([rho*Math.cos(phi), z, rho*Math.sin(phi)],ax,ay),cx,cy,700); }
+      for(i=0;i<pr.length;i++){
+        if(pr[i][0]<0.6) continue;
+        pts=[]; for(j=0;j<=44;j++) pts.push(P(i, j/44*2*Math.PI));
+        poly(g,pts,true);
+      }
+      for(i=0;i<M;i++){ ph=i/M*2*Math.PI; pts=[];
+        for(j=0;j<pr.length;j++) pts.push(P(j,ph));
+        poly(g,pts,false);
+      }
+    }
+    capsule(30, 96, 0.62, 0.35, 118, 132);
+    capsule(20, 58, -0.95, 0.20, 205, 100);
+    capsule(15, 44, 1.28, 0.55, 196, 205);
+  })();
+
+  /* ---- Plate IV · nested rotated polygons forming a spiky cone ---- */
+  (function(){
+    var g=grp('p4'), N=7, STEPS=22, i, k, pts, a;
+    for(i=0;i<STEPS;i++){
+      var t=i/(STEPS-1);
+      var sc=126*Math.pow(1-t,1.05)+3;      // shrinking
+      var rz=t*Math.PI*1.34;                 // rotating
+      var cy=250-t*196;                      // rising: a cone seen from the side
+      pts=[];
+      for(k=0;k<N;k++){
+        a=k/N*2*Math.PI+rz;
+        pts.push([150+sc*Math.cos(a), cy+sc*0.36*Math.sin(a)]);
+      }
+      poly(g,pts,true);
+    }
+    // spine of the cone
+    add(g,'line',{x1:150,y1:250,x2:150,y2:54,'stroke-width':'0.5'});
+    add(g,'circle',{cx:150,cy:54,r:2.2,fill:'#223040',stroke:'none'});
+  })();
+})();
+</script>
+</body>
+</html>

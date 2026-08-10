@@ -87,7 +87,8 @@
 (function(){
   var NS='http://www.w3.org/2000/svg', svg=document.getElementById('orb');
   function el(t,a,p){var e=document.createElementNS(NS,t);for(var k in a)e.setAttribute(k,a[k]);(p||svg).appendChild(e);return e;}
-  var g=el('g',{fill:'none',stroke:'#14120E','stroke-width':'0.6','stroke-linejoin':'round'});
+  var g=el('g',{fill:'none',stroke:'#14120E','stroke-width':'0.6',
+                'stroke-linejoin':'round','vector-effect':'non-scaling-stroke'});
 
   var CX=240, CY=240, R=196, F=760;          // orthographic-leaning perspective
   var AX=-0.42, AZ=0.30;                      // gentle tilt of the polar axis
@@ -104,7 +105,7 @@
   }
   function line(pts,close){
     var d='M'+pts.map(function(q){return q[0].toFixed(1)+','+q[1].toFixed(1);}).join('L');
-    el('path',{d:d+(close?'Z':'')},g);
+    el('path',{d:d+(close?'Z':''),'vector-effect':'non-scaling-stroke'},g);
   }
 
   var LAT=9, LON=18, STEP=64, i, j, pts, lat, lon;

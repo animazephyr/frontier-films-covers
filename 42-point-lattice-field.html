@@ -1,0 +1,86 @@
+<!-- Option 42 — Point Lattice Field: the mesh reduced to its vertices only — a field of points on a gently undulating lattice, no connecting lines, no volumes. -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Frontier Films — 42 Point Lattice Field</title>
+<style>
+  :root{ --paper:#FFFDF9; --ink:#14120E; --muted:#6E6659; --rule:#D8CFBB; }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--paper);color:var(--ink);
+    font-family:"Baskerville","Hoefler Text",Georgia,serif}
+  .wrap{min-height:100vh;display:grid;grid-template-columns:1fr 1.02fr}
+  .left{padding:clamp(28px,4vw,66px);display:flex;flex-direction:column;justify-content:space-between;gap:34px}
+  .right{position:relative;border-left:1px solid var(--rule);overflow:hidden}
+  .right svg{position:absolute;inset:0;width:100%;height:100%}
+  .right .cap{position:absolute;left:clamp(18px,2vw,30px);bottom:clamp(16px,2vw,28px);
+    font-size:10.5px;letter-spacing:.3em;text-transform:uppercase;color:var(--muted)}
+  .cities{margin:0;font-size:11px;letter-spacing:.32em;text-transform:uppercase;color:var(--muted)}
+  h1{margin:22px 0 0;font-family:"Didot","Bodoni 72",serif;font-weight:400;
+     font-size:clamp(42px,6.6vw,96px);line-height:.9}
+  h1 i{font-style:italic;display:block}
+  .desc{margin:20px 0 0;font-size:17px;line-height:1.62;max-width:32ch;color:#3E382F}
+  dl{margin:0}
+  .row{display:grid;grid-template-columns:auto 1fr;gap:6px 20px;padding:18px 0;border-top:1px solid var(--rule);align-items:baseline}
+  .row:last-child{border-bottom:1px solid var(--rule)}
+  .row dt{font-size:11.5px;letter-spacing:.26em;text-transform:uppercase;font-weight:400}
+  .row dt b{font-weight:400;font-family:"Didot","Bodoni 72",serif;font-size:17px;letter-spacing:0;margin-right:10px}
+  .row dd{margin:0;grid-column:2;font-size:16px;line-height:1.6;color:#453F35;max-width:48ch;
+    font-family:"Iowan Old Style","Palatino",Georgia,serif}
+  .tag{margin:0;font-family:"Didot","Bodoni 72",serif;font-style:italic;font-size:clamp(24px,3.8vw,44px)}
+  .base{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:baseline;gap:14px;
+    border-top:1px solid var(--ink);padding-top:14px;font-size:10.5px;letter-spacing:.28em;
+    text-transform:uppercase;color:var(--muted)}
+  .base a{font-size:16px;letter-spacing:.01em;text-transform:none;color:var(--ink);
+    text-decoration:none;border-bottom:1px solid var(--rule);font-style:italic}
+  @media(max-width:880px){ .wrap{grid-template-columns:1fr} .right{height:46vh;border-left:0;border-top:1px solid var(--rule)} }
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="left">
+      <div>
+        <p class="cities">New York · Los Angeles</p>
+        <h1>Frontier<i>Films</i></h1>
+        <p class="desc">An independent theatrical distribution company.</p>
+      </div>
+      <dl>
+        <div class="row"><dt><b>01</b>Placement</dt><dd>Original features, booked into single screens, museum auditoria, civic theatres, and large chains alike.</dd></div>
+        <div class="row"><dt><b>02</b>Campaigns</dt><dd>Each release carries its own identity, materials, and calendar, made in-house.</dd></div>
+        <div class="row"><dt><b>03</b>Presentation</dt><dd>Format, sound, and seating agreed with every room before it goes on sale.</dd></div>
+      </dl>
+      <p class="tag">One room at a time.</p>
+      <div class="base">
+        <span>General inquiries &nbsp; <a href="mailto:hello@frontier-film.com">hello@frontier-film.com</a></span>
+        <span>© 2026 Frontier Films</span>
+      </div>
+    </div>
+    <div class="right">
+      <svg id="p" viewBox="0 0 700 980" preserveAspectRatio="xMidYMid slice" aria-hidden="true"></svg>
+      <span class="cap">Lattice · Vertices only</span>
+    </div>
+  </div>
+<script>
+(function(){
+  const NS='http://www.w3.org/2000/svg', svg=document.getElementById('p');
+  const COLS=34, ROWS=48, W=700, H=980, MX=54, MY=60;
+  let d='';
+  for(let j=0;j<=ROWS;j++){
+    for(let i=0;i<=COLS;i++){
+      const u=i/COLS, v=j/ROWS;
+      // in-plane displacement: the lattice buckles, it never closes into a volume
+      const dx=Math.sin(v*6.1+u*2.2)*9 + Math.cos(v*11.4)*3.4;
+      const dy=Math.cos(u*5.4-v*3.7)*7;
+      const x=MX+u*(W-2*MX)+dx, y=MY+v*(H-2*MY)+dy;
+      const r=(0.85+0.95*Math.abs(Math.sin(u*3.3+v*4.9))).toFixed(2);
+      d+=`M${(x-r).toFixed(1)},${y.toFixed(1)}a${r},${r} 0 1,0 ${(r*2)},0a${r},${r} 0 1,0 ${(-r*2)},0`;
+    }
+  }
+  const e=document.createElementNS(NS,'path');
+  e.setAttribute('d',d); e.setAttribute('fill','#14120E');
+  svg.appendChild(e);
+})();
+</script>
+</body>
+</html>

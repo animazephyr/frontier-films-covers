@@ -1,0 +1,173 @@
+<!-- Option 34 — Checker Half Circles: a strict checkerboard of nested hairline half-circle arcs fills the right-hand panel while the whole text of the company sits small and cornered on bare paper. -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Frontier Films — 34 Checker Half Circles</title>
+<style>
+  :root{
+    --paper:#F9F5EC; --ink:#14120E; --body:#3E382F; --muted:#6E6659;
+    --rule:#D3C9B4; --accent:#223040;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0}
+  body{
+    background:var(--paper); color:var(--ink);
+    font-family:"Charter","Superclarendon",Georgia,serif;
+    -webkit-font-smoothing:antialiased;
+  }
+  .plate{min-height:100vh;display:grid;grid-template-columns:1fr minmax(280px,34%)}
+
+  /* ---------- left: cornered catalogue type ---------- */
+  .copy{
+    display:flex;flex-direction:column;
+    padding:clamp(22px,3vw,46px) clamp(24px,4vw,64px) clamp(20px,2.6vw,36px);
+  }
+  .label{
+    font-family:"Big Caslon","Baskerville",serif;
+    font-size:10.5px;letter-spacing:.24em;text-transform:uppercase;color:var(--muted);
+  }
+  .head{display:flex;justify-content:space-between;align-items:baseline;gap:16px;
+        border-bottom:1px solid var(--ink);padding-bottom:11px}
+  .head h1{margin:0;font-weight:400;font-family:"Big Caslon","Baskerville",serif;
+           font-size:clamp(13px,1.4vw,17px);letter-spacing:.24em;text-transform:uppercase}
+
+  .sub{margin:14px 0 0;font-family:"Big Caslon","Baskerville",serif;
+       font-size:10.5px;letter-spacing:.24em;text-transform:uppercase;color:var(--muted)}
+
+  .tag{margin:clamp(30px,7vh,88px) 0 0;max-width:15ch;
+       font-family:"Big Caslon","Baskerville",serif;font-style:italic;
+       font-size:clamp(30px,4.4vw,62px);line-height:1.02;letter-spacing:-.01em}
+
+  .contents{margin:auto 0 0;padding:0;list-style:none;border-top:1px solid var(--rule)}
+  .contents li{display:grid;grid-template-columns:3.4em 8.5em 1fr;gap:10px 16px;
+               align-items:baseline;padding:13px 0;border-bottom:1px solid var(--rule)}
+  .contents .no{font-family:"Big Caslon","Baskerville",serif;font-size:11px;
+                letter-spacing:.24em;color:var(--accent)}
+  .contents .ttl{font-family:"Big Caslon","Baskerville",serif;font-size:11px;
+                 letter-spacing:.24em;text-transform:uppercase}
+  .contents p{margin:0;font-size:clamp(13px,1vw,15.5px);line-height:1.6;color:var(--body);max-width:46ch}
+
+  .base{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:baseline;
+        gap:10px 20px;margin-top:clamp(18px,2.6vw,32px)}
+  .base a{font-style:italic;font-size:15px;color:var(--ink);text-decoration:none;
+          border-bottom:1px solid var(--rule)}
+  .base a:hover{color:var(--accent);border-bottom-color:var(--accent)}
+
+  /* ---------- right: arc checker panel ---------- */
+  .panel{border-left:1px solid var(--ink);display:flex;align-items:stretch;
+         padding:clamp(18px,2vw,30px) clamp(14px,1.6vw,26px)}
+  .panel svg{display:block;width:100%;height:auto;margin:auto}
+
+  @media (max-width:860px){
+    .plate{grid-template-columns:1fr}
+    .panel{border-left:0;border-top:1px solid var(--ink);min-height:38vh;order:2}
+    .copy{order:1}
+    .contents li{grid-template-columns:3.2em 1fr}
+    .contents .ttl{grid-column:2}
+    .contents p{grid-column:2}
+    .tag{margin-top:34px;max-width:none}
+  }
+</style>
+</head>
+<body>
+  <div class="plate">
+
+    <div class="copy">
+      <header class="head">
+        <h1>Frontier Films</h1>
+        <span class="label">New York &nbsp;·&nbsp; Los Angeles</span>
+      </header>
+      <p class="sub">An independent theatrical distribution company</p>
+
+      <p class="tag">One room at a&nbsp;time.</p>
+
+      <ul class="contents">
+        <li>
+          <span class="no">01</span>
+          <span class="ttl">Placement</span>
+          <p>Original features, booked into single screens, museum auditoria, civic theatres, and large chains alike.</p>
+        </li>
+        <li>
+          <span class="no">02</span>
+          <span class="ttl">Campaigns</span>
+          <p>Each release carries its own identity, materials, and calendar, made in-house.</p>
+        </li>
+        <li>
+          <span class="no">03</span>
+          <span class="ttl">Presentation</span>
+          <p>Format, sound, and seating agreed with every room before it goes on sale.</p>
+        </li>
+      </ul>
+
+      <footer class="base">
+        <span class="label">General inquiries &nbsp; <a href="mailto:hello@frontier-film.com">hello@frontier-film.com</a></span>
+        <span class="label">© 2026 Frontier Films</span>
+      </footer>
+    </div>
+
+    <div class="panel">
+      <svg id="checker" role="img" aria-label="Checkerboard of nested hairline half-circle arcs"></svg>
+    </div>
+
+  </div>
+
+<script>
+(function(){
+  var NS = 'http://www.w3.org/2000/svg';
+  var svg = document.getElementById('checker');
+  var INK = '#14120E';
+
+  function el(tag, attrs, parent){
+    var e = document.createElementNS(NS, tag);
+    for (var k in attrs) e.setAttribute(k, attrs[k]);
+    (parent || svg).appendChild(e);
+    return e;
+  }
+
+  var CELL = 100, ARCS = [48, 35.5, 23, 10.5];
+
+  // one cell: nested half-circle arcs, flat side on the cell's lower edge,
+  // then turned a quarter, a half or three quarters depending on its place.
+  function cell(g, col, row, quarter){
+    var x = col * CELL, y = row * CELL;
+    var cx = x + CELL / 2, cy = y + CELL / 2;
+    var wrap = el('g', { transform: 'rotate(' + (quarter * 90) + ' ' + cx + ' ' + cy + ')' }, g);
+    var baseY = y + CELL - 1;
+    for (var i = 0; i < ARCS.length; i++){
+      var r = ARCS[i];
+      el('path', {
+        d: 'M' + (cx - r) + ',' + baseY + ' A' + r + ',' + r + ' 0 0 1 ' + (cx + r) + ',' + baseY,
+        fill: 'none', stroke: INK, 'stroke-width': 0.7, 'vector-effect': 'non-scaling-stroke'
+      }, wrap);
+    }
+    el('line', { x1: cx - ARCS[0], y1: baseY, x2: cx + ARCS[0], y2: baseY,
+      stroke: INK, 'stroke-width': 0.7, 'vector-effect': 'non-scaling-stroke' }, wrap);
+  }
+
+  function build(cols, rows){
+    while (svg.firstChild) svg.removeChild(svg.firstChild);
+    svg.setAttribute('viewBox', '0 0 ' + cols * CELL + ' ' + rows * CELL);
+    svg.setAttribute('preserveAspectRatio', 'xMidYMid meet');
+    var g = el('g', {});
+    for (var r = 0; r < rows; r++)
+      for (var c = 0; c < cols; c++)
+        cell(g, c, r, (r + c) % 4);
+  }
+
+  function layout(){
+    if (window.matchMedia('(max-width:860px)').matches) build(6, 3);
+    else build(4, 9);
+  }
+  layout();
+
+  var t = null;
+  window.addEventListener('resize', function(){
+    clearTimeout(t);
+    t = setTimeout(layout, 160);
+  });
+})();
+</script>
+</body>
+</html>

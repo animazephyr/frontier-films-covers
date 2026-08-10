@@ -1,0 +1,90 @@
+<!-- Option 41 — Mesh Plane Perspective: a warped grid surface recedes in perspective with a visible vertex point at every intersection; no spheres, no solid shapes, hairlines only. -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Frontier Films — 41 Mesh Plane Perspective</title>
+<style>
+  :root{ --paper:#FCFAF3; --ink:#14120E; --muted:#6C6457; --rule:#D3CAB6; }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--paper);color:var(--ink);
+    font-family:"Iowan Old Style","Palatino",Georgia,serif;overflow-x:hidden}
+  .page{position:relative;min-height:100vh;display:flex;flex-direction:column;padding:clamp(22px,3vw,42px)}
+  .field{position:absolute;left:0;right:0;top:26vh;height:48vh;z-index:0;pointer-events:none}
+  .field svg{width:100%;height:100%;display:block}
+  .rail{position:relative;z-index:2;display:flex;justify-content:space-between;gap:16px;
+    border-bottom:1px solid var(--ink);padding-bottom:12px;
+    font-size:10.5px;letter-spacing:.3em;text-transform:uppercase;color:var(--muted)}
+  h1{position:relative;z-index:2;margin:clamp(30px,7vh,80px) 0 0;font-family:"Didot","Bodoni 72","Hoefler Text",serif;
+     font-weight:400;font-size:clamp(46px,10vw,148px);line-height:.86;letter-spacing:-.012em}
+  h1 span{display:block;padding-left:.06em}
+  .lede{position:relative;z-index:2;margin:24px 0 0;max-width:30ch;font-size:clamp(16px,1.9vw,19px);
+    line-height:1.6;color:#3E382F;font-style:italic}
+  .spacer{flex:1 1 auto;min-height:16vh}
+  .cols{position:relative;z-index:2;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));
+    gap:clamp(18px,3vw,46px);border-top:1px solid var(--rule);padding-top:20px}
+  .cols h2{margin:0 0 8px;font-size:11px;letter-spacing:.26em;text-transform:uppercase;font-weight:400;color:var(--muted)}
+  .cols h2 b{font-weight:400;color:var(--ink);font-family:"Didot","Bodoni 72",serif;font-size:16px;letter-spacing:0;margin-right:8px}
+  .cols p{margin:0;font-size:15.5px;line-height:1.6;color:#443E34}
+  .close{position:relative;z-index:2;display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;
+    gap:18px;margin-top:clamp(22px,3.5vh,42px);border-top:1px solid var(--ink);padding-top:14px}
+  .tag{margin:0;font-family:"Didot","Bodoni 72",serif;font-style:italic;font-size:clamp(22px,3.4vw,40px)}
+  .cta{font-size:10.5px;letter-spacing:.28em;text-transform:uppercase;color:var(--muted);text-align:right}
+  .cta a{display:block;margin-top:6px;font-size:17px;text-transform:none;letter-spacing:.01em;
+    color:var(--ink);text-decoration:none;border-bottom:1px solid var(--rule)}
+  .copy{position:relative;z-index:2;margin:12px 0 0;font-size:10px;letter-spacing:.3em;
+    text-transform:uppercase;color:#A79D89}
+  @media(max-width:820px){ .cols{grid-template-columns:1fr;gap:18px} .field{height:52vh} }
+</style>
+</head>
+<body>
+  <div class="page">
+    <div class="field"><svg id="m" viewBox="0 0 1440 660" preserveAspectRatio="xMidYMid meet" aria-hidden="true"></svg></div>
+    <div class="rail"><span>Frontier Films</span><span>An independent theatrical distribution company</span><span>New York · Los Angeles</span></div>
+    <h1>Frontier<span>Films</span></h1>
+    <p class="lede">Original features, taken to audiences room by room.</p>
+    <div class="spacer"></div>
+    <div class="cols">
+      <section><h2><b>01</b>Placement</h2><p>Original features, booked into single screens, museum auditoria, civic theatres, and large chains alike.</p></section>
+      <section><h2><b>02</b>Campaigns</h2><p>Each release carries its own identity, materials, and calendar, made in-house.</p></section>
+      <section><h2><b>03</b>Presentation</h2><p>Format, sound, and seating agreed with every room before it goes on sale.</p></section>
+    </div>
+    <div class="close">
+      <p class="tag">One room at a time.</p>
+      <div class="cta">General inquiries<a href="mailto:hello@frontier-film.com">hello@frontier-film.com</a></div>
+    </div>
+    <p class="copy">© 2026 Frontier Films</p>
+  </div>
+<script>
+(function(){
+  const NS='http://www.w3.org/2000/svg', svg=document.getElementById('m');
+  const el=(t,a,p)=>{const e=document.createElementNS(NS,t);for(const k in a)e.setAttribute(k,a[k]);(p||svg).appendChild(e);return e;};
+  const W=1440, H=660;
+  const COLS=46, ROWS=26;
+  // fake-perspective ground plane: rows compress toward the horizon, amplitude grows toward the viewer
+  function P(i,j){
+    const u=i/COLS, v=j/ROWS;                 // v: 0 = far, 1 = near
+    const persp=Math.pow(v,1.9);              // row spacing
+    const spread=0.30+0.70*persp;             // width of the row
+    const h=(Math.sin(u*7.2+v*1.6)*0.5+Math.cos(u*3.1-v*4.4)*0.5)*26*persp; // surface displacement
+    const x=W/2+(u-0.5)*W*1.04*spread;
+    const y=120+persp*(H-150)-h;
+    return [x,y];
+  }
+  const lines=el('g',{}), dots=el('g',{});
+  const wire={fill:'none',stroke:'#14120E','stroke-width':0.5,'vector-effect':'non-scaling-stroke'};
+  const path=(pts)=>el('path',Object.assign({d:'M'+pts.map(p=>p[0].toFixed(1)+','+p[1].toFixed(1)).join('L')},wire),lines);
+  for(let j=0;j<=ROWS;j++){const pts=[];for(let i=0;i<=COLS;i++)pts.push(P(i,j));path(pts);}
+  for(let i=0;i<=COLS;i++){const pts=[];for(let j=0;j<=ROWS;j++)pts.push(P(i,j));path(pts);}
+  // the vertices themselves — a point at every intersection, larger as they come forward
+  for(let j=0;j<=ROWS;j++){
+    for(let i=0;i<=COLS;i++){
+      const [x,y]=P(i,j), v=j/ROWS;
+      el('circle',{cx:x.toFixed(1),cy:y.toFixed(1),r:(0.5+1.5*Math.pow(v,2.2)).toFixed(2),fill:'#14120E'},dots);
+    }
+  }
+})();
+</script>
+</body>
+</html>

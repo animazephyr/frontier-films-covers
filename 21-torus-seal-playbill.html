@@ -46,18 +46,18 @@
   /* ---- seal + name ---- */
   .stack{
     flex:1 1 auto;display:flex;flex-direction:column;align-items:center;justify-content:center;
-    padding:clamp(24px,4.6vh,70px) 0 clamp(20px,3.4vh,48px);
+    padding:clamp(16px,3vh,44px) 0 clamp(16px,2.6vh,34px);
   }
   .seal{
-    width:clamp(100px,10.5vw,158px);height:auto;display:block;
-    margin-bottom:clamp(20px,2.8vw,38px);
+    width:clamp(96px,9.4vw,138px);height:auto;display:block;
+    margin-bottom:clamp(16px,2.1vw,28px);
   }
   .mesh{fill:none;stroke:var(--ink);stroke-width:.6;vector-effect:non-scaling-stroke}
   .mesh-b{fill:none;stroke:var(--ink);stroke-width:.75;vector-effect:non-scaling-stroke}
 
   h1.word{
     font-family:"Didot","Bodoni 72","Bodoni 72 Oldstyle","Hoefler Text",Georgia,serif;
-    font-size:clamp(44px,9.6vw,152px);
+    font-size:clamp(44px,9.1vw,138px);
     line-height:.94;letter-spacing:-.004em;
     margin:0;font-weight:400;
   }
@@ -80,7 +80,7 @@
     display:grid;
     grid-template-columns:minmax(0,.72fr) minmax(0,1.55fr);
     gap:clamp(18px,3.4vw,54px);
-    padding:clamp(11px,1.35vw,17px) 0;
+    padding:clamp(10px,1.15vw,15px) 0;
     border-bottom:1px solid var(--rule);
     align-items:baseline;
   }
@@ -180,7 +180,7 @@
     return d+'Z';
   }
 
-  var R=1, r=.355, NU=32, NV=8, SU=140, SV=36, i, j, u, v, pts;
+  var R=1, r=.36, NU=24, NV=7, SU=140, SV=36, i, j, u, v, pts;
   var g=el('g',{'class':'mesh'});
 
   /* tube cross-sections */

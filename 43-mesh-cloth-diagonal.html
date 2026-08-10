@@ -1,0 +1,93 @@
+<!-- Option 43 — Mesh Cloth Diagonal: an open quad mesh drapes diagonally across the page like a sheet of cloth, vertices marked, edges hairline — a surface, never a closed form. -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Frontier Films — 43 Mesh Cloth Diagonal</title>
+<style>
+  :root{ --paper:#FBF8F0; --ink:#14120E; --muted:#6B6355; --rule:#D2C9B5; }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--paper);color:var(--ink);
+    font-family:"Charter","Iowan Old Style",Georgia,serif;overflow-x:hidden}
+  .stage{position:relative;min-height:100vh;padding:clamp(22px,3vw,44px);display:flex;flex-direction:column}
+  .cloth{position:absolute;inset:-4% -6%;z-index:0;pointer-events:none}
+  .cloth svg{width:100%;height:100%}
+  .top{position:relative;z-index:2;display:flex;justify-content:space-between;align-items:baseline;gap:16px;
+    border-bottom:1px solid var(--ink);padding-bottom:12px}
+  .top .mark{margin:0;font-size:clamp(12px,1.7vw,17px);letter-spacing:.42em;text-transform:uppercase;font-weight:400}
+  .top span{font-size:10.5px;letter-spacing:.3em;text-transform:uppercase;color:var(--muted)}
+  .hero{position:relative;z-index:2;margin:clamp(26px,6vh,72px) 0 0;max-width:16ch}
+  h1{margin:0;font-family:"Didot","Bodoni 72","Hoefler Text",serif;font-weight:400;
+     font-size:clamp(44px,8.6vw,124px);line-height:.86;letter-spacing:-.01em}
+  h1 i{font-style:italic}
+  .sub{margin:22px 0 0;font-size:clamp(15px,1.8vw,18px);line-height:1.6;color:#3F3930;max-width:26ch}
+  .mid{flex:1 1 auto;min-height:12vh}
+  .band{position:relative;z-index:2;display:grid;grid-template-columns:1.2fr 1fr 1fr 1fr;
+    gap:clamp(16px,2.6vw,38px);align-items:end;border-top:1px solid var(--rule);padding-top:20px}
+  .band .tag{margin:0;font-family:"Didot","Bodoni 72",serif;font-style:italic;font-size:clamp(22px,3.2vw,38px);line-height:1.05}
+  .band h2{margin:0 0 8px;font-size:10.5px;letter-spacing:.26em;text-transform:uppercase;font-weight:400;color:var(--muted)}
+  .band h2 b{font-weight:400;color:var(--ink);font-family:"Didot","Bodoni 72",serif;font-size:15px;letter-spacing:0;margin-right:7px}
+  .band p{margin:0;font-size:14.5px;line-height:1.58;color:#463F35}
+  .base{position:relative;z-index:2;display:flex;flex-wrap:wrap;justify-content:space-between;align-items:baseline;
+    gap:14px;margin-top:clamp(20px,3vh,38px);border-top:1px solid var(--ink);padding-top:13px;
+    font-size:10.5px;letter-spacing:.28em;text-transform:uppercase;color:var(--muted)}
+  .base a{font-size:16px;letter-spacing:.01em;text-transform:none;color:var(--ink);
+    text-decoration:none;border-bottom:1px solid var(--rule);font-style:italic}
+  @media(max-width:900px){ .band{grid-template-columns:1fr;gap:18px} .hero{max-width:none} }
+</style>
+</head>
+<body>
+  <div class="stage">
+    <div class="cloth"><svg id="c" viewBox="0 0 1500 940" preserveAspectRatio="xMidYMid slice" aria-hidden="true"></svg></div>
+    <div class="top">
+      <p class="mark">Frontier Films</p>
+      <span>An independent theatrical distribution company</span>
+      <span>New York · Los Angeles</span>
+    </div>
+    <div class="hero">
+      <h1>Frontier <i>Films</i></h1>
+      <p class="sub">Original features, booked and presented room by room.</p>
+    </div>
+    <div class="mid"></div>
+    <div class="band">
+      <p class="tag">One room<br>at a time.</p>
+      <section><h2><b>01</b>Placement</h2><p>Original features, booked into single screens, museum auditoria, civic theatres, and large chains alike.</p></section>
+      <section><h2><b>02</b>Campaigns</h2><p>Each release carries its own identity, materials, and calendar, made in-house.</p></section>
+      <section><h2><b>03</b>Presentation</h2><p>Format, sound, and seating agreed with every room before it goes on sale.</p></section>
+    </div>
+    <div class="base">
+      <span>General inquiries &nbsp; <a href="mailto:hello@frontier-film.com">hello@frontier-film.com</a></span>
+      <span>© 2026 Frontier Films</span>
+    </div>
+  </div>
+<script>
+(function(){
+  const NS='http://www.w3.org/2000/svg', svg=document.getElementById('c');
+  const el=(t,a,p)=>{const e=document.createElementNS(NS,t);for(const k in a)e.setAttribute(k,a[k]);(p||svg).appendChild(e);return e;};
+  const NU=54, NV=22;
+  // an open surface: a strip that sags and twists across the page, no closure in either direction
+  function P(i,j){
+    const u=i/NU, v=j/NV;
+    const ax=140+u*1240;
+    const sag=Math.sin(u*Math.PI)*150;                 // the drape
+    const twist=Math.sin(u*3.4)*40*(v-0.5);            // the twist across the strip
+    const ay=210+u*380 + (v-0.5)*300 + sag*0.4 + twist;
+    const wob=Math.cos(u*6.8+v*2.1)*10;
+    return [ax+wob*0.4, ay+wob];
+  }
+  const wire={fill:'none',stroke:'#14120E','stroke-width':0.5,'vector-effect':'non-scaling-stroke'};
+  const lines=el('g',{}), dots=el('g',{});
+  const path=pts=>el('path',Object.assign({d:'M'+pts.map(p=>p[0].toFixed(1)+','+p[1].toFixed(1)).join('L')},wire),lines);
+  for(let j=0;j<=NV;j++){const pts=[];for(let i=0;i<=NU;i++)pts.push(P(i,j));path(pts);}
+  for(let i=0;i<=NU;i++){const pts=[];for(let j=0;j<=NV;j++)pts.push(P(i,j));path(pts);}
+  for(let j=0;j<=NV;j+=2){
+    for(let i=0;i<=NU;i+=2){
+      const [x,y]=P(i,j);
+      el('circle',{cx:x.toFixed(1),cy:y.toFixed(1),r:1.15,fill:'#14120E'},dots);
+    }
+  }
+})();
+</script>
+</body>
+</html>

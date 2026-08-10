@@ -1,0 +1,99 @@
+<!-- Option 44 — Triangulated Mesh Panel: an irregular triangulated mesh with a visible node at every vertex, set as a plate beside the type — angular, flat, nothing spherical. -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Frontier Films — 44 Triangulated Mesh Panel</title>
+<style>
+  :root{ --paper:#F8F5EC; --ink:#14120E; --muted:#6B6355; --rule:#CCC3AF; --accent:#223040; }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--paper);color:var(--ink);
+    font-family:"Iowan Old Style","Palatino",Georgia,serif}
+  .wrap{min-height:100vh;display:grid;grid-template-columns:1.06fr 1fr}
+  .plate{position:relative;overflow:hidden;border-right:1px solid var(--ink)}
+  .plate svg{position:absolute;inset:0;width:100%;height:100%}
+  .plate .n{position:absolute;top:clamp(20px,2.6vw,38px);left:clamp(20px,2.6vw,38px);
+    font-size:10.5px;letter-spacing:.3em;text-transform:uppercase;color:var(--muted)}
+  .plate .f{position:absolute;bottom:clamp(18px,2.4vw,34px);left:clamp(20px,2.6vw,38px);
+    font-size:10.5px;letter-spacing:.3em;text-transform:uppercase;color:var(--muted)}
+  .body{padding:clamp(28px,4.2vw,66px);display:flex;flex-direction:column;justify-content:space-between;gap:32px}
+  .eyebrow{font-size:10.5px;letter-spacing:.3em;text-transform:uppercase;color:var(--muted);
+    border-bottom:1px solid var(--rule);padding-bottom:12px;display:flex;justify-content:space-between;gap:12px}
+  h1{margin:24px 0 0;font-family:"Big Caslon","Baskerville",serif;font-weight:400;
+     font-size:clamp(40px,6vw,88px);line-height:.94}
+  h1 span{display:block}
+  .desc{margin:18px 0 0;font-size:17px;line-height:1.62;max-width:32ch;color:#3E382F;font-style:italic}
+  ol{list-style:none;margin:0;padding:0}
+  ol li{display:grid;grid-template-columns:auto 1fr;gap:6px 18px;padding:17px 0;border-top:1px solid var(--rule);align-items:baseline}
+  ol li:last-child{border-bottom:1px solid var(--rule)}
+  ol li .n{font-family:"Big Caslon","Baskerville",serif;font-size:19px;color:var(--accent);line-height:1}
+  ol li h2{margin:0;font-size:11.5px;letter-spacing:.26em;text-transform:uppercase;font-weight:400}
+  ol li p{margin:8px 0 0;grid-column:2;font-size:15.5px;line-height:1.6;color:#453F35}
+  .tag{margin:0;font-family:"Big Caslon","Baskerville",serif;font-size:clamp(24px,3.6vw,42px);font-style:italic}
+  .base{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:baseline;gap:14px;
+    border-top:1px solid var(--ink);padding-top:14px;font-size:10.5px;letter-spacing:.28em;
+    text-transform:uppercase;color:var(--muted)}
+  .base a{font-size:16px;letter-spacing:.01em;text-transform:none;color:var(--accent);
+    text-decoration:none;border-bottom:1px solid var(--accent)}
+  @media(max-width:880px){ .wrap{grid-template-columns:1fr} .plate{height:44vh;border-right:0;border-bottom:1px solid var(--ink)} }
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="plate">
+      <span class="n">Mesh · Plate I</span>
+      <svg id="t" viewBox="0 0 760 980" preserveAspectRatio="xMidYMid slice" aria-hidden="true"></svg>
+      <span class="f">Nodes &amp; edges</span>
+    </div>
+    <div class="body">
+      <div>
+        <div class="eyebrow"><span>Frontier Films</span><span>New York · Los Angeles</span></div>
+        <h1>Frontier<span>Films</span></h1>
+        <p class="desc">An independent theatrical distribution company.</p>
+      </div>
+      <ol>
+        <li><span class="n">01</span><h2>Placement</h2><p>Original features, booked into single screens, museum auditoria, civic theatres, and large chains alike.</p></li>
+        <li><span class="n">02</span><h2>Campaigns</h2><p>Each release carries its own identity, materials, and calendar, made in-house.</p></li>
+        <li><span class="n">03</span><h2>Presentation</h2><p>Format, sound, and seating agreed with every room before it goes on sale.</p></li>
+      </ol>
+      <p class="tag">One room at a time.</p>
+      <div class="base">
+        <span>General inquiries &nbsp; <a href="mailto:hello@frontier-film.com">hello@frontier-film.com</a></span>
+        <span>© 2026 Frontier Films</span>
+      </div>
+    </div>
+  </div>
+<script>
+(function(){
+  const NS='http://www.w3.org/2000/svg', svg=document.getElementById('t');
+  const el=(t,a,p)=>{const e=document.createElementNS(NS,t);for(const k in a)e.setAttribute(k,a[k]);(p||svg).appendChild(e);return e;};
+  const wire={fill:'none',stroke:'#14120E','stroke-width':0.55,'vector-effect':'non-scaling-stroke'};
+  const COLS=13, ROWS=17, W=760, H=980, MX=64, MY=76;
+  // jittered grid of nodes, deterministic so it renders identically every time
+  const N=[];
+  for(let j=0;j<=ROWS;j++){
+    N[j]=[];
+    for(let i=0;i<=COLS;i++){
+      const jx=Math.sin(i*12.9898+j*78.233)*0.5, jy=Math.sin(i*39.346+j*11.135)*0.5;
+      N[j][i]=[ MX+i/COLS*(W-2*MX)+jx*30, MY+j/ROWS*(H-2*MY)+jy*30 ];
+    }
+  }
+  const edges=el('g',{}), nodes=el('g',{});
+  const seg=(a,b)=>el('path',Object.assign({d:`M${a[0].toFixed(1)},${a[1].toFixed(1)}L${b[0].toFixed(1)},${b[1].toFixed(1)}`},wire),edges);
+  for(let j=0;j<=ROWS;j++){
+    for(let i=0;i<=COLS;i++){
+      if(i<COLS) seg(N[j][i],N[j][i+1]);
+      if(j<ROWS) seg(N[j][i],N[j+1][i]);
+      // one diagonal per cell, alternating direction — this is what triangulates it
+      if(i<COLS&&j<ROWS) (i+j)%2 ? seg(N[j][i],N[j+1][i+1]) : seg(N[j][i+1],N[j+1][i]);
+    }
+  }
+  for(let j=0;j<=ROWS;j++) for(let i=0;i<=COLS;i++){
+    const [x,y]=N[j][i];
+    el('circle',{cx:x.toFixed(1),cy:y.toFixed(1),r:1.7,fill:'#14120E'},nodes);
+  }
+})();
+</script>
+</body>
+</html>

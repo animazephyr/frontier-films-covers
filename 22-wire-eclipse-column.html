@@ -1,0 +1,245 @@
+<!-- Option 22 — Wire Eclipse Column: three concentric lat/long mesh ellipsoids descend the page centre in a single hairline column, the name set vertically alongside and the copy held in one narrow measure. -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<link rel="icon" href="data:,">
+<title>Frontier Films — 22 Wire Eclipse Column</title>
+<style>
+  :root{
+    --bg:#FFFDF9;
+    --ink:#14120E;
+    --ox:#6E2A22;
+    --rule:rgba(20,18,14,.26);
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0}
+  body{
+    background:var(--bg);
+    color:var(--ink);
+    font-family:"Iowan Old Style","Palatino","Palatino Linotype",Georgia,serif;
+    font-size:16px;line-height:1.55;
+    -webkit-font-smoothing:antialiased;
+    text-rendering:optimizeLegibility;
+  }
+  .stage{
+    min-height:100vh;display:flex;flex-direction:column;
+    padding:clamp(18px,2.8vw,40px) clamp(18px,3.4vw,52px) clamp(14px,2vw,28px);
+  }
+  .sc{
+    font-family:"Charter","Superclarendon",Georgia,serif;
+    text-transform:uppercase;letter-spacing:.24em;
+    font-size:clamp(9.5px,.72vw,11.5px);font-weight:400;
+  }
+
+  .top{
+    display:flex;justify-content:space-between;align-items:baseline;gap:24px;
+    padding-bottom:clamp(12px,1.6vw,18px);
+    border-bottom:1px solid var(--rule);
+  }
+
+  /* ---- three columns: vertical name · hairline column · narrow measure ---- */
+  .body{
+    flex:1 1 auto;min-height:0;
+    display:grid;
+    grid-template-columns:auto minmax(0,1fr) minmax(0,33ch);
+    gap:clamp(18px,3.6vw,64px);
+    align-items:stretch;
+    padding:clamp(14px,2vh,30px) 0 clamp(12px,2vh,26px);
+  }
+
+  .namecol{display:flex;align-items:center;justify-content:flex-start}
+  h1.word{
+    margin:0;font-weight:400;
+    writing-mode:vertical-rl;transform:rotate(180deg);
+    font-family:"Big Caslon","Baskerville","Hoefler Text",Georgia,serif;
+    font-size:clamp(34px,5.4vw,90px);
+    line-height:1;letter-spacing:.012em;
+    white-space:nowrap;
+  }
+
+  .art{position:relative;min-width:0}
+  .art svg{position:absolute;inset:0;width:100%;height:100%;display:block}
+  .mesh{fill:none;stroke:var(--ink);stroke-width:.55;vector-effect:non-scaling-stroke}
+  .mesh-b{fill:none;stroke:var(--ink);stroke-width:.8;vector-effect:non-scaling-stroke}
+  .mesh-ox{fill:none;stroke:var(--ox);stroke-width:.8;vector-effect:non-scaling-stroke}
+  .dot{fill:var(--ox)}
+
+  /* ---- narrow measure ---- */
+  .copy{display:flex;flex-direction:column;justify-content:center;gap:clamp(14px,1.8vw,24px)}
+  .tag{
+    margin:0;font-family:"Big Caslon","Baskerville","Hoefler Text",Georgia,serif;
+    font-style:italic;
+    font-size:clamp(19px,1.85vw,29px);line-height:1.18;
+  }
+  .tag:before{
+    content:"";display:block;width:clamp(30px,4vw,58px);height:1px;
+    background:var(--ink);margin:0 0 .55em;
+  }
+  .entry{border-top:1px solid var(--rule);padding-top:clamp(9px,1vw,13px)}
+  .entry:first-of-type{border-top:1px solid var(--ink)}
+  .entry h3{margin:0 0 .45em;font-weight:400}
+  .entry h3 b{font-weight:400;color:var(--ox);margin-right:.35em}
+  .entry p{
+    margin:0;font-size:clamp(13px,.98vw,15.5px);
+    max-width:34ch;hanging-punctuation:first;
+  }
+
+  .foot{
+    padding-top:clamp(10px,1.1vw,14px);
+    border-top:1px solid var(--rule);
+    display:flex;justify-content:space-between;align-items:baseline;gap:20px;flex-wrap:wrap;
+  }
+  .inq{font-size:clamp(12.5px,.95vw,15px)}
+  .inq b{
+    font-weight:400;margin-right:.75em;
+    font-family:"Charter","Superclarendon",Georgia,serif;
+    text-transform:uppercase;letter-spacing:.24em;
+    font-size:clamp(9.5px,.7vw,11px);
+  }
+  .inq a{color:var(--ink);text-decoration:none;border-bottom:1px solid var(--rule);padding-bottom:1px}
+  .inq a:hover{color:var(--ox);border-bottom-color:var(--ox)}
+
+  @media (max-width:880px){
+    .body{grid-template-columns:1fr;gap:clamp(16px,4vw,26px)}
+    .namecol{justify-content:flex-start}
+    h1.word{
+      writing-mode:horizontal-tb;transform:none;
+      font-size:clamp(38px,11.4vw,66px);letter-spacing:-.004em;
+    }
+    .art{height:min(60vh,132vw);min-height:300px}
+    .art svg{position:relative}
+    .copy{gap:14px}
+    .entry p{max-width:50ch}
+  }
+</style>
+</head>
+<body>
+<div class="stage">
+
+  <header class="top">
+    <div class="sc">An independent theatrical distribution company</div>
+    <div class="sc">New York · Los Angeles</div>
+  </header>
+
+  <div class="body">
+    <div class="namecol"><h1 class="word">Frontier Films</h1></div>
+
+    <div class="art"><svg id="art" aria-hidden="true" preserveAspectRatio="xMidYMid meet"></svg></div>
+
+    <div class="copy">
+      <p class="tag">“One room at a time.”</p>
+
+      <article class="entry">
+        <h3 class="sc"><b>01</b>/ Placement</h3>
+        <p>“Original features, booked into single screens, museum auditoria, civic theatres, and large chains alike.”</p>
+      </article>
+      <article class="entry">
+        <h3 class="sc"><b>02</b>/ Campaigns</h3>
+        <p>“Each release carries its own identity, materials, and calendar, made in-house.”</p>
+      </article>
+      <article class="entry">
+        <h3 class="sc"><b>03</b>/ Presentation</h3>
+        <p>“Format, sound, and seating agreed with every room before it goes on sale.”</p>
+      </article>
+    </div>
+  </div>
+
+  <footer class="foot">
+    <div class="inq"><b>General inquiries</b><a href="mailto:hello@frontier-film.com">hello@frontier-film.com</a></div>
+    <div class="sc">© 2026 Frontier Films</div>
+  </footer>
+
+</div>
+
+<script>
+(function(){
+  var NS='http://www.w3.org/2000/svg', TAU=Math.PI*2;
+  var svg=document.getElementById('art');
+  if(!svg) return;
+
+  function el(n,a){var e=document.createElementNS(NS,n);for(var k in a){e.setAttribute(k,a[k]);}return e;}
+  function rotX(p,a){var c=Math.cos(a),s=Math.sin(a);return[p[0],p[1]*c-p[2]*s,p[1]*s+p[2]*c];}
+  function rotZ(p,a){var c=Math.cos(a),s=Math.sin(a);return[p[0]*c-p[1]*s,p[0]*s+p[1]*c,p[2]];}
+  function poly(pts,close){
+    var d='M'+pts[0][0].toFixed(2)+','+pts[0][1].toFixed(2);
+    for(var i=1;i<pts.length;i++)d+='L'+pts[i][0].toFixed(2)+','+pts[i][1].toFixed(2);
+    return d+(close?'Z':'');
+  }
+
+  /* lat/long mesh ellipsoid, orthographic with a small tilt and roll */
+  function ellipsoid(g,cx,cy,r,squash,nMer,nPar,tilt,roll){
+    var i,j,pts,lat,lon,p,SEG=132;
+    function view(lat,lon){
+      p=[Math.cos(lat)*Math.cos(lon), Math.sin(lat), Math.cos(lat)*Math.sin(lon)];
+      p=rotX(p,tilt); p=rotZ(p,roll);
+      return [cx+p[0]*r, cy-p[1]*r*squash];
+    }
+    /* meridians */
+    for(i=0;i<nMer;i++){
+      lon=i/nMer*Math.PI; pts=[];
+      for(j=0;j<=SEG;j++){lat=-Math.PI/2+j/SEG*Math.PI;pts.push(view(lat,lon));}
+      for(j=SEG;j>=0;j--){lat=-Math.PI/2+j/SEG*Math.PI;pts.push(view(lat,lon+Math.PI));}
+      g.appendChild(el('path',{d:poly(pts,1)}));
+    }
+    /* parallels */
+    for(i=1;i<nPar;i++){
+      lat=-Math.PI/2+i/nPar*Math.PI; pts=[];
+      for(j=0;j<=SEG;j++){lon=j/SEG*TAU;pts.push(view(lat,lon));}
+      g.appendChild(el('path',{d:poly(pts,1)}));
+    }
+  }
+
+  function draw(){
+    var rect=svg.getBoundingClientRect();
+    var w=Math.round(rect.width), h=Math.round(rect.height);
+    if(!w||!h) return;
+    while(svg.firstChild)svg.removeChild(svg.firstChild);
+    svg.setAttribute('viewBox','0 0 '+w+' '+h);
+
+    var g=el('g',{'class':'mesh'});
+    var gb=el('g',{'class':'mesh-b'});
+    var gx=el('g',{'class':'mesh-ox'});
+    var gd=el('g',{'class':'dot'});
+
+    /* one axis, three bodies: the middle one dominant, the outer two overlapping into it */
+    var axis=Math.round(w/2);
+    var r2=Math.min(w*0.40, h*0.187), r1=r2*0.78, r3=r2*0.755;
+    var y2=h*0.5, y1=y2-(r1+r2)*0.855, y3=y2+(r2+r3)*0.855;
+
+    var bodies=[
+      {c:[axis,y1], r:r1, sq:.90, mer:7,  par:5, tilt:-0.34, roll:0.06},
+      {c:[axis,y2], r:r2, sq:.96, mer:15, par:10, tilt:-0.30, roll:-0.05},
+      {c:[axis,y3], r:r3, sq:.90, mer:10, par:7, tilt:-0.38, roll:0.10}
+    ];
+
+    /* concentric coronas about the dominant body */
+    [1.11,1.19].forEach(function(k){
+      var rr=r2*k;
+      gb.appendChild(el('ellipse',{cx:axis,cy:y2.toFixed(2),rx:rr.toFixed(2),ry:(rr*0.985).toFixed(2)}));
+    });
+
+    bodies.forEach(function(b){
+      ellipsoid(g, b.c[0], b.c[1], b.r, b.sq, b.mer, b.par, b.tilt, b.roll);
+    });
+
+    /* hairline axis through the column + a single small mark at its centre */
+    var top=bodies[0].c[1]-bodies[0].r, bot=bodies[2].c[1]+bodies[2].r;
+    g.appendChild(el('path',{d:'M'+axis+','+(top-34).toFixed(2)+'L'+axis+','+(bot+34).toFixed(2)}));
+    gd.appendChild(el('circle',{cx:axis,cy:bodies[1].c[1].toFixed(2),r:3.4}));
+
+    svg.appendChild(g);
+    svg.appendChild(gb);
+    svg.appendChild(gx);
+    svg.appendChild(gd);
+  }
+
+  var t;
+  function queue(){clearTimeout(t);t=setTimeout(draw,90);}
+  draw();
+  window.addEventListener('resize',queue);
+})();
+</script>
+</body>
+</html>

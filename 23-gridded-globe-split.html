@@ -1,0 +1,237 @@
+<!-- Option 23 — Gridded Globe Split: one large lat/long mesh sphere cut down its meridian by a single hairline — dense grid on one half, sparse on the other — held against a flush-left serif name and a low ruled row of three. -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<link rel="icon" href="data:,">
+<title>Frontier Films — 23 Gridded Globe Split</title>
+<style>
+  :root{
+    --bg:#FDFBF6;
+    --ink:#14120E;
+    --ox:#6E2A22;
+    --rule:rgba(20,18,14,.26);
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0}
+  body{
+    background:var(--bg);
+    color:var(--ink);
+    font-family:"Iowan Old Style","Palatino","Palatino Linotype",Georgia,serif;
+    font-size:16px;line-height:1.52;
+    -webkit-font-smoothing:antialiased;
+    text-rendering:optimizeLegibility;
+  }
+  .stage{
+    position:relative;min-height:100vh;overflow:hidden;
+    display:flex;flex-direction:column;
+    padding:clamp(18px,2.9vw,42px) clamp(18px,3.4vw,52px) clamp(14px,2vw,30px);
+  }
+  #art{position:absolute;inset:0;width:100%;height:100%;display:block}
+  .mesh{fill:none;stroke:var(--ink);stroke-width:.5;vector-effect:non-scaling-stroke}
+  .mesh-s{fill:none;stroke:var(--ink);stroke-width:.65;vector-effect:non-scaling-stroke}
+  .mesh-b{fill:none;stroke:var(--ink);stroke-width:.85;vector-effect:non-scaling-stroke}
+  .mesh-ox{fill:none;stroke:var(--ox);stroke-width:.85;vector-effect:non-scaling-stroke}
+
+  .lay{position:relative;z-index:2;display:flex;flex-direction:column;flex:1 1 auto;min-height:0}
+  .sc{
+    font-family:"Charter","Superclarendon",Georgia,serif;
+    text-transform:uppercase;letter-spacing:.24em;
+    font-size:clamp(9.5px,.72vw,11.5px);font-weight:400;
+  }
+
+  .top{
+    display:flex;justify-content:space-between;align-items:baseline;gap:24px;
+    padding-bottom:clamp(12px,1.6vw,18px);
+    border-bottom:1px solid var(--rule);
+  }
+
+  /* ---- flush-left name ---- */
+  .hero{flex:1 1 auto;display:flex;flex-direction:column;justify-content:center;padding:clamp(24px,5vh,72px) 0}
+  h1.word{
+    margin:0;font-weight:400;
+    font-family:"Cochin","Times New Roman","Hoefler Text",Georgia,serif;
+    font-size:clamp(52px,10.6vw,164px);
+    line-height:.9;letter-spacing:-.006em;
+    max-width:52%;
+  }
+  h1.word em{display:block;font-style:normal}
+  h1.word .b{margin-left:.055em}
+  .tag{
+    margin:clamp(16px,2.2vw,30px) 0 0;
+    font-family:"Cochin","Times New Roman",Georgia,serif;
+    font-style:italic;
+    font-size:clamp(18px,2.25vw,33px);line-height:1.16;
+  }
+  .tag:before{
+    content:"";display:inline-block;vertical-align:.32em;
+    width:clamp(24px,3.6vw,62px);height:1px;background:var(--ink);margin-right:.66em;
+  }
+
+  /* ---- low ruled row ---- */
+  .row{
+    border-top:1px solid var(--ink);
+    padding-top:clamp(12px,1.5vw,19px);
+    display:grid;grid-template-columns:repeat(3,minmax(0,1fr));
+    gap:clamp(18px,3.2vw,54px);
+  }
+  .row h3{margin:0 0 .5em;font-weight:400}
+  .row h3 b{font-weight:400;color:var(--ox);margin-right:.35em}
+  .row p{
+    margin:0;font-size:clamp(13px,1vw,16px);
+    max-width:31ch;hanging-punctuation:first;
+  }
+
+  .foot{
+    margin-top:clamp(16px,2.4vw,32px);
+    padding-top:clamp(10px,1.1vw,14px);
+    border-top:1px solid var(--rule);
+    display:flex;justify-content:space-between;align-items:baseline;gap:20px;flex-wrap:wrap;
+  }
+  .inq{font-size:clamp(12.5px,.95vw,15px)}
+  .inq b{
+    font-weight:400;margin-right:.75em;
+    font-family:"Charter","Superclarendon",Georgia,serif;
+    text-transform:uppercase;letter-spacing:.24em;
+    font-size:clamp(9.5px,.7vw,11px);
+  }
+  .inq a{color:var(--ink);text-decoration:none;border-bottom:1px solid var(--rule);padding-bottom:1px}
+  .inq a:hover{color:var(--ox);border-bottom-color:var(--ox)}
+
+  @media (max-width:900px){
+    h1.word{max-width:none;font-size:clamp(44px,12.6vw,84px)}
+    .hero{padding-top:min(58vw,44vh)}
+    .row{grid-template-columns:1fr;gap:clamp(14px,3.4vw,22px)}
+    .row article{border-top:1px solid var(--rule);padding-top:11px}
+    .row article:first-child{border-top:0;padding-top:0}
+    .row p{max-width:48ch}
+    .top{flex-direction:column;gap:6px;align-items:flex-start}
+  }
+</style>
+</head>
+<body>
+<div class="stage">
+  <svg id="art" aria-hidden="true" preserveAspectRatio="none"></svg>
+
+  <div class="lay">
+    <header class="top">
+      <div class="sc">An independent theatrical distribution company</div>
+      <div class="sc">New York · Los Angeles</div>
+    </header>
+
+    <section class="hero">
+      <h1 class="word"><em>Frontier</em><em class="b">Films</em></h1>
+      <p class="tag">“One room at a time.”</p>
+    </section>
+
+    <section class="row">
+      <article>
+        <h3 class="sc"><b>01</b>/ Placement</h3>
+        <p>“Original features, booked into single screens, museum auditoria, civic theatres, and large chains alike.”</p>
+      </article>
+      <article>
+        <h3 class="sc"><b>02</b>/ Campaigns</h3>
+        <p>“Each release carries its own identity, materials, and calendar, made in-house.”</p>
+      </article>
+      <article>
+        <h3 class="sc"><b>03</b>/ Presentation</h3>
+        <p>“Format, sound, and seating agreed with every room before it goes on sale.”</p>
+      </article>
+    </section>
+
+    <footer class="foot">
+      <div class="inq"><b>General inquiries</b><a href="mailto:hello@frontier-film.com">hello@frontier-film.com</a></div>
+      <div class="sc">© 2026 Frontier Films</div>
+    </footer>
+  </div>
+</div>
+
+<script>
+(function(){
+  var NS='http://www.w3.org/2000/svg', TAU=Math.PI*2;
+  var svg=document.getElementById('art');
+  if(!svg) return;
+
+  function el(n,a){var e=document.createElementNS(NS,n);for(var k in a){e.setAttribute(k,a[k]);}return e;}
+  function rotX(p,a){var c=Math.cos(a),s=Math.sin(a);return[p[0],p[1]*c-p[2]*s,p[1]*s+p[2]*c];}
+  function rotZ(p,a){var c=Math.cos(a),s=Math.sin(a);return[p[0]*c-p[1]*s,p[0]*s+p[1]*c,p[2]];}
+  function poly(pts,close){
+    var d='M'+pts[0][0].toFixed(2)+','+pts[0][1].toFixed(2);
+    for(var i=1;i<pts.length;i++)d+='L'+pts[i][0].toFixed(2)+','+pts[i][1].toFixed(2);
+    return d+(close?'Z':'');
+  }
+
+  function draw(){
+    var rect=svg.getBoundingClientRect();
+    var w=Math.round(rect.width)||window.innerWidth, h=Math.round(rect.height)||window.innerHeight;
+    if(!w||!h) return;
+    var narrow=w<900;
+    while(svg.firstChild)svg.removeChild(svg.firstChild);
+    svg.setAttribute('viewBox','0 0 '+w+' '+h);
+
+    /* the globe: right field on wide screens, crowning the page on a phone */
+    var cx = narrow ? w*0.56 : w*0.715;
+    var R  = narrow ? Math.min(w*0.40, h*0.225) : Math.min(w*0.29, h*0.40);
+    var cy = narrow ? R*0.94 : h*0.375;
+
+    var TILT=-0.32, ROLL=0.045;
+    function view(lat,lon){
+      var p=[Math.cos(lat)*Math.cos(lon), Math.sin(lat), Math.cos(lat)*Math.sin(lon)];
+      p=rotX(p,TILT); p=rotZ(p,ROLL);
+      return [cx+p[0]*R, cy-p[1]*R];
+    }
+    /* a full lat/long cage at a given density */
+    function cage(g,nMer,nPar){
+      var i,j,pts,lat,lon,SEG=150;
+      for(i=0;i<nMer;i++){
+        lon=i/nMer*Math.PI; pts=[];
+        for(j=0;j<=SEG;j++){lat=-Math.PI/2+j/SEG*Math.PI;pts.push(view(lat,lon));}
+        for(j=SEG;j>=0;j--){lat=-Math.PI/2+j/SEG*Math.PI;pts.push(view(lat,lon+Math.PI));}
+        g.appendChild(el('path',{d:poly(pts,1)}));
+      }
+      for(i=1;i<nPar;i++){
+        lat=-Math.PI/2+i/nPar*Math.PI; pts=[];
+        for(j=0;j<=SEG;j++){lon=j/SEG*TAU;pts.push(view(lat,lon));}
+        g.appendChild(el('path',{d:poly(pts,1)}));
+      }
+    }
+
+    /* clip halves either side of the vertical hairline through the centre */
+    var defs=el('defs',{});
+    var pad=R*0.06;
+    var cL=el('clipPath',{id:'g23L'});
+    cL.appendChild(el('rect',{x:(cx-R-pad).toFixed(2),y:(cy-R-pad).toFixed(2),width:(R+pad).toFixed(2),height:(2*R+2*pad).toFixed(2)}));
+    var cR=el('clipPath',{id:'g23R'});
+    cR.appendChild(el('rect',{x:cx.toFixed(2),y:(cy-R-pad).toFixed(2),width:(R+pad).toFixed(2),height:(2*R+2*pad).toFixed(2)}));
+    defs.appendChild(cL);defs.appendChild(cR);
+    svg.appendChild(defs);
+
+    var dense=el('g',{'class':'mesh','clip-path':'url(#g23L)'});
+    cage(dense, narrow?20:26, narrow?13:17);
+    svg.appendChild(dense);
+
+    var sparse=el('g',{'class':'mesh-s','clip-path':'url(#g23R)'});
+    cage(sparse, 5, 4);
+    svg.appendChild(sparse);
+
+    /* limb, meridian cut, and a single oxblood equator */
+    var edge=el('g',{'class':'mesh-b'});
+    edge.appendChild(el('circle',{cx:cx.toFixed(2),cy:cy.toFixed(2),r:R.toFixed(2)}));
+    edge.appendChild(el('path',{d:'M'+cx.toFixed(2)+','+(cy-R).toFixed(2)+'L'+cx.toFixed(2)+','+(cy+R).toFixed(2)}));
+    svg.appendChild(edge);
+
+    var eq=el('g',{'class':'mesh-ox'}), pts=[], j;
+    for(j=0;j<=200;j++)pts.push(view(0, j/200*TAU));
+    eq.appendChild(el('path',{d:poly(pts,1)}));
+    svg.appendChild(eq);
+  }
+
+  var t;
+  function queue(){clearTimeout(t);t=setTimeout(draw,90);}
+  draw();
+  window.addEventListener('resize',queue);
+})();
+</script>
+</body>
+</html>

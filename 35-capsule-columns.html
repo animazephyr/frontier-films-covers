@@ -1,0 +1,218 @@
+<!-- Option 35 — Capsule Columns: three tall lat/long wireframe capsules stand on a common ground line, each acting as the column head for one numbered item, with the name centred above on a hairline rule. -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Frontier Films — 35 Capsule Columns</title>
+<style>
+  :root{
+    --paper:#FFFDF8; --ink:#14120E; --body:#3D372E; --muted:#6E6659;
+    --rule:#D6CDB9; --accent:#6E2A22;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0}
+  body{
+    background:var(--paper); color:var(--ink);
+    font-family:"Iowan Old Style","Palatino",Georgia,serif;
+    -webkit-font-smoothing:antialiased;
+  }
+  .sheet{min-height:100vh;display:flex;flex-direction:column;
+         padding:clamp(22px,3vw,44px) clamp(22px,4vw,62px) clamp(18px,2.4vw,32px);
+         max-width:1360px;margin:0 auto;width:100%}
+
+  /* ---------- masthead ---------- */
+  .mast{text-align:center}
+  .mast h1{margin:0;font-weight:400;
+           font-family:"Cochin","Times New Roman",serif;
+           font-size:clamp(15px,2vw,26px);letter-spacing:.42em;text-transform:uppercase}
+  .mast .rule{border:0;border-top:1px solid var(--ink);margin:clamp(10px,1.2vw,16px) 0 0}
+  .mast .under{display:flex;justify-content:space-between;align-items:baseline;gap:16px;
+               margin-top:9px;font-family:"Cochin","Times New Roman",serif;
+               font-size:10.5px;letter-spacing:.24em;text-transform:uppercase;color:var(--muted)}
+
+  .tag{margin:clamp(20px,3.4vh,44px) 0 0;text-align:center;
+       font-family:"Cochin","Times New Roman",serif;font-style:italic;
+       font-size:clamp(26px,3.6vw,52px);line-height:1.04}
+
+  /* ---------- the three columns ---------- */
+  .columns{display:grid;grid-template-columns:repeat(3,1fr);
+           gap:clamp(20px,3.6vw,58px);
+           margin:clamp(14px,2.4vh,30px) 0 0;flex:1}
+  .col{display:flex;flex-direction:column}
+  .figure{flex:1;min-height:30vh;display:flex;align-items:flex-end;justify-content:center}
+  .figure svg{display:block;width:100%;height:100%;max-height:46vh}
+  .col .band{border-top:1px solid var(--ink);margin-top:clamp(10px,1.4vw,18px);
+             padding-top:clamp(10px,1.2vw,15px)}
+  .col h2{margin:0 0 9px;font-weight:400;
+          font-family:"Cochin","Times New Roman",serif;
+          font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:var(--ink)}
+  .col h2 i{font-style:normal;color:var(--accent);margin-right:1em}
+  .col p{margin:0;font-size:clamp(13.5px,1.05vw,16px);line-height:1.62;color:var(--body);max-width:34ch}
+
+  /* ---------- base ---------- */
+  .base{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:baseline;
+        gap:12px 22px;margin-top:clamp(18px,3vw,38px);padding-top:12px;
+        border-top:1px solid var(--rule);
+        font-family:"Cochin","Times New Roman",serif;
+        font-size:10.5px;letter-spacing:.24em;text-transform:uppercase;color:var(--muted)}
+  .base a{font-family:"Iowan Old Style","Palatino",Georgia,serif;font-style:italic;
+          font-size:15px;letter-spacing:.01em;text-transform:none;color:var(--ink);
+          text-decoration:none;border-bottom:1px solid var(--rule)}
+  .base a:hover{color:var(--accent);border-bottom-color:var(--accent)}
+
+  @media (max-width:860px){
+    .columns{grid-template-columns:1fr;gap:26px}
+    .figure{min-height:26vh}
+    .figure svg{max-height:30vh}
+    .col p{max-width:52ch}
+  }
+</style>
+</head>
+<body>
+  <div class="sheet">
+
+    <header class="mast">
+      <h1>Frontier Films</h1>
+      <hr class="rule">
+      <div class="under">
+        <span>An independent theatrical distribution company</span>
+        <span>New York &nbsp;·&nbsp; Los Angeles</span>
+      </div>
+    </header>
+
+    <p class="tag">One room at a time.</p>
+
+    <section class="columns">
+      <article class="col">
+        <div class="figure"><svg class="cap" data-h="196" data-tilt=".20" data-phase="0"
+             viewBox="0 0 300 660" preserveAspectRatio="xMidYMax meet" aria-hidden="true"></svg></div>
+        <div class="band">
+          <h2><i>01</i>Placement</h2>
+          <p>Original features, booked into single screens, museum auditoria, civic theatres, and large chains alike.</p>
+        </div>
+      </article>
+
+      <article class="col">
+        <div class="figure"><svg class="cap" data-h="228" data-tilt=".24" data-phase=".33"
+             viewBox="0 0 300 660" preserveAspectRatio="xMidYMax meet" aria-hidden="true"></svg></div>
+        <div class="band">
+          <h2><i>02</i>Campaigns</h2>
+          <p>Each release carries its own identity, materials, and calendar, made in-house.</p>
+        </div>
+      </article>
+
+      <article class="col">
+        <div class="figure"><svg class="cap" data-h="178" data-tilt=".18" data-phase=".66"
+             viewBox="0 0 300 660" preserveAspectRatio="xMidYMax meet" aria-hidden="true"></svg></div>
+        <div class="band">
+          <h2><i>03</i>Presentation</h2>
+          <p>Format, sound, and seating agreed with every room before it goes on sale.</p>
+        </div>
+      </article>
+    </section>
+
+    <footer class="base">
+      <span>General inquiries &nbsp; <a href="mailto:hello@frontier-film.com">hello@frontier-film.com</a></span>
+      <span>© 2026 Frontier Films</span>
+    </footer>
+
+  </div>
+
+<script>
+(function(){
+  var NS = 'http://www.w3.org/2000/svg';
+  var INK = '#14120E';
+
+  function el(svg, tag, attrs, parent){
+    var e = document.createElementNS(NS, tag);
+    for (var k in attrs) e.setAttribute(k, attrs[k]);
+    (parent || svg).appendChild(e);
+    return e;
+  }
+  var wire = { fill:'none', stroke:INK, 'stroke-width':0.7, 'vector-effect':'non-scaling-stroke' };
+  function w(extra){
+    var o = { fill:wire.fill, stroke:wire.stroke, 'stroke-width':wire['stroke-width'],
+              'vector-effect':wire['vector-effect'] };
+    for (var k in extra) o[k] = extra[k];
+    return o;
+  }
+
+  /* A capsule = cylinder of half-height H capped by two hemispheres of radius R,
+     seen from slightly above (rotation `t` about the horizontal axis).
+     Rings project to ellipses of ry = r * sin t; meridians are traced point by point. */
+  function capsule(svg, cx, baseY, R, H, t, phase){
+    var cost = Math.cos(t), sint = Math.sin(t);
+    var cy = baseY - R - H * cost;                    // sit the capsule on the ground line
+    var yOf = function(y){ return cy - y * cost; };
+
+    var g = el(svg, 'g', {});
+
+    // silhouette
+    var yTop = yOf(H), yBot = yOf(-H);
+    el(svg, 'path', w({ d:
+      'M' + (cx - R) + ',' + yTop.toFixed(1) +
+      ' A' + R + ',' + R + ' 0 0 1 ' + (cx + R) + ',' + yTop.toFixed(1) +
+      ' L' + (cx + R) + ',' + yBot.toFixed(1) +
+      ' A' + R + ',' + R + ' 0 0 1 ' + (cx - R) + ',' + yBot.toFixed(1) + ' Z',
+      'stroke-width': 0.9 }), g);
+
+    // ---- latitude rings ----
+    var rings = [], i, a, NC = 4, NB = 7;
+    for (i = 1; i < NC; i++){                          // lower cap
+      a = i / NC * Math.PI / 2;
+      rings.push([ R * Math.cos(a), -H - R * Math.sin(a) ]);
+    }
+    for (i = 0; i <= NB; i++){                         // barrel
+      rings.push([ R, -H + 2 * H * i / NB ]);
+    }
+    for (i = NC - 1; i >= 1; i--){                     // upper cap
+      a = i / NC * Math.PI / 2;
+      rings.push([ R * Math.cos(a), H + R * Math.sin(a) ]);
+    }
+    for (i = 0; i < rings.length; i++){
+      var rr = rings[i][0];
+      el(svg, 'ellipse', w({ cx: cx, cy: yOf(rings[i][1]).toFixed(1),
+        rx: rr.toFixed(1), ry: Math.max(0.4, rr * sint).toFixed(1),
+        'stroke-width': (Math.abs(rings[i][1]) < 0.001 ? 0.9 : 0.6) }), g);
+    }
+
+    // ---- meridians: bottom pole up over the barrel to the top pole ----
+    var profile = [], k, NP = 16;
+    for (k = 0; k <= NP; k++){                         // lower hemisphere
+      a = -Math.PI / 2 + (k / NP) * Math.PI / 2;
+      profile.push([ R * Math.cos(a), -H + R * Math.sin(a) ]);
+    }
+    for (k = 1; k <= 6; k++) profile.push([ R, -H + 2 * H * k / 6 ]);
+    for (k = 1; k <= NP; k++){                         // upper hemisphere
+      a = (k / NP) * Math.PI / 2;
+      profile.push([ R * Math.cos(a), H + R * Math.sin(a) ]);
+    }
+
+    var NM = 12;
+    for (var m = 0; m < NM; m++){
+      var u = (m / NM + phase) * Math.PI * 2, d = '';
+      for (k = 0; k < profile.length; k++){
+        var pr = profile[k][0], py = profile[k][1];
+        var px = cx + pr * Math.cos(u);
+        var pyy = yOf(py) + pr * Math.sin(u) * sint;
+        d += (k ? 'L' : 'M') + px.toFixed(1) + ',' + pyy.toFixed(1);
+      }
+      el(svg, 'path', w({ d: d, 'stroke-width': 0.55 }), g);
+    }
+  }
+
+  var plates = document.querySelectorAll('svg.cap');
+  for (var i = 0; i < plates.length; i++){
+    var s = plates[i];
+    // all three stand on the same line; the rule under each column is the ground
+    capsule(s, 150, 650,
+      86,
+      parseFloat(s.getAttribute('data-h')),
+      parseFloat(s.getAttribute('data-tilt')),
+      parseFloat(s.getAttribute('data-phase')));
+  }
+})();
+</script>
+</body>
+</html>

@@ -48,7 +48,13 @@
 
   /* ---- stage ---- */
   .stage{margin:clamp(6px,1.2vw,14px) 0 0}
-  .stage svg{display:block;width:100%;height:auto;overflow:visible}
+  .stage svg{
+    display:block;
+    width:100%;
+    height:auto;
+    max-height:calc(100vh - 408px);
+    overflow:visible;
+  }
   .wire path{fill:none;stroke:var(--ink);stroke-width:.7;vector-effect:non-scaling-stroke}
   .wire.knock path{stroke:var(--bg)}
   .solid path,.solid circle{fill:var(--ink)}
@@ -64,7 +70,7 @@
     margin-top:clamp(10px,1.6vw,20px);
     border-top:var(--hair) solid var(--ink);
     border-bottom:var(--hair) solid var(--ink);
-    padding:clamp(12px,1.8vw,22px) 0;
+    padding:clamp(10px,1.4vw,16px) 0;
     display:flex;
     align-items:baseline;
     justify-content:center;
@@ -75,7 +81,7 @@
     font-family:"Didot","Bodoni 72","Hoefler Text",Georgia,serif;
     font-style:italic;
     font-weight:400;
-    font-size:clamp(1.6rem,5.4vw,4.1rem);
+    font-size:clamp(1.6rem,4.6vw,3.4rem);
     line-height:.98;
     letter-spacing:-.005em;
     text-align:center;
@@ -122,7 +128,8 @@
   a{color:var(--ox);text-decoration:none;border-bottom:var(--hair) solid var(--ox)}
   a:hover{color:var(--ink);border-color:var(--ink)}
 
-  @media (max-width:760px){
+  @media (max-width:780px){
+    .stage svg{max-height:none}
     .bar{flex-direction:column;align-items:flex-start;gap:6px}
     .items{flex-direction:column;gap:0}
     .items article{border-top:var(--hair) solid var(--ink);padding:12px 0 14px}
@@ -251,12 +258,12 @@
   }
 
   var WIDE = {
-    vb:[1440,900],
-    circle:[470,430,330],
-    fun:[1030,470,330,.96,190,9,36],
-    one:[38,214,238,3],
-    two:[928,836,142,9],
-    peb:[[92,806,40,1.1,.2,.82],[176,832,17,3.2,.26,.78],[1332,132,26,2.4,.22,.86]]
+    vb:[1440,640],
+    circle:[430,332,262],
+    fun:[900,350,268,.95,150,9,36],
+    one:[30,172,192,2],
+    two:[1000,612,120,7],
+    peb:[[122,566,32,1.1,.2,.82],[186,600,14,3.2,.26,.78],[1390,146,20,2.4,.22,.86]]
   };
   var NARROW = {
     vb:[760,1150],

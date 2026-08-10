@@ -1,0 +1,137 @@
+<!-- Option 38 — Mandala TextPath: a symmetrical hairline mandala of concentric arcs and mesh rings, with the company line set in serif caps curved around it on an SVG textPath. -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Frontier Films — 38 Mandala TextPath</title>
+<style>
+  :root{ --paper:#FBF8F1; --ink:#14120E; --muted:#6B6355; --rule:#CFC6B2; }
+  *{box-sizing:border-box}
+  html,body{margin:0}
+  body{background:var(--paper);color:var(--ink);
+    font-family:"Charter","Superclarendon",Georgia,serif;-webkit-font-smoothing:antialiased}
+
+  .page{min-height:100vh;display:flex;flex-direction:column;align-items:center;
+    padding:clamp(20px,3vw,44px) clamp(20px,4vw,60px) clamp(18px,2.4vw,34px)}
+  .inner{width:100%;max-width:1080px;display:flex;flex-direction:column;align-items:center}
+
+  .caps{font-size:10px;letter-spacing:.24em;text-transform:uppercase;color:var(--muted);margin:0}
+
+  .seal{margin:clamp(4px,1.5vh,18px) 0 0;width:min(72vw,548px,60vh)}
+  .seal svg{display:block;width:100%;height:auto}
+
+  h1{margin:clamp(10px,2.4vh,26px) 0 0;text-align:center;
+    font-family:"Big Caslon","Baskerville",serif;font-weight:400;
+    font-size:clamp(15px,1.5vw,19px);letter-spacing:.34em;text-transform:uppercase}
+
+  .tag{margin:clamp(8px,1.4vh,14px) 0 0;text-align:center;
+    font-family:"Big Caslon","Baskerville",serif;font-style:italic;
+    font-size:clamp(19px,2.6vw,34px);color:#2C2823}
+
+  .items{width:100%;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));
+    gap:clamp(16px,3vw,44px);margin-top:clamp(22px,4vh,52px)}
+  .items section{border-top:1px solid var(--ink);padding-top:12px}
+  .items h2{margin:0 0 8px;font-size:10px;letter-spacing:.24em;text-transform:uppercase;font-weight:400}
+  .items h2 span{color:var(--muted)}
+  .items p{margin:0;font-size:14px;line-height:1.6;color:#413B32}
+
+  .foot{width:100%;display:flex;justify-content:space-between;align-items:baseline;
+    gap:20px;margin-top:clamp(20px,4vh,44px);border-top:1px solid var(--rule);padding-top:12px}
+  .foot a{color:var(--ink);text-decoration:none;text-transform:none;letter-spacing:.05em;
+    font-size:13px;border-bottom:1px solid var(--rule);margin-left:.9em}
+
+  @media(max-width:760px){
+    .seal{width:min(88vw,420px)}
+    .items{grid-template-columns:1fr;gap:0}
+    .items section{margin-top:16px}
+    .items section:first-child{margin-top:0}
+    .foot{flex-direction:column;gap:10px;align-items:flex-start}
+  }
+</style>
+</head>
+<body>
+  <div class="page"><div class="inner">
+
+    <div class="seal">
+      <svg id="seal" viewBox="0 0 1000 1000" role="img"
+           aria-label="Frontier Films · An independent theatrical distribution company · New York · Los Angeles">
+        <defs>
+          <path id="ringTop" d="M 104 500 A 396 396 0 0 1 896 500" fill="none"></path>
+          <path id="ringBot" d="M 896 500 A 396 396 0 0 1 104 500" fill="none"></path>
+        </defs>
+        <g id="mesh" fill="none" stroke="#14120E" stroke-width="0.6"></g>
+        <text font-family="'Big Caslon','Baskerville',serif" font-size="24" letter-spacing="5.7" fill="#14120E">
+          <textPath href="#ringTop" xlink:href="#ringTop" startOffset="50%" text-anchor="middle">FRONTIER FILMS · AN INDEPENDENT THEATRICAL DISTRIBUTION COMPANY</textPath>
+        </text>
+        <text font-family="'Big Caslon','Baskerville',serif" font-size="24" letter-spacing="5.7" fill="#14120E" dy="22">
+          <textPath href="#ringBot" xlink:href="#ringBot" startOffset="50%" text-anchor="middle">NEW YORK · LOS ANGELES</textPath>
+        </text>
+      </svg>
+    </div>
+
+    <h1>Frontier Films</h1>
+    <p class="tag">“One room at a time.”</p>
+
+    <div class="items">
+      <section><h2><span>01 /</span> Placement</h2><p>“Original features, booked into single screens, museum auditoria, civic theatres, and large chains alike.”</p></section>
+      <section><h2><span>02 /</span> Campaigns</h2><p>“Each release carries its own identity, materials, and calendar, made in-house.”</p></section>
+      <section><h2><span>03 /</span> Presentation</h2><p>“Format, sound, and seating agreed with every room before it goes on sale.”</p></section>
+    </div>
+
+    <div class="foot">
+      <p class="caps">General inquiries<a href="mailto:hello@frontier-film.com">hello@frontier-film.com</a></p>
+      <p class="caps">© 2026 Frontier Films</p>
+    </div>
+
+  </div></div>
+
+<script>
+(function(){
+  var NS='http://www.w3.org/2000/svg', g=document.getElementById('mesh');
+  var C=500, D2R=Math.PI/180;
+  function el(t,a){var e=document.createElementNS(NS,t);for(var k in a)e.setAttribute(k,a[k]);g.appendChild(e);return e;}
+  function ring(r,w){el('circle',{cx:C,cy:C,r:r,'stroke-width':(w||0.6)});}
+  function spokes(n,r0,r1,off){
+    for(var i=0;i<n;i++){
+      var a=((off||0)+i*360/n)*D2R, s=Math.sin(a), c=Math.cos(a);
+      el('line',{x1:(C+r0*s).toFixed(1),y1:(C-r0*c).toFixed(1),
+                 x2:(C+r1*s).toFixed(1),y2:(C-r1*c).toFixed(1)});
+    }
+  }
+  // one open semicircular arc, chord tangent to circle `rad`, bulging out (+1) or in (-1)
+  function arcs(n,rad,q,dir,off){
+    for(var i=0;i<n;i++){
+      var deg=(off||0)+i*360/n, a=deg*D2R;
+      var px=(C+rad*Math.sin(a)), py=(C-rad*Math.cos(a));
+      el('path',{d:'M '+(-q)+' 0 A '+q+' '+q+' 0 0 0 '+q+' 0',
+                 transform:'translate('+px.toFixed(1)+','+py.toFixed(1)+') rotate('+(deg+(dir>0?180:0))+')'});
+    }
+  }
+
+  // 1 · hub: quad-meshed core
+  ring(20); ring(34); ring(48); spokes(24,20,48);
+  // 2 · inner petals
+  arcs(12,48,26,1,0);
+  // 3 · first rule
+  ring(82,0.75);
+  // 4 · meshed annulus
+  ring(100); ring(118); ring(136); spokes(36,82,136,5);
+  // 5 · alternating wave of arcs
+  var i;
+  for(i=0;i<20;i++) arcs(1,166,25,(i%2?-1:1),i*18);
+  // 6 · double hairline rule
+  ring(200,0.75); ring(206,0.55);
+  // 7 · eight great inward arcs, tips landing exactly on the rule
+  arcs(8,324,124,-1,22.5);
+  ring(324,0.75);
+  // 8 · outer teeth and closing rules
+  arcs(16,324,22,1,11.25);
+  ring(356,0.55);
+  ring(436,0.75);
+  // single accent: the exact centre
+  el('circle',{cx:C,cy:C,r:4.5,fill:'#6E2A22',stroke:'none'});
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,185 @@
+<!-- Option 30 — Sphere Lockup: a precise lat/long wireframe sphere stands in for the O of FRONTIER, locking mesh and serif capitals into a single flush-left mark. -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<link rel="icon" href="data:,">
+<title>Frontier Films — 30 Sphere Lockup</title>
+<style>
+  :root{
+    --bg:#FFFCF6;
+    --ink:#14120E;
+    --blue:#223040;
+    --rule:rgba(20,18,14,.26);
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0}
+  body{
+    background:var(--bg);color:var(--ink);
+    font-family:"Charter","Superclarendon",Georgia,serif;
+    font-size:16px;line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  .sheet{
+    min-height:100vh;
+    display:flex;flex-direction:column;
+    padding:clamp(20px,3vw,44px) clamp(20px,4.6vw,80px) clamp(18px,2.4vw,36px);
+  }
+  .sc{text-transform:uppercase;letter-spacing:.24em;font-size:clamp(9.5px,.7vw,11px)}
+
+  header{border-top:1px solid var(--ink);padding-top:clamp(9px,1.1vw,13px)}
+  header .line{display:block}
+  header .line + .line{margin-top:.5em;color:rgba(20,18,14,.7)}
+
+  /* ---------- the lockup ---------- */
+  .lock{
+    margin:clamp(30px,7vh,96px) 0 0;
+    font-family:"Big Caslon","Baskerville","Hoefler Text",Georgia,serif;
+    font-weight:400;line-height:.9;
+    letter-spacing:.045em;
+    font-size:clamp(2.5rem,10.4vw,8.4rem);
+    text-transform:uppercase;
+  }
+  .lock .two{display:block;letter-spacing:.20em;font-size:.72em;margin-top:.14em}
+  .orb{
+    display:inline-block;width:.80em;height:.80em;
+    vertical-align:-.055em;margin:0 .015em 0 .01em;
+  }
+  .orb svg{display:block;width:100%;height:100%;overflow:visible}
+  .mesh{fill:none;stroke:var(--ink);stroke-width:.7;vector-effect:non-scaling-stroke}
+  .mesh-soft{fill:none;stroke:var(--ink);stroke-width:.5;vector-effect:non-scaling-stroke;opacity:.6}
+
+  .body{
+    flex:1 1 auto;
+    display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);
+    gap:clamp(24px,5vw,88px);
+    align-items:end;
+    margin-top:clamp(26px,5vh,64px);
+  }
+  .tag{
+    margin:0;
+    font-family:"Big Caslon","Baskerville",Georgia,serif;font-style:italic;
+    font-size:clamp(1.35rem,3.2vw,2.6rem);line-height:1.06;
+  }
+
+  .items{margin:0}
+  .items article{border-top:1px solid var(--rule);padding:clamp(9px,1vw,13px) 0}
+  .items article:last-child{border-bottom:1px solid var(--rule)}
+  .items h3{margin:0 0 .35em;font-weight:400}
+  .items h3 em{font-style:normal;color:var(--blue)}
+  .items p{margin:0;font-size:clamp(12.5px,.92vw,14.5px);line-height:1.5;max-width:40ch}
+
+  .base{
+    display:flex;flex-wrap:wrap;justify-content:space-between;align-items:baseline;gap:10px 28px;
+    margin-top:clamp(20px,3vw,40px);padding-top:clamp(10px,1.2vw,14px);
+    border-top:1px solid var(--ink);
+  }
+  .inq{font-size:clamp(12.5px,.95vw,15px)}
+  .inq b{font-weight:400;margin-right:.8em}
+  a{color:var(--ink);text-decoration:none;border-bottom:1px solid var(--rule)}
+  a:hover{color:var(--blue);border-bottom-color:var(--blue)}
+
+  @media (max-width:880px){
+    .body{grid-template-columns:1fr;gap:clamp(20px,4vw,32px);align-items:start}
+    .lock{font-size:clamp(2.2rem,13.4vw,4.2rem)}
+    .lock .two{letter-spacing:.16em}
+  }
+</style>
+</head>
+<body>
+<div class="sheet">
+
+  <header>
+    <span class="sc line">An independent theatrical distribution company</span>
+    <span class="sc line">New York · Los Angeles</span>
+  </header>
+
+  <h1 class="lock">
+    FR<span class="orb" aria-hidden="true"><svg id="orb" viewBox="-1.16 -1.16 2.32 2.32"></svg></span>NTIER
+    <span class="two">Films</span>
+  </h1>
+
+  <div class="body">
+    <div>
+      <p class="tag">One room at a time.</p>
+    </div>
+
+    <div class="items">
+      <article>
+        <h3 class="sc"><em>01</em> / Placement</h3>
+        <p>Original features, booked into single screens, museum auditoria, civic theatres, and large chains alike.</p>
+      </article>
+      <article>
+        <h3 class="sc"><em>02</em> / Campaigns</h3>
+        <p>Each release carries its own identity, materials, and calendar, made in-house.</p>
+      </article>
+      <article>
+        <h3 class="sc"><em>03</em> / Presentation</h3>
+        <p>Format, sound, and seating agreed with every room before it goes on sale.</p>
+      </article>
+    </div>
+  </div>
+
+  <div class="base">
+    <span class="inq"><b class="sc">General inquiries</b><a href="mailto:hello@frontier-film.com">hello@frontier-film.com</a></span>
+    <span class="sc">© 2026 Frontier Films</span>
+  </div>
+
+</div>
+
+<script>
+(function(){
+  var NS='http://www.w3.org/2000/svg', TAU=Math.PI*2, HP=Math.PI/2;
+  var svg=document.getElementById('orb');
+
+  function el(n,a){var e=document.createElementNS(NS,n);for(var k in a){e.setAttribute(k,a[k]);}return e;}
+  function poly(p,close){
+    var d='M'+p[0][0].toFixed(4)+','+p[0][1].toFixed(4),i;
+    for(i=1;i<p.length;i++)d+='L'+p[i][0].toFixed(4)+','+p[i][1].toFixed(4);
+    return close?d+'Z':d;
+  }
+
+  var TILT=-0.36, SPIN=0.34, f=4.4;
+  function view(p){
+    var c=Math.cos(SPIN),s=Math.sin(SPIN);
+    var x=p[0]*c+p[2]*s, z=-p[0]*s+p[2]*c, y=p[1];
+    var c2=Math.cos(TILT),s2=Math.sin(TILT);
+    var y2=y*c2-z*s2, z2=y*s2+z*c2;
+    var k=f/(f+z2);
+    return [x*k, y2*k];
+  }
+  function sph(lat,lon){var cl=Math.cos(lat);return [cl*Math.cos(lon), Math.sin(lat), cl*Math.sin(lon)];}
+
+  var gFine=el('g',{'class':'mesh-soft'}), gMesh=el('g',{'class':'mesh'});
+  var NLAT=13, NLON=18, i, j, pts;
+
+  /* latitude rings */
+  for(i=1;i<NLAT;i++){
+    var lat=-HP+i/NLAT*Math.PI;
+    pts=[];
+    for(j=0;j<=120;j++)pts.push(view(sph(lat, j/120*TAU)));
+    gFine.appendChild(el('path',{d:poly(pts,true)}));
+  }
+  /* meridians */
+  for(i=0;i<NLON;i++){
+    var lon=i/NLON*TAU;
+    pts=[];
+    for(j=0;j<=80;j++)pts.push(view(sph(-HP+j/80*Math.PI, lon)));
+    gFine.appendChild(el('path',{d:poly(pts,false)}));
+  }
+  /* the silhouette, held one weight heavier so the sphere reads as a letter O */
+  pts=[];
+  for(j=0;j<=200;j++){var a=j/200*TAU;pts.push([Math.cos(a),Math.sin(a)]);}
+  gMesh.appendChild(el('path',{d:poly(pts,true)}));
+  /* equator, drawn heavier as the crossbar of the form */
+  pts=[];
+  for(j=0;j<=160;j++)pts.push(view(sph(0, j/160*TAU)));
+  gMesh.appendChild(el('path',{d:poly(pts,true)}));
+
+  svg.appendChild(gFine);
+  svg.appendChild(gMesh);
+})();
+</script>
+</body>
+</html>
