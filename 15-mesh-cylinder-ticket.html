@@ -1,0 +1,362 @@
+<!-- Option 15 — Mesh Cylinder Ticket: a tall wireframe capsule mesh stands in the stub at left while the right half reads as an admission ticket, perforated by a dashed hairline, with the tagline as its headline. -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Frontier Films — 15 Mesh Cylinder Ticket</title>
+<style>
+  :root{
+    --bg:#FBF8F1;
+    --ink:#14120E;
+    --ox:#6E2A22;
+    --hair:.6px;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0}
+  body{
+    background:var(--bg);
+    color:var(--ink);
+    font-family:"Charter","Superclarendon",Georgia,serif;
+    -webkit-font-smoothing:antialiased;
+    min-height:100vh;
+    display:flex;
+    flex-direction:column;
+  }
+  .page{
+    flex:1 1 auto;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    max-width:1360px;
+    width:100%;
+    margin:0 auto;
+    padding:clamp(16px,2.4vw,34px) clamp(16px,3vw,44px);
+  }
+  .lab{
+    font-family:"Charter","Superclarendon",Georgia,serif;
+    text-transform:uppercase;
+    letter-spacing:.24em;
+    font-size:10px;
+    line-height:1.5;
+  }
+  .lab.ox{color:var(--ox)}
+
+  .topline{
+    display:flex;
+    justify-content:space-between;
+    gap:14px;
+    padding-bottom:9px;
+  }
+
+  /* ---- the ticket ---- */
+  .ticket{
+    position:relative;
+    display:flex;
+    border:var(--hair) solid var(--ink);
+    background:var(--bg);
+  }
+  .stub{
+    flex:0 0 32%;
+    min-width:0;
+    padding:clamp(14px,1.8vw,24px) clamp(10px,1.4vw,20px);
+    display:flex;
+    flex-direction:column;
+  }
+  .stub .rot{
+    display:flex;
+    justify-content:space-between;
+    gap:10px;
+  }
+  .stub figure{margin:0;flex:1 1 auto;display:flex;align-items:center;justify-content:center}
+  .stub svg{display:block;width:100%;height:auto;max-height:60vh;overflow:visible}
+  .wire path{fill:none;stroke:var(--ink);stroke-width:.66;vector-effect:non-scaling-stroke}
+  .solid path,.solid circle{fill:var(--ink)}
+  .stub .foot{text-align:center;padding-top:8px}
+  .stub .admit{
+    font-family:"Didot","Bodoni 72","Hoefler Text",Georgia,serif;
+    font-size:clamp(.9rem,1.3vw,1.15rem);
+    text-transform:uppercase;
+    letter-spacing:.3em;
+    text-align:center;
+    padding-top:10px;
+  }
+
+  /* perforation */
+  .perf{
+    position:absolute;
+    top:0;bottom:0;
+    left:32%;
+    border-left:var(--hair) dashed var(--ink);
+  }
+  .notch{
+    position:absolute;
+    left:32%;
+    width:18px;height:9px;
+    margin-left:-9px;
+    background:var(--bg);
+    border:var(--hair) solid var(--ink);
+  }
+  .notch.t{top:-1px;border-top:none;border-radius:0 0 20px 20px}
+  .notch.b{bottom:-1px;border-bottom:none;border-radius:20px 20px 0 0}
+
+  .face{
+    flex:1 1 auto;
+    min-width:0;
+    padding:clamp(16px,2.2vw,30px) clamp(16px,2.6vw,38px);
+    display:flex;
+    flex-direction:column;
+  }
+  .face .head{
+    display:flex;
+    justify-content:space-between;
+    align-items:baseline;
+    gap:14px;
+    border-bottom:var(--hair) solid var(--ink);
+    padding-bottom:9px;
+  }
+  .issuer{
+    font-family:"Didot","Bodoni 72","Hoefler Text",Georgia,serif;
+    font-size:clamp(1.05rem,1.7vw,1.5rem);
+    text-transform:uppercase;
+    letter-spacing:.26em;
+    white-space:nowrap;
+  }
+  h1{
+    margin:clamp(14px,2.4vw,30px) 0 0;
+    font-family:"Didot","Bodoni 72","Hoefler Text",Georgia,serif;
+    font-weight:400;
+    font-style:italic;
+    font-size:clamp(2rem,5.6vw,4.6rem);
+    line-height:.95;
+    letter-spacing:-.008em;
+    max-width:16ch;
+  }
+  .desc{
+    font-family:"Cochin","Times New Roman",serif;
+    font-style:italic;
+    font-size:clamp(.98rem,1.4vw,1.22rem);
+    margin:clamp(10px,1.4vw,16px) 0 clamp(14px,2.2vw,26px);
+    max-width:38ch;
+  }
+
+  .rows{border-top:var(--hair) dashed var(--ink)}
+  .row{
+    display:flex;
+    gap:clamp(10px,2vw,30px);
+    align-items:baseline;
+    padding:clamp(9px,1.3vw,14px) 0;
+    border-bottom:var(--hair) dashed var(--ink);
+  }
+  .row .key{flex:0 0 30%;min-width:0}
+  .row .key .n{
+    font-family:"Didot","Bodoni 72","Hoefler Text",Georgia,serif;
+    font-size:1rem;
+    letter-spacing:.08em;
+    margin-right:.6em;
+  }
+  .row .val{
+    flex:1 1 auto;
+    font-family:"Iowan Old Style","Palatino",Georgia,serif;
+    font-size:clamp(.86rem,1.02vw,1rem);
+    line-height:1.5;
+    max-width:52ch;
+  }
+
+  .fields{
+    display:flex;
+    gap:clamp(14px,3vw,44px);
+    flex-wrap:wrap;
+    padding:clamp(12px,1.8vw,20px) 0 0;
+  }
+  .fields div span{display:block}
+  .fields .v{
+    font-family:"Iowan Old Style","Palatino",Georgia,serif;
+    font-size:clamp(.86rem,1vw,.98rem);
+    padding-top:5px;
+  }
+  .facefoot{
+    margin-top:auto;
+    padding-top:clamp(14px,2vw,24px);
+    display:flex;
+    justify-content:space-between;
+    gap:14px;
+    flex-wrap:wrap;
+    align-items:baseline;
+  }
+  a{color:var(--ox);text-decoration:none;border-bottom:var(--hair) solid var(--ox)}
+  a:hover{color:var(--ink);border-color:var(--ink)}
+  .bottomline{
+    display:flex;
+    justify-content:space-between;
+    gap:14px;
+    padding-top:10px;
+  }
+
+  @media (max-width:800px){
+    .ticket{flex-direction:column}
+    .stub{flex:0 0 auto;border-bottom:var(--hair) dashed var(--ink)}
+    .stub svg{max-height:38vh}
+    .perf,.notch{display:none}
+    .row{flex-direction:column;gap:4px}
+    .row .key{flex:0 0 auto}
+    h1{max-width:none}
+  }
+</style>
+</head>
+<body>
+
+<div class="page">
+
+  <div class="topline">
+    <div class="lab">Frontier Films</div>
+    <div class="lab">New York · Los Angeles</div>
+  </div>
+
+  <div class="ticket">
+    <div class="perf" aria-hidden="true"></div>
+    <div class="notch t" aria-hidden="true"></div>
+    <div class="notch b" aria-hidden="true"></div>
+
+    <div class="stub">
+      <div class="rot">
+        <span class="lab">Stub</span>
+        <span class="lab ox">No. 15</span>
+      </div>
+      <figure>
+        <svg id="cap" viewBox="0 0 340 760" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Tall wireframe capsule mesh">
+          <g class="solid" id="capSolid"></g>
+          <g class="wire" id="capWire"></g>
+        </svg>
+      </figure>
+      <div class="admit">Admit one</div>
+      <div class="foot"><span class="lab">Retain this portion</span></div>
+    </div>
+
+    <div class="face">
+      <div class="head">
+        <div class="issuer">Frontier Films</div>
+        <div class="lab">Season 2026 · One screening</div>
+      </div>
+
+      <h1>One room at a time.</h1>
+      <p class="desc">An independent theatrical distribution company</p>
+
+      <div class="rows">
+        <div class="row">
+          <div class="key"><span class="n">01</span><span class="lab">Placement</span></div>
+          <div class="val">Original features, booked into single screens, museum auditoria, civic theatres, and large chains alike.</div>
+        </div>
+        <div class="row">
+          <div class="key"><span class="n">02</span><span class="lab">Campaigns</span></div>
+          <div class="val">Each release carries its own identity, materials, and calendar, made in-house.</div>
+        </div>
+        <div class="row">
+          <div class="key"><span class="n">03</span><span class="lab">Presentation</span></div>
+          <div class="val">Format, sound, and seating agreed with every room before it goes on sale.</div>
+        </div>
+      </div>
+
+      <div class="fields">
+        <div><span class="lab">Room</span><span class="v">Agreed before sale</span></div>
+        <div><span class="lab">Format &amp; sound</span><span class="v">Set with the house</span></div>
+        <div><span class="lab">Seating</span><span class="v">Counted, not assumed</span></div>
+      </div>
+
+      <div class="facefoot">
+        <div class="lab">General inquiries <a href="mailto:hello@frontier-film.com">hello@frontier-film.com</a></div>
+        <div class="lab">New York · Los Angeles</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="bottomline">
+    <div class="lab">© 2026 Frontier Films</div>
+    <div class="lab">One room at a time.</div>
+  </div>
+
+</div>
+
+<script>
+(function(){
+  function F(n){ return Math.round(n*100)/100; }
+
+  /* capsule: cylinder body of height H with hemispherical caps, radius R,
+     rotated about the X axis by tilt and projected orthographically */
+  function capsule(cx, cy, R, H, tilt, rings, meridians){
+    var out='', seg=96, ct=Math.cos(tilt), st=Math.sin(tilt), i, s, d, th, p, half=H/2;
+
+    function P(x,y,z){ return [cx + x, cy - (y*ct - z*st)]; }
+
+    /* a horizontal circle of radius r at height y */
+    function ring(r, y){
+      var dd='', k, a, q;
+      for(k=0;k<=seg;k++){
+        a = k*2*Math.PI/seg;
+        q = P(r*Math.cos(a), y, r*Math.sin(a));
+        dd += (k?'L':'M')+F(q[0])+' '+F(q[1]);
+      }
+      return '<path d="'+dd+'Z"/>';
+    }
+
+    /* body rings */
+    for(i=0;i<=rings;i++) out += ring(R, -half + i*H/rings);
+    /* cap latitude rings */
+    for(i=1;i<4;i++){
+      var ph = i*(Math.PI/2)/4;
+      out += ring(R*Math.cos(ph),  half + R*Math.sin(ph));
+      out += ring(R*Math.cos(ph), -half - R*Math.sin(ph));
+    }
+
+    /* meridians: pole -> body -> pole */
+    for(i=0;i<meridians;i++){
+      th = i*2*Math.PI/meridians; d='';
+      var ca=Math.cos(th), sa=Math.sin(th), n=14;
+      for(s=n;s>=0;s--){                       /* bottom cap */
+        var ph1 = s*(Math.PI/2)/n, r1 = R*Math.cos(ph1);
+        p = P(r1*ca, -half - R*Math.sin(ph1), r1*sa);
+        d += (s===n?'M':'L')+F(p[0])+' '+F(p[1]);
+      }
+      p = P(R*ca, half, R*sa);
+      d += 'L'+F(p[0])+' '+F(p[1]);
+      for(s=0;s<=n;s++){                       /* top cap */
+        var ph2 = s*(Math.PI/2)/n, r2 = R*Math.cos(ph2);
+        p = P(r2*ca, half + R*Math.sin(ph2), r2*sa);
+        d += 'L'+F(p[0])+' '+F(p[1]);
+      }
+      out += '<path d="'+d+'"/>';
+    }
+    return out;
+  }
+
+  function smooth(p){
+    var n=p.length, d='M'+F(p[0][0])+' '+F(p[0][1]), i,a,b,c,e,c1,c2;
+    for(i=0;i<n;i++){
+      a=p[(i-1+n)%n]; b=p[i]; c=p[(i+1)%n]; e=p[(i+2)%n];
+      c1=[b[0]+(c[0]-a[0])/6, b[1]+(c[1]-a[1])/6];
+      c2=[c[0]-(e[0]-b[0])/6, c[1]-(e[1]-b[1])/6];
+      d+='C'+F(c1[0])+' '+F(c1[1])+','+F(c2[0])+' '+F(c2[1])+','+F(c[0])+' '+F(c[1]);
+    }
+    return d+'Z';
+  }
+  function pebble(cx,cy,r,seed,wob,sq){
+    var n=26,p=[],i,a,rr;
+    for(i=0;i<n;i++){
+      a=i*2*Math.PI/n;
+      rr=r*(1+wob*(Math.sin(a*2+seed)*.55+Math.sin(a*3+seed*1.7)*.32+Math.sin(a*5+seed*2.4)*.16));
+      p.push([cx+rr*Math.cos(a), cy+rr*Math.sin(a)*sq]);
+    }
+    return '<path d="'+smooth(p)+'"/>';
+  }
+
+  document.getElementById('capSolid').innerHTML =
+    '<circle cx="284" cy="640" r="46"/>' +
+    pebble(52, 690, 30, 1.4, .22, .8) +
+    pebble(300, 96, 20, 2.8, .26, .84);
+
+  document.getElementById('capWire').innerHTML =
+    capsule(160, 372, 106, 400, .30, 12, 20);
+})();
+</script>
+</body>
+</html>

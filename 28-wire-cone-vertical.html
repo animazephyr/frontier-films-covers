@@ -1,0 +1,154 @@
+<!-- Option 28 — Wire Cone Vertical: a spiky cone of nested rotated polygons stands upright and tapers to a point at the foot of the page, with the name set as a tall narrow serif column beside it. -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Frontier Films — 28 Wire Cone Vertical</title>
+<style>
+  :root{ --paper:#FFFDF9; --ink:#14120E; --muted:#6B6355; --rule:#D5CCB8; --accent:#223040; }
+  *{box-sizing:border-box}
+  html,body{margin:0;background:var(--paper);color:var(--ink)}
+  body{font-family:"Charter","Superclarendon",Georgia,serif;overflow-x:hidden}
+
+  .stage{min-height:100vh;display:grid;
+         grid-template-columns:auto minmax(0,1fr) minmax(0,1.06fr);
+         align-items:stretch}
+
+  /* — tall narrow serif column of letters — */
+  .vert{border-right:1px solid var(--ink);padding:clamp(20px,2.6vw,34px) clamp(12px,1.5vw,22px);
+        display:flex;flex-direction:column;justify-content:center;gap:clamp(14px,2vh,26px)}
+  .word{display:flex;flex-direction:column;line-height:1.02}
+  .word span{font-family:"Didot","Bodoni 72","Hoefler Text",Georgia,serif;font-weight:400;
+             font-size:clamp(19px,2.15vw,31px);text-align:center;letter-spacing:.02em}
+  .word.two span{font-style:italic}
+
+  /* — the cone — */
+  .art{position:relative;border-right:1px solid var(--rule)}
+  .art svg{position:absolute;inset:0;width:100%;height:100%}
+  .art .cap{position:absolute;left:clamp(12px,1.6vw,22px);top:clamp(20px,2.6vw,34px)}
+  .art .fig{position:absolute;left:clamp(12px,1.6vw,22px);bottom:clamp(18px,2.2vw,28px)}
+
+  /* — reading column — */
+  .col{padding:clamp(22px,2.8vw,38px) clamp(22px,3.4vw,54px) clamp(20px,2.4vw,32px);
+       display:flex;flex-direction:column;gap:clamp(20px,3.4vh,40px)}
+  .label{font-size:10.5px;letter-spacing:.24em;text-transform:uppercase;color:var(--muted);margin:0}
+  .lede{margin:0;font-family:"Cochin","Times New Roman",serif;font-size:clamp(16px,1.5vw,21px);
+        line-height:1.5;max-width:26ch;color:#3B362D}
+  .cities{display:flex;gap:22px;border-top:1px solid var(--ink);padding-top:10px}
+
+  ol{list-style:none;margin:0;padding:0}
+  ol li{border-top:1px solid var(--rule);padding:14px 0 15px}
+  ol li:first-child{border-top:1px solid var(--ink)}
+  ol h2{margin:0 0 6px;font-size:10.5px;letter-spacing:.24em;text-transform:uppercase;font-weight:400}
+  ol h2 i{font-style:normal;color:var(--accent)}
+  ol p{margin:0;font-size:15px;line-height:1.6;color:#453F35;font-style:italic;max-width:44ch}
+
+  .tag{margin:0;font-family:"Didot","Bodoni 72","Hoefler Text",Georgia,serif;font-style:italic;
+       font-weight:400;font-size:clamp(30px,4.6vw,62px);line-height:.94;letter-spacing:-.01em}
+  .base{margin-top:auto;display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;
+        gap:14px 28px;border-top:1px solid var(--ink);padding-top:13px}
+  .base a{display:block;margin-top:5px;color:var(--ink);text-decoration:none;font-size:15.5px;
+          border-bottom:1px solid var(--rule)}
+
+  @media(max-width:900px){
+    .stage{grid-template-columns:1fr;min-height:0}
+    .vert{border-right:0;border-bottom:1px solid var(--ink);flex-direction:row;justify-content:flex-start;
+          align-items:baseline;gap:14px;padding:22px 22px 16px}
+    .word{flex-direction:row}
+    .word span{font-size:clamp(20px,5.4vw,30px);letter-spacing:.1em}
+    .art{height:64vh;border-right:0;border-bottom:1px solid var(--rule)}
+    .col{gap:24px}
+  }
+</style>
+</head>
+<body>
+<div class="stage">
+
+  <div class="vert">
+    <div class="word"><span>F</span><span>R</span><span>O</span><span>N</span><span>T</span><span>I</span><span>E</span><span>R</span></div>
+    <div class="word two"><span>F</span><span>I</span><span>L</span><span>M</span><span>S</span></div>
+  </div>
+
+  <div class="art">
+    <span class="label cap">Figure — Cone</span>
+    <svg id="cone" viewBox="0 0 470 1010" aria-hidden="true"></svg>
+    <span class="label fig">Nested polygons XXII</span>
+  </div>
+
+  <div class="col">
+    <div>
+      <p class="lede">An independent theatrical distribution company.</p>
+      <div class="cities" style="margin-top:16px">
+        <span class="label">New York</span><span class="label">Los Angeles</span>
+      </div>
+    </div>
+
+    <ol>
+      <li><h2>01<i> / </i>Placement</h2><p>“Original features, booked into single screens, museum auditoria, civic theatres, and large chains alike.”</p></li>
+      <li><h2>02<i> / </i>Campaigns</h2><p>“Each release carries its own identity, materials, and calendar, made in-house.”</p></li>
+      <li><h2>03<i> / </i>Presentation</h2><p>“Format, sound, and seating agreed with every room before it goes on sale.”</p></li>
+    </ol>
+
+    <p class="tag">One room at a time.</p>
+
+    <div class="base">
+      <p style="margin:0"><span class="label">General inquiries</span><a href="mailto:hello@frontier-film.com">hello@frontier-film.com</a></p>
+      <p class="label" style="margin:0">© 2026 Frontier Films</p>
+    </div>
+  </div>
+
+</div>
+
+<script>
+(function(){
+  var NS='http://www.w3.org/2000/svg', svg=document.getElementById('cone'), INK='#14120E';
+  function path(d,w){
+    var e=document.createElementNS(NS,'path');
+    e.setAttribute('d',d); e.setAttribute('fill','none'); e.setAttribute('stroke',INK);
+    e.setAttribute('stroke-width',w); e.setAttribute('stroke-linejoin','round');
+    e.setAttribute('vector-effect','non-scaling-stroke');
+    svg.appendChild(e); return e;
+  }
+  var CX=235, TOP=74, APEX=968, R0=196, SQUASH=0.30, N=11, RINGS=24, TWIST=0.145;
+
+  function ring(k){
+    var t=k/(RINGS-1);
+    var y = TOP + (APEX-TOP)*t;
+    var r = R0*(1-t)*(1-t*0.14);           /* slight concave taper */
+    var phi = k*TWIST;
+    var pts=[], i;
+    for(i=0;i<N;i++){
+      var a = i/N*2*Math.PI + phi;
+      pts.push([CX + r*Math.cos(a), y + r*SQUASH*Math.sin(a)]);
+    }
+    return pts;
+  }
+  var all=[], k;
+  for(k=0;k<RINGS;k++) all.push(ring(k));
+
+  /* long spiky mesh lines linking each ring's vertices to the next */
+  var i,j;
+  for(i=0;i<N;i++){
+    var d='M';
+    for(k=0;k<RINGS;k++){
+      var p=all[k][i];
+      d+=(k?'L':'')+p[0].toFixed(1)+','+p[1].toFixed(1);
+    }
+    path(d,0.55);
+  }
+  /* nested rotated polygons */
+  for(k=0;k<RINGS;k++){
+    var pts=all[k], d2='M';
+    for(j=0;j<pts.length;j++) d2+=(j?'L':'')+pts[j][0].toFixed(1)+','+pts[j][1].toFixed(1);
+    path(d2+'Z', k===0?0.9:0.6);
+  }
+  /* apex mark and centre axis */
+  path('M'+CX+','+TOP+'V'+APEX,0.5).setAttribute('stroke-dasharray','2 7');
+  var dot=document.createElementNS(NS,'circle');
+  dot.setAttribute('cx',CX); dot.setAttribute('cy',APEX); dot.setAttribute('r',2.6);
+  dot.setAttribute('fill',INK); svg.appendChild(dot);
+})();
+</script>
+</body>
+</html>

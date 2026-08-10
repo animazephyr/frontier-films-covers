@@ -1,0 +1,152 @@
+<!-- Option 27 — Bauhaus Band Header: a full-width band of modular hairline arcs, quarter-circles and half-circles alternating in strict symmetry, over a calm serif setting ruled with hairlines. -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Frontier Films — 27 Bauhaus Band Header</title>
+<style>
+  :root{ --paper:#F7F3E9; --ink:#14120E; --muted:#6A6254; --rule:#D2C9B4; --accent:#6E2A22; }
+  *{box-sizing:border-box}
+  html,body{margin:0;background:var(--paper);color:var(--ink)}
+  body{font-family:"Iowan Old Style","Palatino",Georgia,serif;overflow-x:hidden}
+  .wrap{min-height:100vh;display:flex;flex-direction:column}
+
+  .band{width:100%;border-bottom:1px solid var(--ink)}
+  .band svg{display:block;width:100%;height:auto}
+
+  .body{flex:1;display:flex;flex-direction:column;gap:clamp(26px,4.6vh,58px);
+        padding:clamp(20px,2.8vw,38px) clamp(22px,4vw,64px) clamp(20px,2.6vw,34px)}
+  .label{font-size:10.5px;letter-spacing:.24em;text-transform:uppercase;color:var(--muted);margin:0}
+
+  .id{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:baseline;gap:12px 28px}
+  .id h1{margin:0;font-family:"Big Caslon","Baskerville",Georgia,serif;font-weight:400;
+         font-size:clamp(24px,3.1vw,40px);letter-spacing:.2em;text-transform:uppercase;line-height:1}
+  .id .sub{margin:0;font-style:italic;font-size:clamp(14px,1.25vw,17.5px);color:#453F35}
+
+  .mid{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);gap:clamp(24px,4vw,72px);
+       align-items:end;border-top:1px solid var(--ink);padding-top:clamp(18px,2.4vw,30px)}
+  .tag{margin:0;font-family:"Didot","Bodoni 72","Hoefler Text",Georgia,serif;font-style:italic;
+       font-weight:400;font-size:clamp(38px,7.2vw,104px);line-height:.9;letter-spacing:-.012em}
+  .cta{text-align:right}
+  .cta a{display:block;margin-top:6px;font-size:clamp(15px,1.3vw,18px);color:var(--ink);
+         text-decoration:none;border-bottom:1px solid var(--rule)}
+
+  .cols{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(20px,3vw,52px)}
+  .cols section{border-top:1px solid var(--ink);padding-top:12px}
+  .cols h2{margin:0 0 8px;font-size:10.5px;letter-spacing:.24em;text-transform:uppercase;font-weight:400}
+  .cols h2 i{font-style:normal;color:var(--accent)}
+  .cols p{margin:0;font-family:"Cochin","Times New Roman",serif;font-size:15.5px;line-height:1.62;color:#413B32}
+
+  .end{margin-top:auto;display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px 24px;
+       border-top:1px solid var(--rule);padding-top:12px}
+
+  @media(max-width:860px){
+    .mid{grid-template-columns:1fr;gap:20px;align-items:start}
+    .cta{text-align:left}
+    .cols{grid-template-columns:1fr;gap:0}
+    .cols section{padding:12px 0 14px;border-top:1px solid var(--rule)}
+    .cols section:first-child{border-top:1px solid var(--ink)}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="band"><svg id="band" aria-hidden="true"></svg></div>
+
+  <div class="body">
+    <div class="id">
+      <h1>Frontier Films</h1>
+      <p class="sub">An independent theatrical distribution company</p>
+      <p class="label">New York · Los Angeles</p>
+    </div>
+
+    <div class="mid">
+      <p class="tag">One room at a time.</p>
+      <div class="cta"><span class="label">General inquiries</span><a href="mailto:hello@frontier-film.com">hello@frontier-film.com</a></div>
+    </div>
+
+    <div class="cols">
+      <section><h2>01<i> / </i>Placement</h2><p>“Original features, booked into single screens, museum auditoria, civic theatres, and large chains alike.”</p></section>
+      <section><h2>02<i> / </i>Campaigns</h2><p>“Each release carries its own identity, materials, and calendar, made in-house.”</p></section>
+      <section><h2>03<i> / </i>Presentation</h2><p>“Format, sound, and seating agreed with every room before it goes on sale.”</p></section>
+    </div>
+
+    <div class="end">
+      <p class="label" style="margin:0">© 2026 Frontier Films</p>
+      <p class="label" style="margin:0">Modular band · Arcs I–XII</p>
+    </div>
+  </div>
+</div>
+
+<script>
+(function(){
+  var NS='http://www.w3.org/2000/svg', svg=document.getElementById('band'), M=120, INK='#14120E', ACC='#6E2A22';
+
+  function arc(g,x0,y0,x1,y1,r,col,w){
+    var e=document.createElementNS(NS,'path');
+    e.setAttribute('d','M'+x0.toFixed(2)+','+y0.toFixed(2)+'A'+r.toFixed(2)+','+r.toFixed(2)+' 0 0 1 '+x1.toFixed(2)+','+y1.toFixed(2));
+    e.setAttribute('fill','none');
+    e.setAttribute('stroke',col);
+    e.setAttribute('stroke-width',w);
+    e.setAttribute('vector-effect','non-scaling-stroke');
+    g.appendChild(e);
+    return e;
+  }
+  /* quarter-circle nest: arcs centred on one corner of the module */
+  function quarter(g,ox,oy,corner,col){
+    var cx = (corner===0||corner===3)? ox : ox+M;
+    var cy = (corner===0||corner===1)? oy : oy+M;
+    var sx = (corner===0||corner===3)? 1 : -1;   /* toward inside, horizontally */
+    var sy = (corner===0||corner===1)? 1 : -1;   /* toward inside, vertically */
+    var rs=[M,M*0.75,M*0.5,M*0.25], i;
+    for(i=0;i<rs.length;i++){
+      var r=rs[i];
+      var a=[cx+sx*r, cy], b=[cx, cy+sy*r];
+      /* keep sweep consistent so the arc always bows into the module */
+      var e=arc(g,a[0],a[1],b[0],b[1],r,col,i===0?0.85:0.6);
+      if(sx*sy>0) e.setAttribute('d','M'+a[0]+','+a[1]+'A'+r+','+r+' 0 0 1 '+b[0]+','+b[1]);
+      else        e.setAttribute('d','M'+a[0]+','+a[1]+'A'+r+','+r+' 0 0 0 '+b[0]+','+b[1]);
+    }
+  }
+  /* half-circle nest: arcs centred on the mid-point of an edge */
+  function half(g,ox,oy,up,col){
+    var cx=ox+M/2, cy = up? oy+M : oy;
+    var rs=[M/2,M*0.375,M*0.25,M*0.125], i;
+    for(i=0;i<rs.length;i++){
+      var r=rs[i];
+      var sweep = up? 1 : 0;
+      arc(g,cx-r,cy,cx+r,cy,r,col,i===0?0.85:0.6).setAttribute('d',
+        'M'+(cx-r)+','+cy+'A'+r+','+r+' 0 0 '+sweep+' '+(cx+r)+','+cy);
+    }
+  }
+
+  function draw(){
+    while(svg.firstChild) svg.removeChild(svg.firstChild);
+    var cols = window.innerWidth < 760 ? 6 : 12;
+    var W = cols*M, H = 2*M, half_n = cols/2;
+    svg.setAttribute('viewBox','0 0 '+W+' '+H);
+
+    var mirror={0:1,1:0,2:3,3:2}, base=[3,0,1,2], top=[], bot=[], i;
+    for(i=0;i<half_n;i++){ top[i]=base[i%4]; bot[i]=i%2; }
+    for(i=0;i<half_n;i++){ top[cols-1-i]=mirror[top[i]]; bot[cols-1-i]=bot[i]; }
+
+    var g=document.createElementNS(NS,'g'); svg.appendChild(g);
+    var accentCol = cols===12 ? 8 : 4;
+    for(i=0;i<cols;i++){
+      quarter(g, i*M, 0,   top[i], (i===accentCol)? ACC : INK);
+      half   (g, i*M, M,   bot[i]===1, INK);
+    }
+    /* hairline module rules */
+    var mid=document.createElementNS(NS,'path');
+    mid.setAttribute('d','M0,'+M+'H'+W);
+    mid.setAttribute('stroke',INK); mid.setAttribute('stroke-width','0.5');
+    mid.setAttribute('fill','none'); mid.setAttribute('vector-effect','non-scaling-stroke');
+    svg.appendChild(mid);
+  }
+  draw();
+  var t; window.addEventListener('resize',function(){clearTimeout(t);t=setTimeout(draw,140);});
+})();
+</script>
+</body>
+</html>

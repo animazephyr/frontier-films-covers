@@ -1,0 +1,303 @@
+<!-- Option 14 — Eclipse Typeplay: a huge solid black disc knocks the word FRONTIER out in cream while a tilted wireframe mesh funnel eclipses it and cuts across FILMS. -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Frontier Films — 14 Eclipse Typeplay</title>
+<style>
+  :root{
+    --bg:#FFFDF9;
+    --ink:#14120E;
+    --ox:#6E2A22;
+    --hair:.6px;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0}
+  body{
+    background:var(--bg);
+    color:var(--ink);
+    font-family:"Big Caslon","Baskerville",Georgia,serif;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{
+    max-width:1400px;
+    margin:0 auto;
+    padding:clamp(18px,2.6vw,34px) clamp(18px,3.4vw,46px) clamp(24px,3.4vw,44px);
+  }
+  .lab{
+    font-family:"Charter","Superclarendon",Georgia,serif;
+    text-transform:uppercase;
+    letter-spacing:.24em;
+    font-size:10px;
+    line-height:1.5;
+  }
+  .bar{
+    display:flex;
+    justify-content:space-between;
+    align-items:baseline;
+    gap:16px;
+    border-bottom:var(--hair) solid var(--ink);
+    padding-bottom:8px;
+  }
+  .bar .desc{
+    font-family:"Cochin","Times New Roman",serif;
+    font-style:italic;
+    font-size:clamp(.95rem,1.4vw,1.24rem);
+  }
+
+  /* ---- stage ---- */
+  .stage{margin:clamp(6px,1.2vw,14px) 0 0}
+  .stage svg{display:block;width:100%;height:auto;overflow:visible}
+  .wire path{fill:none;stroke:var(--ink);stroke-width:.7;vector-effect:non-scaling-stroke}
+  .wire.knock path{stroke:var(--bg)}
+  .solid path,.solid circle{fill:var(--ink)}
+  text.disp{
+    font-family:"Didot","Bodoni 72","Hoefler Text",Georgia,serif;
+    font-weight:400;
+    fill:var(--ink);
+  }
+  text.disp.knock{fill:var(--bg)}
+
+  /* ---- tagline band ---- */
+  .band{
+    margin-top:clamp(10px,1.6vw,20px);
+    border-top:var(--hair) solid var(--ink);
+    border-bottom:var(--hair) solid var(--ink);
+    padding:clamp(12px,1.8vw,22px) 0;
+    display:flex;
+    align-items:baseline;
+    justify-content:center;
+    gap:clamp(12px,2vw,28px);
+  }
+  .band h2{
+    margin:0;
+    font-family:"Didot","Bodoni 72","Hoefler Text",Georgia,serif;
+    font-style:italic;
+    font-weight:400;
+    font-size:clamp(1.6rem,5.4vw,4.1rem);
+    line-height:.98;
+    letter-spacing:-.005em;
+    text-align:center;
+  }
+  .band .lab{white-space:nowrap;padding-bottom:.5em}
+  .band .lab:last-child{color:var(--ox)}
+
+  /* ---- items ---- */
+  .items{
+    display:flex;
+    gap:clamp(16px,3.4vw,52px);
+    padding:clamp(14px,2vw,24px) 0 0;
+  }
+  .items article{flex:1 1 0;min-width:0}
+  .items .n{
+    font-family:"Didot","Bodoni 72","Hoefler Text",Georgia,serif;
+    font-size:1.05rem;
+    letter-spacing:.06em;
+  }
+  .items h3{
+    margin:.35em 0 .5em;
+    font-family:"Charter","Superclarendon",Georgia,serif;
+    font-weight:400;
+    text-transform:uppercase;
+    letter-spacing:.24em;
+    font-size:10px;
+  }
+  .items p{
+    margin:0;
+    font-size:clamp(.86rem,1.02vw,.99rem);
+    line-height:1.5;
+    max-width:34ch;
+  }
+
+  footer{
+    margin-top:clamp(20px,3vw,38px);
+    border-top:var(--hair) solid var(--ink);
+    padding-top:10px;
+    display:flex;
+    justify-content:space-between;
+    gap:16px;
+    flex-wrap:wrap;
+  }
+  a{color:var(--ox);text-decoration:none;border-bottom:var(--hair) solid var(--ox)}
+  a:hover{color:var(--ink);border-color:var(--ink)}
+
+  @media (max-width:760px){
+    .bar{flex-direction:column;align-items:flex-start;gap:6px}
+    .items{flex-direction:column;gap:0}
+    .items article{border-top:var(--hair) solid var(--ink);padding:12px 0 14px}
+    .items article:first-child{border-top:none;padding-top:0}
+    .items p{max-width:48ch}
+    .band{flex-direction:column;align-items:center;gap:8px}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="bar">
+    <div class="desc">An independent theatrical distribution company</div>
+    <div class="lab">New York · Los Angeles</div>
+  </div>
+
+  <div class="stage">
+    <svg id="stage" role="img" aria-label="Frontier Films — a solid black disc eclipsed by a wireframe mesh funnel">
+      <defs><clipPath id="eclip"><circle id="eclipC" cx="0" cy="0" r="0"/></clipPath></defs>
+      <g class="solid" id="lyrSolid"></g>
+      <g id="lyrType"></g>
+      <g id="lyrTypeKnock" clip-path="url(#eclip)"></g>
+      <g class="wire" id="lyrWire"></g>
+      <g class="wire knock" id="lyrWireKnock" clip-path="url(#eclip)"></g>
+      <g id="lyrType2"></g>
+    </svg>
+  </div>
+
+  <div class="band">
+    <span class="lab">Frontier Films</span>
+    <h2>One room at a time.</h2>
+    <span class="lab">Est. programme</span>
+  </div>
+
+  <div class="items">
+    <article>
+      <span class="n">01</span>
+      <h3>Placement</h3>
+      <p>Original features, booked into single screens, museum auditoria, civic theatres, and large chains alike.</p>
+    </article>
+    <article>
+      <span class="n">02</span>
+      <h3>Campaigns</h3>
+      <p>Each release carries its own identity, materials, and calendar, made in-house.</p>
+    </article>
+    <article>
+      <span class="n">03</span>
+      <h3>Presentation</h3>
+      <p>Format, sound, and seating agreed with every room before it goes on sale.</p>
+    </article>
+  </div>
+
+  <footer>
+    <div class="lab">General inquiries <a href="mailto:hello@frontier-film.com">hello@frontier-film.com</a></div>
+    <div class="lab">© 2026 Frontier Films</div>
+  </footer>
+
+</div>
+
+<script>
+(function(){
+  var svg   = document.getElementById('stage'),
+      eclipC= document.getElementById('eclipC'),
+      LS    = document.getElementById('lyrSolid'),
+      LT    = document.getElementById('lyrType'),
+      LW    = document.getElementById('lyrWire'),
+      LWK   = document.getElementById('lyrWireKnock'),
+      LTK   = document.getElementById('lyrTypeKnock'),
+      LT2   = document.getElementById('lyrType2');
+
+  function F(n){ return Math.round(n*100)/100; }
+
+  /* ---------- wireframe funnel / vortex disc ---------- */
+  function funnel(cx, cy, R, tilt, depth, rings, radials){
+    var out='', seg=120, i, s, u, th, d, p;
+
+    function pj(u, th){
+      var x = R*u*Math.cos(th),
+          z = R*u*Math.sin(th),
+          y = -depth*(1 - u*u);          /* centre sinks toward the viewer */
+      return [cx + x, cy - (y*Math.cos(tilt) - z*Math.sin(tilt))];
+    }
+    for(i=1;i<=rings;i++){
+      u = i/rings; d='';
+      for(s=0;s<=seg;s++){
+        p = pj(u, s*2*Math.PI/seg);
+        d += (s?'L':'M')+F(p[0])+' '+F(p[1]);
+      }
+      out += '<path d="'+d+'Z"/>';
+    }
+    for(i=0;i<radials;i++){
+      th = i*2*Math.PI/radials; d='';
+      for(s=0;s<=26;s++){
+        p = pj(s/26, th);
+        d += (s?'L':'M')+F(p[0])+' '+F(p[1]);
+      }
+      out += '<path d="'+d+'"/>';
+    }
+    return out;
+  }
+
+  /* ---------- organic pebbles ---------- */
+  function smooth(p){
+    var n=p.length, d='M'+F(p[0][0])+' '+F(p[0][1]), i,a,b,c,e,c1,c2;
+    for(i=0;i<n;i++){
+      a=p[(i-1+n)%n]; b=p[i]; c=p[(i+1)%n]; e=p[(i+2)%n];
+      c1=[b[0]+(c[0]-a[0])/6, b[1]+(c[1]-a[1])/6];
+      c2=[c[0]-(e[0]-b[0])/6, c[1]-(e[1]-b[1])/6];
+      d+='C'+F(c1[0])+' '+F(c1[1])+','+F(c2[0])+' '+F(c2[1])+','+F(c[0])+' '+F(c[1]);
+    }
+    return d+'Z';
+  }
+  function pebble(cx,cy,r,seed,wob,sq){
+    var n=26,p=[],i,a,rr;
+    for(i=0;i<n;i++){
+      a=i*2*Math.PI/n;
+      rr=r*(1+wob*(Math.sin(a*2+seed)*.55+Math.sin(a*3+seed*1.7)*.32+Math.sin(a*5+seed*2.4)*.16));
+      p.push([cx+rr*Math.cos(a), cy+rr*Math.sin(a)*sq]);
+    }
+    return '<path d="'+smooth(p)+'"/>';
+  }
+
+  function txt(t,x,y,size,tracking){
+    return '<text class="disp" x="'+x+'" y="'+y+'" font-size="'+size+'" style="letter-spacing:'+tracking+'px">'+t+'</text>';
+  }
+
+  var WIDE = {
+    vb:[1440,900],
+    circle:[470,430,330],
+    fun:[1030,470,330,.96,190,9,36],
+    one:[38,214,238,3],
+    two:[928,836,142,9],
+    peb:[[92,806,40,1.1,.2,.82],[176,832,17,3.2,.26,.78],[1332,132,26,2.4,.22,.86]]
+  };
+  var NARROW = {
+    vb:[760,1150],
+    circle:[300,330,250],
+    fun:[400,790,250,.96,150,8,28],
+    one:[18,152,122,2],
+    two:[352,1092,104,7],
+    peb:[[672,470,34,1.1,.2,.82],[698,540,15,3.2,.26,.78]]
+  };
+
+  function render(){
+    var c = window.innerWidth < 780 ? NARROW : WIDE, i, s='';
+
+    svg.setAttribute('viewBox','0 0 '+c.vb[0]+' '+c.vb[1]);
+    svg.setAttribute('preserveAspectRatio','xMidYMid meet');
+
+    eclipC.setAttribute('cx',c.circle[0]);
+    eclipC.setAttribute('cy',c.circle[1]);
+    eclipC.setAttribute('r', c.circle[2]);
+
+    s = '<circle cx="'+c.circle[0]+'" cy="'+c.circle[1]+'" r="'+c.circle[2]+'"/>';
+    for(i=0;i<c.peb.length;i++) s += pebble.apply(null, c.peb[i]);
+    LS.innerHTML = s;
+
+    /* FRONTIER — ink, then knocked out in cream inside the disc */
+    LT.innerHTML  = txt('FRONTIER', c.one[0], c.one[1], c.one[2], c.one[3]);
+    LTK.innerHTML = txt('FRONTIER', c.one[0], c.one[1], c.one[2], c.one[3])
+                      .replace('class="disp"','class="disp knock"');
+
+    /* mesh funnel above the type; cream copy where it crosses the disc */
+    var f = funnel.apply(null, c.fun);
+    LW.innerHTML  = f;
+    LWK.innerHTML = f;
+
+    /* FILMS sits under the funnel rim, so the mesh cuts across its caps */
+    LT2.innerHTML = txt('FILMS', c.two[0], c.two[1], c.two[2], c.two[3]);
+  }
+
+  render();
+  var t; window.addEventListener('resize', function(){ clearTimeout(t); t=setTimeout(render,150); });
+})();
+</script>
+</body>
+</html>

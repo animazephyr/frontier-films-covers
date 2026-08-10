@@ -1,0 +1,244 @@
+<!-- Option 29 — Mirror Diptych: one hairline splits the page into mirrored halves, the same organic form as solid black mass at left and as wireframe mesh at right, the name set in serif caps across the seam. -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<link rel="icon" href="data:,">
+<title>Frontier Films — 29 Mirror Diptych</title>
+<style>
+  :root{
+    --bg:#FFFDF9;
+    --ink:#14120E;
+    --ox:#6E2A22;
+    --rule:rgba(20,18,14,.28);
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0}
+  body{
+    background:var(--bg);color:var(--ink);
+    font-family:"Iowan Old Style","Palatino","Palatino Linotype",Georgia,serif;
+    font-size:16px;line-height:1.55;
+    -webkit-font-smoothing:antialiased;
+  }
+  .stage{
+    position:relative;min-height:100vh;overflow:hidden;
+    display:flex;flex-direction:column;
+    padding:clamp(18px,2.6vw,38px) clamp(18px,3.4vw,58px) clamp(16px,2.2vw,32px);
+  }
+  #plate{position:absolute;inset:0;width:100%;height:100%;display:block}
+  .seam{stroke:var(--ink);stroke-width:.8;fill:none;vector-effect:non-scaling-stroke}
+  .mass{fill:var(--ink)}
+  .mass-ox{fill:var(--ox)}
+  .wire{fill:none;stroke:var(--ink);stroke-width:.6;vector-effect:non-scaling-stroke}
+  .z{position:relative;z-index:2}
+
+  .sc{
+    font-family:"Charter","Superclarendon",Georgia,serif;
+    text-transform:uppercase;letter-spacing:.24em;
+    font-size:clamp(9.5px,.7vw,11px);
+  }
+
+  header.z{
+    display:flex;justify-content:space-between;align-items:baseline;gap:14px;
+    border-bottom:1px solid var(--ink);padding-bottom:9px;
+  }
+
+  .mid{
+    flex:1 1 auto;min-height:clamp(280px,42vh,520px);
+    display:flex;align-items:center;justify-content:center;
+  }
+  .mark{
+    margin:0;background:var(--bg);
+    padding:clamp(6px,1vw,14px) clamp(14px,3.4vw,54px);
+    font-family:"Didot","Bodoni 72","Hoefler Text",Georgia,serif;font-weight:400;
+    text-transform:uppercase;letter-spacing:.15em;line-height:1;white-space:nowrap;
+    font-size:clamp(1.3rem,6.6vw,4.6rem);
+    text-indent:.15em;
+  }
+
+  .band{
+    border-top:1px solid var(--ink);
+    margin-top:clamp(18px,2.6vw,34px);padding-top:clamp(12px,1.4vw,18px);
+    background:var(--bg);
+  }
+  .three{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(16px,3vw,52px)}
+  .three h3{margin:0 0 .5em;font-weight:400}
+  .three h3 em{font-style:normal;color:var(--ox)}
+  .three p{margin:0;font-size:clamp(13px,.98vw,15.5px);max-width:34ch}
+
+  .close{
+    display:flex;flex-wrap:wrap;justify-content:space-between;align-items:baseline;gap:12px 30px;
+    margin-top:clamp(16px,2.4vw,30px);padding-top:clamp(10px,1.2vw,15px);
+    border-top:1px solid var(--rule);
+  }
+  .tag{
+    margin:0;font-family:"Didot","Bodoni 72","Hoefler Text",Georgia,serif;font-style:italic;
+    font-size:clamp(1.25rem,2.6vw,2.1rem);line-height:1;
+  }
+  .right{display:flex;flex-wrap:wrap;align-items:baseline;gap:8px 26px}
+  .inq b{font-weight:400;margin-right:.8em}
+  .inq{font-size:clamp(12.5px,.95vw,15px)}
+  a{color:var(--ink);text-decoration:none;border-bottom:1px solid var(--rule)}
+  a:hover{color:var(--ox);border-bottom-color:var(--ox)}
+
+  @media (max-width:820px){
+    header.z{flex-direction:column;gap:4px;align-items:flex-start}
+    .three{grid-template-columns:1fr;gap:0}
+    .three>article{border-top:1px solid var(--rule);padding:11px 0}
+    .three>article:first-child{border-top:0;padding-top:0}
+    .three p{max-width:52ch}
+    .mark{letter-spacing:.1em;text-indent:.1em}
+  }
+</style>
+</head>
+<body>
+<div class="stage">
+  <svg id="plate" aria-hidden="true"></svg>
+
+  <header class="z">
+    <div class="sc">An independent theatrical distribution company</div>
+    <div class="sc">New York · Los Angeles</div>
+  </header>
+
+  <div class="mid z">
+    <h1 class="mark">Frontier Films</h1>
+  </div>
+
+  <footer class="band z">
+    <div class="three">
+      <article>
+        <h3 class="sc"><em>01</em> / Placement</h3>
+        <p>Original features, booked into single screens, museum auditoria, civic theatres, and large chains alike.</p>
+      </article>
+      <article>
+        <h3 class="sc"><em>02</em> / Campaigns</h3>
+        <p>Each release carries its own identity, materials, and calendar, made in-house.</p>
+      </article>
+      <article>
+        <h3 class="sc"><em>03</em> / Presentation</h3>
+        <p>Format, sound, and seating agreed with every room before it goes on sale.</p>
+      </article>
+    </div>
+    <div class="close">
+      <p class="tag">One room at a time.</p>
+      <div class="right">
+        <span class="inq"><b class="sc">General inquiries</b><a href="mailto:hello@frontier-film.com">hello@frontier-film.com</a></span>
+        <span class="sc">© 2026 Frontier Films</span>
+      </div>
+    </div>
+  </footer>
+</div>
+
+<script>
+(function(){
+  var NS='http://www.w3.org/2000/svg', TAU=Math.PI*2, HP=Math.PI/2;
+  var svg=document.getElementById('plate'), mid=document.querySelector('.mid');
+
+  function el(n,a){var e=document.createElementNS(NS,n);for(var k in a){e.setAttribute(k,a[k]);}return e;}
+  function poly(p,close){
+    var d='M'+p[0][0].toFixed(2)+','+p[0][1].toFixed(2),i;
+    for(i=1;i<p.length;i++)d+='L'+p[i][0].toFixed(2)+','+p[i][1].toFixed(2);
+    return close?d+'Z':d;
+  }
+  function spline(p){
+    var n=p.length,d='M'+p[0][0].toFixed(2)+','+p[0][1].toFixed(2),i;
+    for(i=0;i<n;i++){
+      var a=p[(i-1+n)%n],b=p[i],c=p[(i+1)%n],e=p[(i+2)%n];
+      d+='C'+(b[0]+(c[0]-a[0])/6).toFixed(2)+','+(b[1]+(c[1]-a[1])/6).toFixed(2)+
+         ' '+(c[0]-(e[0]-b[0])/6).toFixed(2)+','+(c[1]-(e[1]-b[1])/6).toFixed(2)+
+         ' '+c[0].toFixed(2)+','+c[1].toFixed(2);
+    }
+    return d+'Z';
+  }
+  function pebble(cx,cy,r,seed,squash){
+    var n=11,pts=[],i,a,rr,ph=seed*1.7;
+    for(i=0;i<n;i++){
+      a=i/n*TAU;
+      rr=r*(1+Math.cos(a*3+ph)*.11+Math.sin(a*2+ph*1.9)*.08+Math.cos(a*5+ph*.6)*.05);
+      pts.push([cx+Math.cos(a+ph*.3)*rr, cy+Math.sin(a+ph*.3)*rr*squash]);
+    }
+    return spline(pts);
+  }
+
+  function draw(){
+    var box=svg.getBoundingClientRect(), mb=mid.getBoundingClientRect();
+    var w=Math.round(box.width)||window.innerWidth, h=Math.round(box.height)||window.innerHeight;
+    if(!w||!h)return;
+    while(svg.firstChild)svg.removeChild(svg.firstChild);
+    svg.setAttribute('viewBox','0 0 '+w+' '+h);
+
+    /* one form, placed in the centre of the left half */
+    var half=w/2;
+    var cx=half*0.5, cy=(mb.top-box.top)+mb.height/2;
+    var R=Math.min(half*0.42, mb.height*0.44, h*0.26);
+
+    var SQ=0.94, D=R*0.70, TILT=0.34, F=R*8.4;
+    var cA=Math.cos(TILT), sA=Math.sin(TILT);
+
+    function fr(t){
+      return R*(1 + 0.125*Math.cos(3*t+1.15) + 0.07*Math.sin(2*t+0.4) + 0.045*Math.cos(5*t+2.3));
+    }
+    function surf(t,p){
+      var s=Math.cos(p), f=fr(t);
+      var x=f*Math.cos(t)*s, y=f*Math.sin(t)*SQ*s, z=Math.sin(p)*D;
+      var y2=y*cA - z*sA, z2=y*sA + z*cA, k=F/(F+z2);
+      return [cx+x*k, cy+y2*k];
+    }
+    function ring(p,seg){
+      var a=[],j;
+      for(j=0;j<=seg;j++)a.push(surf(j/seg*TAU, p));
+      return a;
+    }
+
+    /* ------------- left plate: the form as solid mass ------------- */
+    var gMass=el('g',{'class':'mass'}), i, j;
+    var NRF=54;
+    for(i=1;i<NRF;i++){
+      gMass.appendChild(el('path',{d:poly(ring(-HP+i/NRF*Math.PI,96),true)}));
+    }
+
+    /* ------------- right plate: the same form as wireframe -------- */
+    var gWire=el('g',{'class':'wire'});
+    var NR=15, NM=26;
+    for(i=1;i<NR;i++){
+      gWire.appendChild(el('path',{d:poly(ring(-HP+i/NR*Math.PI,128),true)}));
+    }
+    for(i=0;i<NM;i++){
+      var t=i/NM*TAU, pts=[];
+      for(j=0;j<=72;j++)pts.push(surf(t,-HP+j/72*Math.PI));
+      gWire.appendChild(el('path',{d:poly(pts,false)}));
+    }
+
+    /* ------------- pebbles, shared by both plates ----------------- */
+    var stones=el('g',{'class':'mass'});
+    stones.appendChild(el('path',{d:pebble(cx-R*1.44, cy-R*1.08, R*0.155, 1, .82)}));
+    stones.appendChild(el('path',{d:pebble(cx+R*1.32, cy+R*0.94, R*0.105, 4, .78)}));
+    stones.appendChild(el('path',{d:pebble(cx-R*0.62, cy+R*1.44, R*0.062, 7, .86)}));
+    var ox=el('g',{'class':'mass-ox'});
+    ox.appendChild(el('path',{d:pebble(cx+R*1.06, cy-R*1.30, R*0.05, 9, .84)}));
+
+    /* left half, then the mirrored right half */
+    var L=el('g',{}), Rg=el('g',{transform:'translate('+w+',0) scale(-1,1)'});
+    L.appendChild(gMass);
+    L.appendChild(stones);
+    L.appendChild(ox);
+    Rg.appendChild(gWire);
+    Rg.appendChild(stones.cloneNode(true));
+    Rg.appendChild(ox.cloneNode(true));
+    svg.appendChild(L);
+    svg.appendChild(Rg);
+
+    /* the single hairline that divides the page */
+    svg.appendChild(el('path',{'class':'seam',d:'M'+half.toFixed(2)+',0L'+half.toFixed(2)+','+h}));
+  }
+
+  var t;
+  function queue(){clearTimeout(t);t=setTimeout(draw,80);}
+  draw();
+  window.addEventListener('resize',queue);
+  window.addEventListener('load',draw);
+})();
+</script>
+</body>
+</html>

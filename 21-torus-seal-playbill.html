@@ -1,0 +1,213 @@
+<!-- Option 21 — Torus Seal Playbill: a small precise wireframe torus is struck like an engraved seal above a large centred name, with three ruled entries hung on a strict playbill axis. -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<link rel="icon" href="data:,">
+<title>Frontier Films — 21 Torus Seal Playbill</title>
+<style>
+  :root{
+    --bg:#FFFDF9;
+    --ink:#14120E;
+    --ox:#6E2A22;
+    --rule:rgba(20,18,14,.26);
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0}
+  body{
+    background:var(--bg);
+    color:var(--ink);
+    font-family:"Iowan Old Style","Palatino","Palatino Linotype",Georgia,serif;
+    font-size:16px;line-height:1.55;
+    -webkit-font-smoothing:antialiased;
+    text-rendering:optimizeLegibility;
+  }
+  .sheet{
+    max-width:1140px;margin:0 auto;min-height:100vh;
+    display:flex;flex-direction:column;
+    padding:clamp(20px,3vw,44px) clamp(18px,4.4vw,64px) clamp(16px,2.4vw,32px);
+    text-align:center;
+  }
+  .sc{
+    font-family:"Charter","Superclarendon",Georgia,serif;
+    text-transform:uppercase;letter-spacing:.24em;
+    font-size:clamp(9.5px,.72vw,11.5px);font-weight:400;
+  }
+
+  /* ---- masthead rule ---- */
+  .top{
+    display:flex;flex-direction:column;gap:.7em;
+    padding-bottom:clamp(13px,1.8vw,20px);
+    border-bottom:1px solid var(--rule);
+  }
+  .top .cities{color:var(--ink)}
+
+  /* ---- seal + name ---- */
+  .stack{
+    flex:1 1 auto;display:flex;flex-direction:column;align-items:center;justify-content:center;
+    padding:clamp(24px,4.6vh,70px) 0 clamp(20px,3.4vh,48px);
+  }
+  .seal{
+    width:clamp(100px,10.5vw,158px);height:auto;display:block;
+    margin-bottom:clamp(20px,2.8vw,38px);
+  }
+  .mesh{fill:none;stroke:var(--ink);stroke-width:.6;vector-effect:non-scaling-stroke}
+  .mesh-b{fill:none;stroke:var(--ink);stroke-width:.75;vector-effect:non-scaling-stroke}
+
+  h1.word{
+    font-family:"Didot","Bodoni 72","Bodoni 72 Oldstyle","Hoefler Text",Georgia,serif;
+    font-size:clamp(44px,9.6vw,152px);
+    line-height:.94;letter-spacing:-.004em;
+    margin:0;font-weight:400;
+  }
+  .tag{
+    display:flex;align-items:center;justify-content:center;gap:clamp(14px,2.2vw,30px);
+    margin:clamp(16px,2.4vw,30px) 0 0;width:100%;
+  }
+  .tag i{
+    font-family:"Didot","Bodoni 72","Hoefler Text",Georgia,serif;
+    font-size:clamp(17px,2.15vw,31px);line-height:1.2;white-space:nowrap;
+  }
+  .tag s{flex:0 1 clamp(28px,7vw,132px);height:1px;background:var(--ink);text-decoration:none;display:block}
+
+  /* ---- ruled entries ---- */
+  .entries{
+    width:100%;max-width:860px;margin:0 auto;
+    border-top:1px solid var(--ink);text-align:left;
+  }
+  .entry{
+    display:grid;
+    grid-template-columns:minmax(0,.72fr) minmax(0,1.55fr);
+    gap:clamp(18px,3.4vw,54px);
+    padding:clamp(11px,1.35vw,17px) 0;
+    border-bottom:1px solid var(--rule);
+    align-items:baseline;
+  }
+  .entry .lbl{text-align:right;white-space:nowrap;padding-top:.28em}
+  .entry .lbl b{font-weight:400;color:var(--ox);margin-right:.35em}
+  .entry p{
+    margin:0;max-width:46ch;
+    font-size:clamp(13.5px,1.02vw,16.5px);
+    hanging-punctuation:first;
+  }
+
+  /* ---- foot ---- */
+  .foot{
+    margin-top:clamp(18px,2.6vw,36px);
+    padding-top:clamp(11px,1.2vw,15px);
+    border-top:1px solid var(--rule);
+    display:flex;flex-direction:column;gap:.7em;align-items:center;
+  }
+  .inq{font-size:clamp(12.5px,.95vw,15px)}
+  .inq b{
+    font-weight:400;margin-right:.75em;
+    font-family:"Charter","Superclarendon",Georgia,serif;
+    text-transform:uppercase;letter-spacing:.24em;
+    font-size:clamp(9.5px,.7vw,11px);
+  }
+  .inq a{color:var(--ink);text-decoration:none;border-bottom:1px solid var(--rule);padding-bottom:1px}
+  .inq a:hover{color:var(--ox);border-bottom-color:var(--ox)}
+
+  @media (max-width:760px){
+    h1.word{font-size:clamp(40px,13.6vw,72px)}
+    .tag{flex-direction:column;gap:12px}
+    .tag s{flex:0 0 auto;width:52px}
+    .tag i{white-space:normal;text-align:center}
+    .entry{grid-template-columns:1fr;gap:6px}
+    .entry .lbl{text-align:left;padding-top:0}
+    .entry p{max-width:52ch}
+  }
+</style>
+</head>
+<body>
+<div class="sheet">
+
+  <header class="top">
+    <div class="sc">An independent theatrical distribution company</div>
+    <div class="sc cities">New York · Los Angeles</div>
+  </header>
+
+  <section class="stack">
+    <svg class="seal" id="seal" viewBox="-120 -120 240 240" aria-hidden="true"></svg>
+    <h1 class="word">Frontier Films</h1>
+    <p class="tag"><s></s><i>“One room at a time.”</i><s></s></p>
+  </section>
+
+  <section class="entries">
+    <article class="entry">
+      <div class="lbl sc"><b>01</b>/ Placement</div>
+      <p>“Original features, booked into single screens, museum auditoria, civic theatres, and large chains alike.”</p>
+    </article>
+    <article class="entry">
+      <div class="lbl sc"><b>02</b>/ Campaigns</div>
+      <p>“Each release carries its own identity, materials, and calendar, made in-house.”</p>
+    </article>
+    <article class="entry">
+      <div class="lbl sc"><b>03</b>/ Presentation</div>
+      <p>“Format, sound, and seating agreed with every room before it goes on sale.”</p>
+    </article>
+  </section>
+
+  <footer class="foot">
+    <div class="inq"><b>General inquiries</b><a href="mailto:hello@frontier-film.com">hello@frontier-film.com</a></div>
+    <div class="sc">© 2026 Frontier Films</div>
+  </footer>
+
+</div>
+
+<script>
+(function(){
+  var NS='http://www.w3.org/2000/svg', TAU=Math.PI*2;
+  var svg=document.getElementById('seal');
+  if(!svg) return;
+
+  function el(n,a){var e=document.createElementNS(NS,n);for(var k in a){e.setAttribute(k,a[k]);}return e;}
+  function rotX(p,a){var c=Math.cos(a),s=Math.sin(a);return[p[0],p[1]*c-p[2]*s,p[1]*s+p[2]*c];}
+  function rotY(p,a){var c=Math.cos(a),s=Math.sin(a);return[p[0]*c+p[2]*s,p[1],-p[0]*s+p[2]*c];}
+
+  /* small, precise, slightly foreshortened ring — reads as an engraved device */
+  var S=63, F=6.4, TX=-1.02, TY=0.36;
+  function view(p){
+    p=rotY(p,TY); p=rotX(p,TX);
+    var k=F/(F+p[2]);
+    return [p[0]*S*k, p[1]*S*k];
+  }
+  function tp(R,r,u,v){var w=R+r*Math.cos(v);return [w*Math.cos(u), w*Math.sin(u), r*Math.sin(v)];}
+  function poly(pts){
+    var d='M'+pts[0][0].toFixed(2)+','+pts[0][1].toFixed(2);
+    for(var i=1;i<pts.length;i++)d+='L'+pts[i][0].toFixed(2)+','+pts[i][1].toFixed(2);
+    return d+'Z';
+  }
+
+  var R=1, r=.355, NU=32, NV=8, SU=140, SV=36, i, j, u, v, pts;
+  var g=el('g',{'class':'mesh'});
+
+  /* tube cross-sections */
+  for(i=0;i<NU;i++){
+    u=i/NU*TAU; pts=[];
+    for(j=0;j<=SV;j++){v=j/SV*TAU;pts.push(view(tp(R,r,u,v)));}
+    g.appendChild(el('path',{d:poly(pts)}));
+  }
+  /* longitudinal loops */
+  for(j=0;j<NV;j++){
+    v=j/NV*TAU; pts=[];
+    for(i=0;i<=SU;i++){u=i/SU*TAU;pts.push(view(tp(R,r,u,v)));}
+    g.appendChild(el('path',{d:poly(pts)}));
+  }
+  svg.appendChild(g);
+
+  /* seal collar: two hairline circles with engraved radial ticks between them */
+  var collar=el('g',{'class':'mesh'});
+  collar.appendChild(el('circle',{cx:0,cy:0,r:104}));
+  collar.appendChild(el('circle',{cx:0,cy:0,r:112}));
+  for(i=0;i<24;i++){
+    var a=i/24*TAU;
+    collar.appendChild(el('path',{d:'M'+(Math.cos(a)*104).toFixed(2)+','+(Math.sin(a)*104).toFixed(2)+
+      'L'+(Math.cos(a)*112).toFixed(2)+','+(Math.sin(a)*112).toFixed(2)}));
+  }
+  svg.appendChild(collar);
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,131 @@
+<!-- Option 37 — Single Wire Minimal: one small, exquisitely placed lat/long wireframe sphere, two long hairline rules, and quietly set serif type in enormous white space. -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Frontier Films — 37 Single Wire Minimal</title>
+<style>
+  :root{ --paper:#FFFDF9; --ink:#14120E; --muted:#6B6355; --rule:#CFC6B2; }
+  *{box-sizing:border-box}
+  html,body{margin:0}
+  body{background:var(--paper);color:var(--ink);
+    font-family:"Iowan Old Style","Palatino",serif;-webkit-font-smoothing:antialiased}
+
+  .page{min-height:100vh;display:flex;flex-direction:column;
+    padding:clamp(22px,3.6vw,58px) clamp(22px,4.4vw,76px) clamp(20px,2.6vw,40px)}
+
+  .caps{font-size:10px;letter-spacing:.24em;text-transform:uppercase;color:var(--muted);margin:0}
+
+  .top{display:flex;justify-content:space-between;align-items:baseline;gap:clamp(18px,4vw,64px)}
+  .top .inq a{color:var(--ink);text-decoration:none;letter-spacing:.06em;text-transform:none;
+    font-size:12.5px;border-bottom:1px solid var(--rule);margin-left:.9em}
+
+  .rule{border:0;border-top:1px solid var(--ink);margin:13px 0 0;width:100%}
+
+  .stage{flex:1;min-height:clamp(280px,54vh,560px);display:grid;
+    grid-template-columns:minmax(0,1fr) minmax(0,.7fr);
+    align-items:center;gap:clamp(24px,6vw,90px);
+    padding:clamp(40px,9vh,132px) 0 clamp(40px,8vh,112px)}
+
+  h1{margin:0;font-family:"Didot","Bodoni 72","Hoefler Text",Georgia,serif;font-weight:400;
+    font-size:clamp(46px,7.6vw,116px);line-height:.94;letter-spacing:-.012em}
+  h1 em{font-style:italic;display:block;padding-left:.06em}
+
+  .tag{margin:clamp(20px,3vh,38px) 0 0;font-family:"Didot","Bodoni 72","Hoefler Text",Georgia,serif;
+    font-style:italic;font-size:clamp(17px,2vw,25px);color:#332E27}
+
+  .orb{margin:0;display:flex;justify-content:flex-end}
+  .orb svg{display:block;width:min(25vw,286px);height:auto}
+
+  .items{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));
+    gap:clamp(18px,4vw,64px);padding:clamp(18px,2.4vw,30px) 0 0;max-width:1180px}
+  .items h2{margin:0 0 9px;font-size:10px;letter-spacing:.24em;text-transform:uppercase;
+    font-weight:400;color:var(--ink)}
+  .items h2 span{color:var(--muted)}
+  .items p{margin:0;font-size:14.5px;line-height:1.62;color:#413B32;max-width:34ch}
+
+  .copy{margin-top:clamp(30px,6vh,74px)}
+
+  @media(max-width:860px){
+    .stage{grid-template-columns:1fr;gap:clamp(26px,6vh,48px);padding:clamp(34px,6vh,60px) 0}
+    .orb{order:-1;justify-content:flex-start}
+    .orb svg{width:min(46vw,230px)}
+    .items{grid-template-columns:1fr;gap:22px}
+    .top{flex-direction:column;gap:10px}
+  }
+</style>
+</head>
+<body>
+  <div class="page">
+
+    <div class="top">
+      <p class="caps">Frontier Films · An independent theatrical distribution company · New York · Los Angeles</p>
+      <p class="caps inq">General inquiries<a href="mailto:hello@frontier-film.com">hello@frontier-film.com</a></p>
+    </div>
+    <hr class="rule">
+
+    <section class="stage">
+      <div class="words">
+        <h1>Frontier<em>Films</em></h1>
+        <p class="tag">“One room at a time.”</p>
+      </div>
+      <figure class="orb"><svg id="orb" viewBox="0 0 480 480" aria-hidden="true"></svg></figure>
+    </section>
+
+    <hr class="rule">
+    <div class="items">
+      <section><h2><span>01 /</span> Placement</h2><p>“Original features, booked into single screens, museum auditoria, civic theatres, and large chains alike.”</p></section>
+      <section><h2><span>02 /</span> Campaigns</h2><p>“Each release carries its own identity, materials, and calendar, made in-house.”</p></section>
+      <section><h2><span>03 /</span> Presentation</h2><p>“Format, sound, and seating agreed with every room before it goes on sale.”</p></section>
+    </div>
+
+    <p class="caps copy">© 2026 Frontier Films</p>
+  </div>
+
+<script>
+(function(){
+  var NS='http://www.w3.org/2000/svg', svg=document.getElementById('orb');
+  function el(t,a,p){var e=document.createElementNS(NS,t);for(var k in a)e.setAttribute(k,a[k]);(p||svg).appendChild(e);return e;}
+  var g=el('g',{fill:'none',stroke:'#14120E','stroke-width':'0.6','stroke-linejoin':'round'});
+
+  var CX=240, CY=240, R=196, F=760;          // orthographic-leaning perspective
+  var AX=-0.42, AZ=0.30;                      // gentle tilt of the polar axis
+  function rot(p){
+    var x=p[0], y=p[1], z=p[2], c, s, y1, z1, x1;
+    c=Math.cos(AX); s=Math.sin(AX); y1=y*c-z*s; z1=y*s+z*c;      // tilt about X
+    c=Math.cos(AZ); s=Math.sin(AZ); x1=x*c-y1*s; y1=x*s+y1*c;    // spin about Z
+    return [x1,y1,z1];
+  }
+  function pt(lat,lon){
+    var p=rot([R*Math.cos(lat)*Math.cos(lon), R*Math.sin(lat), R*Math.cos(lat)*Math.sin(lon)]);
+    var k=F/(F+p[2]);
+    return [CX+p[0]*k, CY+p[1]*k];
+  }
+  function line(pts,close){
+    var d='M'+pts.map(function(q){return q[0].toFixed(1)+','+q[1].toFixed(1);}).join('L');
+    el('path',{d:d+(close?'Z':'')},g);
+  }
+
+  var LAT=9, LON=18, STEP=64, i, j, pts, lat, lon;
+
+  // parallels
+  for(i=1;i<LAT;i++){
+    lat=-Math.PI/2 + i*Math.PI/LAT; pts=[];
+    for(j=0;j<=STEP;j++) pts.push(pt(lat, j/STEP*2*Math.PI));
+    line(pts,true);
+  }
+  // meridians
+  for(i=0;i<LON;i++){
+    lon=i/LON*2*Math.PI; pts=[];
+    for(j=0;j<=STEP;j++) pts.push(pt(-Math.PI/2 + j/STEP*Math.PI, lon));
+    line(pts,false);
+  }
+  // silhouette, drawn a touch stronger so the form reads as one object
+  el('circle',{cx:CX,cy:CY,r:R,fill:'none',stroke:'#14120E','stroke-width':'0.85'});
+  // single accent: the near pole
+  el('circle',{cx:pt(Math.PI/2,0)[0],cy:pt(Math.PI/2,0)[1],r:2.6,fill:'#6E2A22',stroke:'none'});
+})();
+</script>
+</body>
+</html>
