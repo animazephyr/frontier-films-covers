@@ -101,7 +101,8 @@
 
   @media (max-width:900px){
     h1.word{max-width:none;font-size:clamp(44px,12.6vw,84px)}
-    .hero{padding-top:min(58vw,44vh)}
+    .hero{padding-top:min(92vw,52vh)}
+    .foot{flex-direction:column;gap:8px;align-items:flex-start}
     .row{grid-template-columns:1fr;gap:clamp(14px,3.4vw,22px)}
     .row article{border-top:1px solid var(--rule);padding-top:11px}
     .row article:first-child{border-top:0;padding-top:0}
@@ -173,7 +174,7 @@
     /* the globe: right field on wide screens, crowning the page on a phone */
     var cx = narrow ? w*0.56 : w*0.715;
     var R  = narrow ? Math.min(w*0.40, h*0.215) : Math.min(w*0.25, h*0.30);
-    var cy = narrow ? R*0.98 : h*0.42;
+    var cy = narrow ? R+Math.max(52,h*0.075) : h*0.42;
 
     var TILT=-0.32, ROLL=0.045;
     function view(lat,lon){

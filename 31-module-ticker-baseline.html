@@ -88,6 +88,8 @@
     .titles{flex-direction:column;align-items:flex-start;gap:10px}
     .tag{text-align:left;white-space:normal}
     .items article{grid-template-columns:1fr;gap:5px}
+    .items{margin-top:clamp(22px,4vh,40px);padding-top:0}
+    .base{margin-top:auto}
   }
 </style>
 </head>
@@ -107,7 +109,7 @@
   <div class="ticker">
     <svg id="strip" viewBox="0 0 1440 272" role="img" aria-label="A row of hairline geometric modules standing on a single ruled baseline"></svg>
     <div class="cap">
-      <span class="sc">Modules i–xi</span>
+      <span class="sc">Module row</span>
       <span class="sc">One baseline</span>
     </div>
   </div>
@@ -248,6 +250,16 @@
   /* the baseline itself, and one pip marking its centre */
   svg.appendChild(el('path',{'class':'base-rule',d:line(20,B,1420,B)}));
   svg.appendChild(el('circle',{'class':'pip',cx:720,cy:B,r:2.6}));
+
+  /* on a narrow screen the strip is cropped rather than shrunk, so the
+     modules keep their scale and the baseline simply runs off the page */
+  function fit(){
+    var narrow=window.innerWidth<820;
+    svg.setAttribute('viewBox', narrow? '0 0 660 272' : '0 0 1440 272');
+    svg.setAttribute('preserveAspectRatio', narrow? 'xMinYMid slice' : 'xMidYMid meet');
+  }
+  fit();
+  window.addEventListener('resize',fit);
 })();
 </script>
 </body>
