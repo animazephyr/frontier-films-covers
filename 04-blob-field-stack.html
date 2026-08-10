@@ -1,0 +1,318 @@
+<!-- Option 04 — Blob Field Stack: a scattered field of solid black pebbles fills the page, a hairline cluster of wireframe capsules and ellipsoids cuts across it, and the company name is stacked in tight serif lines that invert wherever they cross the black. -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<link rel="icon" href="data:,">
+<title>Frontier Films — 04 Blob Field Stack</title>
+<style>
+  :root{
+    --bg:#F7F3E9;
+    --ink:#14120E;
+    --ox:#6E2A22;
+    /* difference of this against the cream page is exactly the ink colour,
+       so type reads near-black on cream and light on the black shapes */
+    --neg:#E3E1DB;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0}
+  body{
+    background:var(--bg);
+    color:var(--ink);
+    font-family:"Cochin","Iowan Old Style","Times New Roman",serif;
+    font-size:16px;line-height:1.5;
+    -webkit-font-smoothing:antialiased;
+  }
+  .stage{
+    position:relative;
+    isolation:isolate;
+    background:var(--bg);
+    min-height:100vh;
+    display:flex;flex-direction:column;
+    padding:clamp(18px,2.6vw,40px) clamp(18px,3vw,52px) clamp(16px,2.2vw,32px);
+    overflow:hidden;
+  }
+  #field{position:absolute;inset:0;width:100%;height:100%;display:block}
+  .mesh{fill:none;stroke:var(--ink);stroke-width:.65;vector-effect:non-scaling-stroke;stroke-linejoin:round}
+  .mesh-inv{fill:none;stroke:var(--bg);stroke-width:.65;vector-effect:non-scaling-stroke;stroke-linejoin:round}
+  .solid{fill:var(--ink)}
+  .solid-ox{fill:var(--ox)}
+
+  /* every text block sits over the shapes and flips where it crosses them */
+  .neg{position:relative;z-index:3;color:var(--neg);mix-blend-mode:difference}
+
+  .sc{
+    text-transform:uppercase;letter-spacing:.24em;
+    font-family:"Charter","Superclarendon",Georgia,serif;
+    font-size:clamp(9.5px,.7vw,11px);font-weight:400;
+  }
+  .top{display:flex;justify-content:space-between;gap:18px;align-items:baseline}
+
+  /* ---------- the stack ---------- */
+  .block{
+    flex:1 1 auto;
+    display:flex;flex-direction:column;justify-content:center;
+    padding:clamp(24px,5vh,72px) 0 clamp(18px,3vh,44px);
+    min-height:0;
+  }
+  .stack{
+    margin:0;
+    font-family:"Superclarendon","Charter","Bodoni 72",Georgia,serif;
+    font-weight:700;
+    text-transform:uppercase;
+    font-size:clamp(52px,13.4vw,206px);
+    line-height:.775;
+    letter-spacing:-.012em;
+  }
+  .stack span{display:block}
+  .stack .b{margin-left:.09em}
+  .tagline{
+    margin:clamp(14px,2.2vh,26px) 0 0;
+    font-family:"Cochin","Times New Roman",serif;
+    font-style:italic;
+    font-size:clamp(18px,2.3vw,34px);
+    line-height:1.1;
+    text-align:right;
+    max-width:none;
+  }
+
+  /* ---------- bottom matter ---------- */
+  .three{
+    display:grid;grid-template-columns:repeat(3,minmax(0,1fr));
+    gap:clamp(16px,2.8vw,50px);
+    border-top:1px solid currentColor;
+    padding-top:clamp(11px,1.3vw,17px);
+  }
+  .three h3{
+    margin:0 0 .45em;font-weight:400;
+    text-transform:uppercase;letter-spacing:.24em;
+    font-family:"Charter","Superclarendon",Georgia,serif;
+    font-size:clamp(9.5px,.72vw,11.5px);
+  }
+  .three p{margin:0;font-size:clamp(13px,.98vw,16px);max-width:32ch}
+
+  .base{
+    display:flex;justify-content:space-between;align-items:baseline;gap:16px;flex-wrap:wrap;
+    margin-top:clamp(14px,2vw,26px);
+    padding-top:clamp(9px,1vw,13px);
+    border-top:1px solid rgba(227,225,219,.42);
+  }
+  .base a{color:inherit;text-decoration:none;border-bottom:1px solid rgba(227,225,219,.5)}
+  .base a:hover{border-bottom-color:currentColor}
+  .base .inq{font-size:clamp(12.5px,.95vw,15px)}
+  .base .inq b{
+    font-weight:400;margin-right:.7em;
+    text-transform:uppercase;letter-spacing:.24em;
+    font-family:"Charter","Superclarendon",Georgia,serif;
+    font-size:clamp(9.5px,.68vw,10.5px);
+  }
+
+  @media (max-width:820px){
+    .top{flex-direction:column;gap:5px;align-items:flex-start}
+    .three{grid-template-columns:1fr;gap:0;border-top-width:1px}
+    .three>article{padding:11px 0;border-top:1px solid rgba(227,225,219,.42)}
+    .three>article:first-child{border-top:0;padding-top:0}
+    .three p{max-width:46ch}
+    .tagline{text-align:left}
+  }
+</style>
+</head>
+<body>
+<div class="stage">
+  <svg id="field" aria-hidden="true" preserveAspectRatio="none"></svg>
+
+  <header class="top neg">
+    <div class="sc">An independent theatrical distribution company</div>
+    <div class="sc">New York · Los Angeles</div>
+  </header>
+
+  <section class="block neg">
+    <h1 class="stack"><span class="a">Frontier</span><span class="b">Films</span></h1>
+    <p class="tagline">One room at a time.</p>
+  </section>
+
+  <footer class="neg">
+    <div class="three">
+      <article>
+        <h3>01 / Placement</h3>
+        <p>Original features, booked into single screens, museum auditoria, civic theatres, and large chains alike.</p>
+      </article>
+      <article>
+        <h3>02 / Campaigns</h3>
+        <p>Each release carries its own identity, materials, and calendar, made in-house.</p>
+      </article>
+      <article>
+        <h3>03 / Presentation</h3>
+        <p>Format, sound, and seating agreed with every room before it goes on sale.</p>
+      </article>
+    </div>
+    <div class="base">
+      <div class="inq"><b>General inquiries</b><a href="mailto:hello@frontier-film.com">hello@frontier-film.com</a></div>
+      <div class="sc">© 2026 Frontier Films</div>
+    </div>
+  </footer>
+</div>
+
+<script>
+(function(){
+  var NS='http://www.w3.org/2000/svg', TAU=Math.PI*2, HP=Math.PI/2;
+  var svg=document.getElementById('field');
+
+  function el(n,a){var e=document.createElementNS(NS,n);for(var k in a){e.setAttribute(k,a[k]);}return e;}
+  function seeded(s){return function(){s=s+0x6D2B79F5|0;var t=Math.imul(s^s>>>15,1|s);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296;};}
+
+  function blob(cx,cy,r,rand){
+    var n=12,pts=[],i,a,rr,ph=rand()*TAU,sq=.78+rand()*.34,rot=rand()*TAU;
+    for(i=0;i<n;i++){
+      a=i/n*TAU;
+      rr=r*(1+Math.sin(a*2+ph)*.13+Math.cos(a*3-ph)*.08+(rand()*2-1)*.13);
+      var x=Math.cos(a)*rr, y=Math.sin(a)*rr*sq;
+      pts.push([cx+x*Math.cos(rot)-y*Math.sin(rot), cy+x*Math.sin(rot)+y*Math.cos(rot)]);
+    }
+    var d='M'+pts[0][0].toFixed(2)+','+pts[0][1].toFixed(2);
+    for(i=0;i<n;i++){
+      var p0=pts[(i-1+n)%n],p1=pts[i],p2=pts[(i+1)%n],p3=pts[(i+2)%n];
+      d+='C'+(p1[0]+(p2[0]-p0[0])/6).toFixed(2)+','+(p1[1]+(p2[1]-p0[1])/6).toFixed(2)+
+         ' '+(p2[0]-(p3[0]-p1[0])/6).toFixed(2)+','+(p2[1]-(p3[1]-p1[1])/6).toFixed(2)+
+         ' '+p2[0].toFixed(2)+','+p2[1].toFixed(2);
+    }
+    return d+'Z';
+  }
+
+  function poly(pts){
+    var d='M'+pts[0][0].toFixed(2)+','+pts[0][1].toFixed(2),i;
+    for(i=1;i<pts.length;i++)d+='L'+pts[i][0].toFixed(2)+','+pts[i][1].toFixed(2);
+    return d;
+  }
+
+  function rotX(p,a){var c=Math.cos(a),s=Math.sin(a);return[p[0],p[1]*c-p[2]*s,p[1]*s+p[2]*c];}
+  function rotY(p,a){var c=Math.cos(a),s=Math.sin(a);return[p[0]*c+p[2]*s,p[1],-p[0]*s+p[2]*c];}
+  function rotZ(p,a){var c=Math.cos(a),s=Math.sin(a);return[p[0]*c-p[1]*s,p[0]*s+p[1]*c,p[2]];}
+
+  /* --- capsule: cylinder of length L, radius r, hemispherical caps, axis on Y --- */
+  function capsulePt(L,r,u,t){
+    var rho,hh;
+    if(t<0.25){ var f1=(t/0.25)*HP; rho=r*Math.sin(f1); hh=-L/2-r*Math.cos(f1); }
+    else if(t<0.75){ rho=r; hh=-L/2+((t-0.25)/0.5)*L; }
+    else { var f2=((t-0.75)/0.25)*HP; rho=r*Math.cos(f2); hh=L/2+r*Math.sin(f2); }
+    return [rho*Math.cos(u), hh, rho*Math.sin(u)];
+  }
+  function meshCapsule(L,r,nU,nT,xf){
+    var out=[],i,j,pts;
+    for(i=0;i<nU;i++){            /* longitudinal profile lines */
+      var u=i/nU*TAU;pts=[];
+      for(j=0;j<=64;j++)pts.push(xf(capsulePt(L,r,u,j/64)));
+      out.push(pts);
+    }
+    for(j=0;j<=nT;j++){           /* rings across the body and caps */
+      var t=j/nT;pts=[];
+      for(i=0;i<=96;i++)pts.push(xf(capsulePt(L,r,i/96*TAU,t)));
+      out.push(pts);
+    }
+    return out;
+  }
+
+  /* --- ellipsoid: latitude / longitude mesh --- */
+  function meshEllipsoid(a,b,c,nLat,nLon,xf){
+    var out=[],i,j,pts;
+    for(i=1;i<nLat;i++){
+      var lat=-HP+i/nLat*Math.PI, cl=Math.cos(lat), sl=Math.sin(lat);
+      pts=[];
+      for(j=0;j<=110;j++){var lo=j/110*TAU;pts.push(xf([a*cl*Math.cos(lo), b*sl, c*cl*Math.sin(lo)]));}
+      out.push(pts);
+    }
+    for(i=0;i<nLon;i++){
+      var lon=i/nLon*TAU;pts=[];
+      for(j=0;j<=72;j++){
+        var la=-HP+j/72*Math.PI;
+        pts.push(xf([a*Math.cos(la)*Math.cos(lon), b*Math.sin(la), c*Math.cos(la)*Math.sin(lon)]));
+      }
+      out.push(pts);
+    }
+    return out;
+  }
+
+  function draw(){
+    var rect=svg.getBoundingClientRect();
+    var w=Math.round(rect.width)||window.innerWidth, h=Math.round(rect.height)||window.innerHeight;
+    if(!w||!h)return;
+    var narrow=w<820;
+    while(svg.firstChild)svg.removeChild(svg.firstChild);
+    svg.setAttribute('viewBox','0 0 '+w+' '+h);
+
+    var rand=seeded(4409271);
+    var U=Math.min(w,h);
+    var solids=[], oxD;
+
+    /* --- the field: a jittered lattice of pebbles, plus four that bleed off the edges --- */
+    var COLS=6, ROWS=4, i, j;
+    for(j=0;j<ROWS;j++){
+      for(i=0;i<COLS;i++){
+        if(rand()<0.26)continue;
+        var gx=(i+0.5)/COLS, gy=(j+0.5)/ROWS;
+        var px=(gx+(rand()-0.5)*0.13)*w;
+        var py=(gy+(rand()-0.5)*0.16)*h*0.94;
+        /* weight: big up top-right and low-left, small through the middle band */
+        var wt=0.030+0.075*Math.pow(rand(),1.5)+0.035*Math.abs(gx-0.42)+0.030*(1-gy);
+        solids.push(blob(px,py,U*wt,rand));
+      }
+    }
+    solids.push(blob(-U*0.05, h*0.30, U*0.20, rand));
+    solids.push(blob(w+U*0.06, h*0.66, U*0.24, rand));
+    solids.push(blob(w*0.30, -U*0.05, U*0.16, rand));
+    solids.push(blob(w*0.72, h+U*0.05, U*0.19, rand));
+    oxD=blob(w*(narrow?0.80:0.20), h*0.78, U*0.055, rand);
+
+    var defs=el('defs',{}), clip=el('clipPath',{id:'o4solids'});
+    var gS=el('g',{'class':'solid'});
+    solids.forEach(function(d){gS.appendChild(el('path',{d:d}));clip.appendChild(el('path',{d:d}));});
+    var gOx=el('g',{'class':'solid-ox'});
+    gOx.appendChild(el('path',{d:oxD}));
+    clip.appendChild(el('path',{d:oxD}));
+
+    /* --- the wireframe cluster: one capsule, two ellipsoids, cutting across the field --- */
+    var ccx = narrow ? w*0.60 : w*0.735;
+    var ccy = narrow ? h*0.30 : h*0.46;
+    var S   = narrow ? U*0.30 : Math.min(w*0.30, h*0.44);
+    var f   = 5.0;
+
+    function mkView(dx,dy,ax,ay,az,sc){
+      return function(p){
+        p=[p[0]*sc,p[1]*sc,p[2]*sc];
+        p=rotZ(p,az);p=rotY(p,ay);p=rotX(p,ax);
+        p=[p[0]+dx,p[1]+dy,p[2]];
+        var k=f/(f+p[2]);
+        return [ccx+p[0]*S*k, ccy+p[1]*S*k];
+      };
+    }
+
+    var gMesh=el('g',{id:'o4mesh','class':'mesh'});
+    var groups=[];
+    groups.push(meshCapsule(1.30,0.40,18,11, mkView(-0.06,-0.05,-0.34,0.30,-0.62,1.00)));
+    groups.push(meshEllipsoid(0.62,0.44,0.62,9,14, mkView(0.86,0.62,-0.42,0.20,0.10,1.00)));
+    groups.push(meshEllipsoid(0.30,0.30,0.30,7,11, mkView(-0.92,0.74,-0.30,0.35,0,1.00)));
+    groups.push(meshEllipsoid(0.40,0.24,0.40,7,12, mkView(0.62,-0.94,-0.55,0.15,0.34,1.00)));
+    groups.forEach(function(g){g.forEach(function(pts){gMesh.appendChild(el('path',{d:poly(pts)}));});});
+
+    defs.appendChild(clip);
+    svg.appendChild(defs);
+    svg.appendChild(gS);
+    svg.appendChild(gOx);
+    svg.appendChild(gMesh);
+
+    /* the same mesh again, drawn in cream only where it crosses the solids */
+    var inv=el('use',{'class':'mesh-inv','clip-path':'url(#o4solids)'});
+    inv.setAttribute('href','#o4mesh');
+    inv.setAttributeNS('http://www.w3.org/1999/xlink','href','#o4mesh');
+    svg.appendChild(inv);
+  }
+
+  var t;
+  function queue(){clearTimeout(t);t=setTimeout(draw,90);}
+  draw();
+  window.addEventListener('resize',queue);
+})();
+</script>
+</body>
+</html>

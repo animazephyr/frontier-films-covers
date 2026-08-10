@@ -1,0 +1,108 @@
+<!-- Option 05 — Torus Knot Split: a huge wireframe interlocked torus bleeds off the left edge; a quiet serif column holds the right half; one solid black blob anchors the lower corner. -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Frontier Films — 05 Torus Knot Split</title>
+<style>
+  :root{ --paper:#FBF8EF; --ink:#14120E; --muted:#6A6254; --rule:#CFC6B2; }
+  *{box-sizing:border-box}
+  html,body{margin:0;background:var(--paper);color:var(--ink)}
+  body{font-family:"Iowan Old Style","Palatino","Baskerville",Georgia,serif;min-height:100vh;overflow-x:hidden}
+  .split{display:grid;grid-template-columns:1.15fr 1fr;min-height:100vh}
+  .plate{position:relative;overflow:hidden;border-right:1px solid var(--rule)}
+  .plate svg{position:absolute;top:50%;left:-6%;transform:translateY(-50%);width:118%;height:auto}
+  .plate .stamp{position:absolute;left:40px;top:36px;font-size:11px;letter-spacing:.3em;text-transform:uppercase;color:var(--muted)}
+  .plate .fig{position:absolute;left:40px;bottom:32px;font-size:11px;letter-spacing:.3em;text-transform:uppercase;color:var(--muted)}
+  .col{padding:clamp(32px,5vw,72px) clamp(28px,4.5vw,64px);display:flex;flex-direction:column;justify-content:space-between;gap:38px}
+  h1{margin:0;font-family:"Didot","Bodoni 72","Hoefler Text",serif;font-weight:400;
+     font-size:clamp(46px,7.2vw,104px);line-height:.88;letter-spacing:-.005em}
+  h1 i{font-style:italic;display:block}
+  .desc{margin:22px 0 0;font-size:17px;line-height:1.65;color:#3D382F;max-width:34ch;font-style:italic}
+  ol{list-style:none;margin:0;padding:0}
+  ol li{display:grid;grid-template-columns:2.4em 1fr;gap:14px;padding:18px 0;border-top:1px solid var(--rule)}
+  ol li .n{font-family:"Didot","Bodoni 72",serif;font-size:22px;line-height:1}
+  ol li h2{margin:0 0 6px;font-size:11.5px;letter-spacing:.26em;text-transform:uppercase;font-weight:400}
+  ol li p{margin:0;font-size:15.5px;line-height:1.6;color:#4A443A}
+  .foot{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:18px;
+        border-top:1px solid var(--ink);padding-top:18px}
+  .tag{margin:0;font-family:"Didot","Bodoni 72",serif;font-style:italic;font-size:clamp(22px,3vw,32px)}
+  .cta{font-size:10.5px;letter-spacing:.28em;text-transform:uppercase;color:var(--muted);text-align:right}
+  .cta a{display:block;margin-top:6px;font-size:16px;letter-spacing:.01em;text-transform:none;
+         color:var(--ink);text-decoration:none;border-bottom:1px solid var(--rule)}
+  .cities{font-size:11px;letter-spacing:.3em;text-transform:uppercase;color:var(--muted)}
+  @media(max-width:900px){
+    .split{grid-template-columns:1fr}
+    .plate{height:56vh;border-right:0;border-bottom:1px solid var(--rule)}
+    .plate svg{left:-10%;width:130%}
+  }
+</style>
+</head>
+<body>
+  <div class="split">
+    <div class="plate">
+      <span class="stamp">Figure I · Interlock</span>
+      <svg id="art" viewBox="0 0 760 760" aria-hidden="true"></svg>
+      <span class="fig">Frontier Films · Est. 2026</span>
+    </div>
+    <div class="col">
+      <div>
+        <p class="cities">New York · Los Angeles</p>
+        <h1>Frontier<i>Films</i></h1>
+        <p class="desc">An independent theatrical distribution company.</p>
+      </div>
+      <ol>
+        <li><span class="n">01</span><div><h2>Placement</h2><p>Original features, booked into single screens, museum auditoria, civic theatres, and large chains alike.</p></div></li>
+        <li><span class="n">02</span><div><h2>Campaigns</h2><p>Each release carries its own identity, materials, and calendar, made in-house.</p></div></li>
+        <li><span class="n">03</span><div><h2>Presentation</h2><p>Format, sound, and seating agreed with every room before it goes on sale.</p></div></li>
+      </ol>
+      <div class="foot">
+        <p class="tag">One room at a time.</p>
+        <div class="cta">General inquiries<a href="mailto:hello@frontier-film.com">hello@frontier-film.com</a></div>
+      </div>
+      <p class="cities" style="margin:0">© 2026 Frontier Films</p>
+    </div>
+  </div>
+<script>
+(function(){
+  const NS='http://www.w3.org/2000/svg', svg=document.getElementById('art');
+  const add=(t,a)=>{const e=document.createElementNS(NS,t);for(const k in a)e.setAttribute(k,a[k]);svg.appendChild(e);return e;};
+  const rot=(p,rx,ry)=>{let [x,y,z]=p;
+    let y1=y*Math.cos(rx)-z*Math.sin(rx), z1=y*Math.sin(rx)+z*Math.cos(rx);
+    let x1=x*Math.cos(ry)+z1*Math.sin(ry), z2=-x*Math.sin(ry)+z1*Math.cos(ry);
+    return [x1,y1,z2];};
+  function torus(o){
+    const {R,r,cx,cy,rx,ry,nu=44,nv=12,tilt=0}=o, g=add('g',{});
+    const P=(u,v)=>{
+      const a=u/nu*2*Math.PI, b=v/nv*2*Math.PI;
+      let p=[(R+r*Math.cos(b))*Math.cos(a),(R+r*Math.cos(b))*Math.sin(a),r*Math.sin(b)];
+      if(tilt){const c=Math.cos(tilt),s=Math.sin(tilt);p=[p[0]*c-p[1]*s,p[0]*s+p[1]*c,p[2]];}
+      p=rot(p,rx,ry); return [cx+p[0],cy+p[1]];
+    };
+    const line=(pts)=>{const d='M'+pts.map(p=>p[0].toFixed(1)+','+p[1].toFixed(1)).join('L')+'Z';
+      const e=document.createElementNS(NS,'path');
+      e.setAttribute('d',d);e.setAttribute('fill','none');e.setAttribute('stroke','#14120E');
+      e.setAttribute('stroke-width','0.6');e.setAttribute('vector-effect','non-scaling-stroke');g.appendChild(e);};
+    for(let v=0;v<nv;v++){const pts=[];for(let u=0;u<nu;u++)pts.push(P(u,v));line(pts);}
+    for(let u=0;u<nu;u+=2){const pts=[];for(let v=0;v<nv;v++)pts.push(P(u,v));line(pts);}
+    return g;
+  }
+  function blob(cx,cy,r,seed,w){
+    const n=9,pts=[];
+    for(let i=0;i<n;i++){const a=i/n*2*Math.PI,
+      rad=r*(1+w*Math.sin(i*1.7+seed)+w*0.55*Math.cos(i*2.9+seed*1.4));
+      pts.push([cx+rad*Math.cos(a),cy+rad*Math.sin(a)]);}
+    let d='';const mid=(a,b)=>[(a[0]+b[0])/2,(a[1]+b[1])/2];
+    d='M'+mid(pts[n-1],pts[0]).join(',');
+    for(let i=0;i<n;i++){const p=pts[i],m=mid(p,pts[(i+1)%n]);d+=`Q${p[0].toFixed(1)},${p[1].toFixed(1)} ${m[0].toFixed(1)},${m[1].toFixed(1)}`;}
+    return add('path',{d:d+'Z',fill:'#14120E'});
+  }
+  blob(620,610,124,2.2,.2);
+  blob(92,150,46,5.1,.24);
+  torus({R:228,r:66,cx:370,cy:350,rx:1.14,ry:.28,tilt:0,nu:48,nv:11});
+  torus({R:206,r:52,cx:392,cy:372,rx:-.34,ry:1.3,tilt:.42,nu:44,nv:10});
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,202 @@
+<!-- Option 17 — Wire Arch Portal: a receding wireframe vault stands as a doorway at centre page, the tagline read through its deepest opening, solid black pebbles massed along the base. -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Frontier Films — 17 Wire Arch Portal</title>
+<style>
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0}
+  body{
+    background:#FFFDF9;
+    color:#14120E;
+    font-family:"Iowan Old Style","Palatino","Palatino Linotype",Georgia,serif;
+    -webkit-font-smoothing:antialiased;
+    padding:clamp(22px,4vw,52px) clamp(18px,5vw,60px) clamp(24px,3vw,40px);
+    display:flex;flex-direction:column;align-items:center;
+  }
+  .wrap{width:100%;max-width:1060px}
+  .masthead{text-align:center}
+  .name{
+    font-family:"Didot","Bodoni 72","Hoefler Text",Georgia,serif;
+    font-weight:400;font-size:clamp(1.95rem,5.2vw,3.35rem);
+    letter-spacing:.14em;text-transform:uppercase;line-height:1;margin:0;
+  }
+  .desc{
+    font-family:"Hoefler Text","Didot",Georgia,serif;
+    font-style:italic;font-size:clamp(.97rem,1.5vw,1.16rem);
+    margin:1.05em 0 0;letter-spacing:.015em;
+  }
+  .rule{width:52px;height:1px;background:#14120E;opacity:.4;margin:1.5em auto 1.35em}
+  .cities,.lab,.inq b{
+    text-transform:uppercase;letter-spacing:.24em;font-size:.66rem;
+  }
+  .cities{display:block}
+  .portal{display:block;width:100%;max-width:930px;height:auto;margin:clamp(2px,1vw,10px) auto 0}
+  .items{
+    display:grid;grid-template-columns:repeat(3,1fr);
+    gap:clamp(20px,3.4vw,46px);
+    max-width:940px;margin:clamp(20px,3vw,38px) auto 0;
+  }
+  .item{border-top:1px solid rgba(20,18,14,.5);padding-top:13px;text-align:left}
+  .lab{display:block;opacity:.78}
+  .item p{margin:.7em 0 0;font-size:.94rem;line-height:1.55;max-width:26em}
+  footer{
+    max-width:940px;margin:clamp(22px,3vw,40px) auto 0;
+    border-top:1px solid rgba(20,18,14,.5);padding-top:13px;
+    display:flex;flex-wrap:wrap;gap:10px 26px;justify-content:space-between;align-items:baseline;
+    font-size:.86rem;
+  }
+  .inq{letter-spacing:.01em}
+  .inq b{font-weight:400;opacity:.78;margin-right:.8em}
+  a{color:#6E2A22;text-decoration:none;border-bottom:1px solid rgba(110,42,34,.4)}
+  .cr{opacity:.7;font-size:.8rem}
+  @media (max-width:700px){
+    .items{grid-template-columns:1fr;gap:0}
+    .item{margin-top:16px}
+    footer{flex-direction:column}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="masthead">
+    <h1 class="name">Frontier Films</h1>
+    <p class="desc">An independent theatrical distribution company</p>
+    <div class="rule"></div>
+    <span class="cities">New York &middot; Los Angeles</span>
+  </div>
+
+  <svg class="portal" id="arch" viewBox="0 0 1000 600" role="img"
+       aria-label="Wireframe vault receding to a small opening, with the words One room at a time inside">
+    <defs><clipPath id="cp17"></clipPath></defs>
+    <g id="solids17" fill="#14120E"></g>
+    <g id="wire17" fill="none" stroke="#14120E" stroke-width="0.7" stroke-linecap="round"></g>
+    <g id="rev17" fill="none" stroke="#FFFDF9" stroke-width="0.7" clip-path="url(#cp17)"></g>
+    <text id="tag17" x="500" y="308" text-anchor="middle"
+          font-family="Hoefler Text, Didot, Georgia, serif" font-style="italic"
+          font-size="25" fill="#14120E">One room at a time.</text>
+  </svg>
+
+  <div class="items">
+    <div class="item"><span class="lab">01 / Placement</span>
+      <p>Original features, booked into single screens, museum auditoria, civic theatres, and large chains alike.</p></div>
+    <div class="item"><span class="lab">02 / Campaigns</span>
+      <p>Each release carries its own identity, materials, and calendar, made in-house.</p></div>
+    <div class="item"><span class="lab">03 / Presentation</span>
+      <p>Format, sound, and seating agreed with every room before it goes on sale.</p></div>
+  </div>
+
+  <footer>
+    <span class="inq"><b>General inquiries</b><a href="mailto:hello@frontier-film.com">hello@frontier-film.com</a></span>
+    <span class="cr">&copy; 2026 Frontier Films</span>
+  </footer>
+
+</div>
+
+<script>
+(function(){
+  var NS = "http://www.w3.org/2000/svg";
+  var wire = document.getElementById("wire17");
+  var rev  = document.getElementById("rev17");
+  var sol  = document.getElementById("solids17");
+  var clip = document.getElementById("cp17");
+
+  /* ---- deterministic pseudo-random ---- */
+  function rnd(seed){ var s = seed >>> 0; return function(){ s = (s*1664525 + 1013904223) >>> 0; return s/4294967296; }; }
+
+  /* ---- closed catmull-rom -> bezier, for organic pebbles ---- */
+  function spline(p){
+    var n = p.length, d = "M"+p[0][0].toFixed(2)+","+p[0][1].toFixed(2), i;
+    for(i=0;i<n;i++){
+      var p0=p[(i-1+n)%n], p1=p[i], p2=p[(i+1)%n], p3=p[(i+2)%n];
+      d += "C"+(p1[0]+(p2[0]-p0[0])/6).toFixed(2)+","+(p1[1]+(p2[1]-p0[1])/6).toFixed(2)
+        +" "+(p2[0]-(p3[0]-p1[0])/6).toFixed(2)+","+(p2[1]-(p3[1]-p1[1])/6).toFixed(2)
+        +" "+p2[0].toFixed(2)+","+p2[1].toFixed(2);
+    }
+    return d+"Z";
+  }
+  function pebble(cx,cy,r,seed,amp,squash,rot){
+    var R = rnd(seed), n = 14, rs = [], i, k;
+    for(i=0;i<n;i++) rs.push(r*(1-amp+2*amp*R()));
+    for(k=0;k<1;k++){ var t=rs.slice(); for(i=0;i<n;i++) rs[i]=(t[i]*2+t[(i+1)%n]+t[(i-1+n)%n])/4; }
+    var pts=[];
+    for(i=0;i<n;i++){
+      var a = rot + i/n*Math.PI*2;
+      pts.push([cx+Math.cos(a)*rs[i], cy+Math.sin(a)*rs[i]*squash]);
+    }
+    return spline(pts);
+  }
+
+  /* ---- the vault : arch profile in world coords, rings receding in z ---- */
+  var HALFW=250, WALL=170, RAD=250;
+  function profile(){
+    var pts=[], i;
+    for(i=0;i<=3;i++) pts.push([-HALFW, WALL*i/3]);
+    for(i=1;i<=20;i++){ var a = Math.PI - Math.PI*i/20; pts.push([RAD*Math.cos(a), WALL + RAD*Math.sin(a)]); }
+    for(i=2;i>=0;i--) pts.push([HALFW, WALL*i/3]);
+    return pts;
+  }
+  var PROF = profile();
+  var F=1000, HOR=300, EYE=175, CX=500, NR=9, DZ=145;
+  function proj(x,y,z){ var s=F/(F+z); return [CX + x*s, HOR - (y-EYE)*s]; }
+
+  var d, i, j, ring=[];
+  for(i=0;i<NR;i++){
+    var z = i*DZ, seg=[];
+    for(j=0;j<PROF.length;j++) seg.push(proj(PROF[j][0], PROF[j][1], z));
+    ring.push(seg);
+    d = "M";
+    for(j=0;j<seg.length;j++) d += (j?" L":"") + seg[j][0].toFixed(2)+","+seg[j][1].toFixed(2);
+    add(wire, d); add(rev, d);
+  }
+  /* longitudinals: near ring to far ring */
+  for(j=0;j<PROF.length;j++){
+    var a=ring[0][j], b=ring[NR-1][j];
+    d = "M"+a[0].toFixed(2)+","+a[1].toFixed(2)+" L"+b[0].toFixed(2)+","+b[1].toFixed(2);
+    add(wire, d); add(rev, d);
+  }
+  /* threshold line on the floor, in front of the vault */
+  d = "M"+(CX-HALFW-92)+",475 L"+(CX+HALFW+92)+",475";
+  add(wire, d);
+
+  /* ---- solid black shapes: a disc half-covered by the wireframe, pebbles at the base ---- */
+  var solids = [];
+  solids.push({t:"c", x:168, y:244, r:118});
+  solids.push({t:"p", x:846, y:198, r:54, s:71, a:.36, q:.88, o:.6});
+  var base = [
+    [104,520,64,.38,.84,0.2, 12],
+    [212,556,30,.36,.86,1.1, 33],
+    [300,514,22,.4,.82,2.0, 57],
+    [408,548,46,.34,.86,0.7, 91],
+    [502,522,26,.4,.8,1.8, 118],
+    [598,554,38,.36,.84,2.6, 140],
+    [700,512,54,.32,.86,1.3, 173],
+    [802,550,30,.38,.82,0.4, 205],
+    [894,520,58,.34,.85,2.2, 233]
+  ];
+  for(i=0;i<base.length;i++){
+    var b0 = base[i];
+    solids.push({t:"p", x:b0[0], y:b0[1], r:b0[2], a:b0[3], q:b0[4], o:b0[5], s:b0[6]});
+  }
+  for(i=0;i<solids.length;i++){
+    var o = solids[i], path;
+    if(o.t==="c"){
+      path = "M"+(o.x-o.r)+","+o.y+" a"+o.r+","+o.r+" 0 1 0 "+(o.r*2)+",0 a"+o.r+","+o.r+" 0 1 0 "+(-o.r*2)+",0Z";
+    } else {
+      path = pebble(o.x,o.y,o.r,o.s,o.a,o.q,o.o);
+    }
+    add(sol, path); add(clip, path);
+  }
+
+  function add(parent, dd){
+    var el = document.createElementNS(NS,"path");
+    el.setAttribute("d", dd);
+    parent.appendChild(el);
+  }
+})();
+</script>
+</body>
+</html>

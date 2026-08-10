@@ -1,0 +1,92 @@
+<!-- Option 09 — Blob Collage Editorial: solid black organic blobs cut across a two-column serif setting with a real drop cap; one wireframe ellipsoid overlaps a blob. -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Frontier Films — 09 Blob Collage Editorial</title>
+<style>
+  :root{ --paper:#FAF7EE; --ink:#14120E; --muted:#6A6254; --rule:#CEC5B1; }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--paper);color:var(--ink);
+    font-family:"Iowan Old Style","Palatino",Georgia,serif;overflow-x:hidden}
+  .spread{position:relative;max-width:1240px;margin:0 auto;padding:clamp(26px,3.4vw,52px);min-height:100vh}
+  .collage{position:absolute;inset:0;z-index:0;pointer-events:none}
+  .collage svg{width:100%;height:100%}
+  .head{position:relative;z-index:2;display:flex;justify-content:space-between;align-items:baseline;gap:16px;
+    border-bottom:1px solid var(--ink);padding-bottom:12px;font-size:10.5px;letter-spacing:.3em;
+    text-transform:uppercase;color:var(--muted)}
+  h1{position:relative;z-index:2;margin:clamp(28px,5vw,72px) 0 0;font-family:"Cochin","Big Caslon","Baskerville",serif;
+     font-weight:400;font-size:clamp(44px,8.6vw,124px);line-height:.9;letter-spacing:0}
+  h1 em{font-style:italic}
+  .standfirst{position:relative;z-index:2;margin:22px 0 0;max-width:26ch;font-size:clamp(18px,2.3vw,24px);
+    line-height:1.45;font-style:italic;color:#3C362E}
+  .body{position:relative;z-index:2;margin:clamp(30px,5vw,62px) 0 0;columns:2;column-gap:clamp(26px,4vw,58px)}
+  .body p{margin:0 0 16px;font-size:16.5px;line-height:1.66;color:#413B32;text-align:justify;hyphens:auto}
+  .body p:first-child::first-letter{float:left;font-family:"Cochin","Big Caslon",serif;font-size:76px;
+    line-height:.74;padding:6px 10px 0 0;color:var(--ink)}
+  .body h2{margin:0 0 6px;font-size:11px;letter-spacing:.26em;text-transform:uppercase;font-weight:400;color:var(--muted)}
+  .body .entry{break-inside:avoid;margin-bottom:22px;border-top:1px solid var(--rule);padding-top:14px}
+  .pull{position:relative;z-index:2;margin:clamp(24px,4vw,50px) 0 0;font-family:"Cochin","Big Caslon",serif;
+    font-style:italic;font-size:clamp(26px,5.2vw,64px);line-height:1.05;max-width:22ch}
+  .foot{position:relative;z-index:2;display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;
+    gap:16px;margin-top:clamp(26px,4vw,52px);border-top:1px solid var(--ink);padding-top:14px;
+    font-size:10.5px;letter-spacing:.28em;text-transform:uppercase;color:var(--muted)}
+  .foot a{font-size:17px;letter-spacing:.01em;text-transform:none;color:var(--ink);text-decoration:none;
+    border-bottom:1px solid var(--rule);font-style:italic}
+  @media(max-width:760px){ .body{columns:1} }
+</style>
+</head>
+<body>
+  <div class="spread">
+    <div class="collage"><svg id="c" viewBox="0 0 1200 1000" preserveAspectRatio="xMidYMid slice" aria-hidden="true"></svg></div>
+    <div class="head"><span>Frontier Films</span><span>An independent theatrical distribution company</span><span>New York · Los Angeles</span></div>
+    <h1>Frontier <em>Films</em></h1>
+    <p class="standfirst">Original features, released one room at a time.</p>
+    <div class="body">
+      <p>Frontier Films is an independent theatrical distribution company working in New York and Los Angeles. Every title is handled by the same people who booked it, from first conversation with a programmer to the last night of the run.</p>
+      <div class="entry"><h2>01 &nbsp;·&nbsp; Placement</h2><p>Original features, booked into single screens, museum auditoria, civic theatres, and large chains alike.</p></div>
+      <div class="entry"><h2>02 &nbsp;·&nbsp; Campaigns</h2><p>Each release carries its own identity, materials, and calendar, made in-house.</p></div>
+      <div class="entry"><h2>03 &nbsp;·&nbsp; Presentation</h2><p>Format, sound, and seating agreed with every room before it goes on sale.</p></div>
+    </div>
+    <p class="pull">One room at a time.</p>
+    <div class="foot">
+      <span>General inquiries &nbsp; <a href="mailto:hello@frontier-film.com">hello@frontier-film.com</a></span>
+      <span>© 2026 Frontier Films</span>
+    </div>
+  </div>
+<script>
+(function(){
+  const NS='http://www.w3.org/2000/svg', svg=document.getElementById('c');
+  const el=(t,a,p)=>{const e=document.createElementNS(NS,t);for(const k in a)e.setAttribute(k,a[k]);(p||svg).appendChild(e);return e;};
+  const wire={fill:'none',stroke:'#14120E','stroke-width':.6,'vector-effect':'non-scaling-stroke'};
+  function blob(cx,cy,r,seed,w,fill){
+    const n=14,pts=[];
+    for(let i=0;i<n;i++){const a=i/n*2*Math.PI,rad=r*(1+w*Math.sin(i*1.9+seed)+w*.5*Math.cos(i*3.3+seed*1.7));
+      pts.push([cx+rad*Math.cos(a),cy+rad*Math.sin(a)]);}
+    const mid=(a,b)=>[(a[0]+b[0])/2,(a[1]+b[1])/2];
+    let d='M'+mid(pts[n-1],pts[0]).map(v=>v.toFixed(1)).join(',');
+    for(let i=0;i<n;i++){const p=pts[i],m=mid(p,pts[(i+1)%n]);
+      d+=`Q${p[0].toFixed(1)},${p[1].toFixed(1)} ${m[0].toFixed(1)},${m[1].toFixed(1)}`;}
+    return el('path',{d:d+'Z',fill:fill||'#14120E'});
+  }
+  function ellipsoid(cx,cy,rw,rh,rotd,nlat=8,nlon=10){
+    const g=el('g',{transform:`translate(${cx} ${cy}) rotate(${rotd})`});
+    el('ellipse',Object.assign({cx:0,cy:0,rx:rw,ry:rh},wire),g);
+    for(let i=1;i<nlat;i++){const t=-1+2*i/nlat,y=t*rh,w=rw*Math.sqrt(Math.max(0,1-t*t));
+      el('ellipse',Object.assign({cx:0,cy:y,rx:w,ry:w*.24},wire),g);}
+    for(let j=0;j<nlon;j++){const k=Math.cos(j/nlon*Math.PI);
+      el('path',Object.assign({d:`M0,${-rh} C${rw*k*1.34},${-rh*.45} ${rw*k*1.34},${rh*.45} 0,${rh}`},wire),g);}
+  }
+  blob(1010,180,150,1.9,.19);
+  blob(150,700,120,4.4,.22);
+  blob(700,880,86,2.2,.24);
+  blob(1120,760,64,5.6,.26);
+  blob(60,330,40,3.1,.3);
+  blob(560,470,26,6.4,.32);
+  ellipsoid(1010,200,168,110,-14);
+  ellipsoid(150,700,132,86,22,7,9);
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,273 @@
+<!-- Option 02 — Bauhaus Quarter Grid: a strict modular totem tiled from solid black circles, half-circles and quarter-circles stands as a full-height panel beside a quiet editorial serif column. -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<link rel="icon" href="data:,">
+<title>Frontier Films — 02 Bauhaus Quarter Grid</title>
+<style>
+  :root{
+    --bg:#FAF7EE;
+    --ink:#14120E;
+    --ox:#6E2A22;
+    --rule:rgba(20,18,14,.26);
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0}
+  body{
+    background:var(--bg);
+    color:var(--ink);
+    font-family:"Baskerville","Big Caslon","Iowan Old Style",Georgia,serif;
+    font-size:16px;line-height:1.55;
+    -webkit-font-smoothing:antialiased;
+  }
+  .stage{
+    min-height:100vh;
+    display:grid;
+    grid-template-columns:minmax(0,1.08fr) minmax(0,.92fr);
+  }
+
+  /* ---------- editorial column ---------- */
+  .col{
+    display:flex;flex-direction:column;
+    padding:clamp(22px,3.4vw,58px) clamp(22px,3.6vw,64px) clamp(20px,2.6vw,42px);
+    min-width:0;
+  }
+  .sc{
+    text-transform:uppercase;letter-spacing:.24em;
+    font-family:"Charter","Superclarendon",Georgia,serif;
+    font-size:clamp(9.5px,.7vw,11px);font-weight:400;
+  }
+  .head{display:flex;justify-content:space-between;gap:18px;align-items:baseline}
+
+  .mark{
+    margin:clamp(30px,6vh,76px) 0 0;
+    font-family:"Big Caslon","Baskerville","Hoefler Text",Georgia,serif;
+    font-weight:400;
+    font-size:clamp(40px,5.4vw,84px);
+    line-height:1.0;
+    letter-spacing:-.008em;
+  }
+  .mark span{display:block}
+  .desc{
+    margin:.85em 0 0;
+    font-family:"Baskerville","Iowan Old Style",Georgia,serif;
+    font-style:italic;
+    font-size:clamp(16px,1.5vw,23px);
+    line-height:1.35;
+    max-width:22ch;
+  }
+
+  .list{margin:clamp(24px,4vh,48px) 0 0;padding:0;list-style:none;max-width:44ch}
+  .list li{
+    display:grid;
+    grid-template-columns:2.6em 1fr;
+    gap:0 1.1em;
+    padding:clamp(11px,1.2vw,16px) 0;
+    border-top:1px solid var(--rule);
+  }
+  .list li:last-child{border-bottom:1px solid var(--rule)}
+  .list .n{
+    font-family:"Charter","Superclarendon",Georgia,serif;
+    font-size:clamp(11px,.85vw,13px);
+    letter-spacing:.1em;
+    padding-top:.28em;
+    color:var(--ox);
+  }
+  .list h3{
+    margin:0 0 .3em;font-weight:400;
+    text-transform:uppercase;letter-spacing:.24em;
+    font-family:"Charter","Superclarendon",Georgia,serif;
+    font-size:clamp(9.5px,.72vw,11.5px);
+  }
+  .list p{margin:0;font-size:clamp(13.5px,1vw,16px)}
+
+  .tag{
+    margin:clamp(20px,3.4vh,40px) 0 0;
+    font-family:"Big Caslon","Baskerville",Georgia,serif;
+    font-size:clamp(20px,2.3vw,34px);
+    line-height:1.1;
+  }
+  .spacer{flex:1 1 auto;min-height:clamp(20px,3vh,40px)}
+  .foot{
+    display:flex;justify-content:space-between;align-items:baseline;gap:18px;flex-wrap:wrap;
+    padding-top:clamp(11px,1.1vw,14px);
+    border-top:1px solid var(--ink);
+  }
+  .foot a{color:var(--ink);text-decoration:none;border-bottom:1px solid var(--rule)}
+  .foot a:hover{color:var(--ox);border-bottom-color:var(--ox)}
+  .foot .inq{font-size:clamp(12.5px,.95vw,15px)}
+  .foot .inq b{
+    font-weight:400;display:inline-block;
+    text-transform:uppercase;letter-spacing:.24em;
+    font-family:"Charter","Superclarendon",Georgia,serif;
+    font-size:clamp(9.5px,.68vw,10.5px);
+    margin-right:.85em;
+  }
+
+  /* ---------- totem panel ---------- */
+  .panel{
+    position:relative;
+    border-left:1px solid var(--ink);
+    padding:clamp(18px,2.4vw,40px) clamp(14px,2vw,34px);
+    display:flex;align-items:center;justify-content:center;
+    min-width:0;
+  }
+  .panel svg{display:block;width:100%;height:100%}
+
+  @media (max-width:880px){
+    .stage{grid-template-columns:1fr}
+    .panel{border-left:0;border-top:1px solid var(--ink);height:78vh;order:2}
+    .col{order:1}
+    .desc{max-width:30ch}
+  }
+</style>
+</head>
+<body>
+<div class="stage">
+
+  <div class="col">
+    <header class="head">
+      <div class="sc">Frontier Films</div>
+      <div class="sc">New York · Los Angeles</div>
+    </header>
+
+    <h1 class="mark"><span>Frontier</span><span>Films</span></h1>
+    <p class="desc">An independent theatrical distribution company</p>
+
+    <ul class="list">
+      <li>
+        <div class="n">01</div>
+        <div>
+          <h3>Placement</h3>
+          <p>Original features, booked into single screens, museum auditoria, civic theatres, and large chains alike.</p>
+        </div>
+      </li>
+      <li>
+        <div class="n">02</div>
+        <div>
+          <h3>Campaigns</h3>
+          <p>Each release carries its own identity, materials, and calendar, made in-house.</p>
+        </div>
+      </li>
+      <li>
+        <div class="n">03</div>
+        <div>
+          <h3>Presentation</h3>
+          <p>Format, sound, and seating agreed with every room before it goes on sale.</p>
+        </div>
+      </li>
+    </ul>
+
+    <p class="tag">One room at a time.</p>
+
+    <div class="spacer"></div>
+
+    <footer class="foot">
+      <div class="inq"><b>General inquiries</b><a href="mailto:hello@frontier-film.com">hello@frontier-film.com</a></div>
+      <div class="sc">© 2026 Frontier Films</div>
+    </footer>
+  </div>
+
+  <div class="panel">
+    <svg id="totem" aria-hidden="true"></svg>
+  </div>
+
+</div>
+
+<script>
+(function(){
+  var NS='http://www.w3.org/2000/svg';
+  var svg=document.getElementById('totem');
+
+  function el(n,a){var e=document.createElementNS(NS,n);for(var k in a){e.setAttribute(k,a[k]);}return e;}
+
+  /* Left half of a bilaterally symmetrical totem, three columns wide, twelve rows tall.
+     .  empty        o  full circle
+     1  top half     2  bottom half     3  left half     4  right half
+     5  quarter, corner top-left        6  quarter, corner top-right
+     7  quarter, corner bottom-right    8  quarter, corner bottom-left   */
+  var LEFT=[
+    '..7',
+    '..6',
+    '.1o',
+    '1oo',
+    'o2.',
+    '.o6',
+    '.o7',
+    '1oo',
+    '.3o',
+    '..7',
+    '..6',
+    '.o.'
+  ];
+  var MIRROR={'.':'.','o':'o','1':'1','2':'2','3':'4','4':'3','5':'6','6':'5','7':'8','8':'7'};
+  var ACCENT={'5,2':1,'5,3':1,'6,2':1,'6,3':1};   /* the central lens, in oxblood */
+
+  var COLS=6, ROWS=LEFT.length;
+
+  function cellPath(code,x,y,S){
+    var xm=x+S/2, ym=y+S/2, R=S/2;
+    switch(code){
+      case 'o': return null; /* handled as <circle> */
+      case '1': return 'M'+x+','+ym+'A'+R+','+R+' 0 0 1 '+(x+S)+','+ym+'Z';
+      case '2': return 'M'+x+','+ym+'A'+R+','+R+' 0 0 0 '+(x+S)+','+ym+'Z';
+      case '3': return 'M'+xm+','+y+'A'+R+','+R+' 0 0 0 '+xm+','+(y+S)+'Z';
+      case '4': return 'M'+xm+','+y+'A'+R+','+R+' 0 0 1 '+xm+','+(y+S)+'Z';
+      case '5': return 'M'+x+','+y+'L'+(x+S)+','+y+'A'+S+','+S+' 0 0 1 '+x+','+(y+S)+'Z';
+      case '6': return 'M'+(x+S)+','+y+'L'+x+','+y+'A'+S+','+S+' 0 0 0 '+(x+S)+','+(y+S)+'Z';
+      case '7': return 'M'+(x+S)+','+(y+S)+'L'+(x+S)+','+y+'A'+S+','+S+' 0 0 0 '+x+','+(y+S)+'Z';
+      case '8': return 'M'+x+','+(y+S)+'L'+x+','+y+'A'+S+','+S+' 0 0 1 '+(x+S)+','+(y+S)+'Z';
+    }
+    return null;
+  }
+
+  function draw(){
+    var pw=svg.parentNode.clientWidth, ph=svg.parentNode.clientHeight;
+    if(!pw||!ph)return;
+    var pad=Math.min(pw,ph)*0.06;
+    var avW=pw-pad*2, avH=ph-pad*2;
+    var S=Math.min(avW/COLS, avH/ROWS);
+    var gw=S*COLS, gh=S*ROWS;
+    var ox=(pw-gw)/2, oy=(ph-gh)/2;
+
+    while(svg.firstChild)svg.removeChild(svg.firstChild);
+    svg.setAttribute('viewBox','0 0 '+pw+' '+ph);
+    svg.setAttribute('preserveAspectRatio','xMidYMid meet');
+
+    var gInk=el('g',{fill:'#14120E'}), gOx=el('g',{fill:'#6E2A22'});
+
+    for(var r=0;r<ROWS;r++){
+      for(var c=0;c<COLS;c++){
+        var code = c<3 ? LEFT[r].charAt(c) : MIRROR[LEFT[r].charAt(COLS-1-c)];
+        if(code==='.')continue;
+        var x=ox+c*S, y=oy+r*S;
+        var target = ACCENT[r+','+c] ? gOx : gInk;
+        if(code==='o'){
+          target.appendChild(el('circle',{cx:(x+S/2).toFixed(2),cy:(y+S/2).toFixed(2),r:(S/2).toFixed(2)}));
+        }else{
+          var d=cellPath(code,x,y,S);
+          if(d)target.appendChild(el('path',{d:d}));
+        }
+      }
+    }
+
+    /* one hairline register mark: the module the whole totem is built on */
+    var reg=el('g',{fill:'none',stroke:'#14120E','stroke-width':'.6','vector-effect':'non-scaling-stroke',opacity:'.15'});
+    for(var i=1;i<COLS;i++)reg.appendChild(el('line',{x1:(ox+i*S).toFixed(2),y1:oy.toFixed(2),x2:(ox+i*S).toFixed(2),y2:(oy+gh).toFixed(2)}));
+    for(var j=1;j<ROWS;j++)reg.appendChild(el('line',{x1:ox.toFixed(2),y1:(oy+j*S).toFixed(2),x2:(ox+gw).toFixed(2),y2:(oy+j*S).toFixed(2)}));
+
+    svg.appendChild(reg);
+    svg.appendChild(gInk);
+    svg.appendChild(gOx);
+  }
+
+  var t;
+  function queue(){clearTimeout(t);t=setTimeout(draw,90);}
+  draw();
+  window.addEventListener('resize',queue);
+})();
+</script>
+</body>
+</html>

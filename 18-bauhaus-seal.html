@@ -1,0 +1,156 @@
+<!-- Option 18 — Bauhaus Seal: a symmetrical emblem tiled from solid black half- and quarter-circles on a strict grid, the company name curved around it on an SVG textPath, the three items ruled beneath. -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Frontier Films — 18 Bauhaus Seal</title>
+<style>
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0}
+  body{
+    background:#FBF8F1;color:#14120E;
+    font-family:"Charter","Superclarendon","Iowan Old Style",Georgia,serif;
+    -webkit-font-smoothing:antialiased;
+    padding:clamp(24px,4vw,44px) clamp(18px,5vw,56px) clamp(26px,3vw,44px);
+  }
+  .sheet{max-width:1000px;margin:0 auto;text-align:center}
+  .over{
+    font-family:"Hoefler Text","Didot",Georgia,serif;font-style:italic;
+    font-size:clamp(1rem,1.6vw,1.22rem);margin:0 0 clamp(6px,1.5vw,14px);
+  }
+  .seal{display:block;width:100%;max-width:min(580px,62vh);height:auto;margin:0 auto}
+  .tag{
+    font-family:"Didot","Bodoni 72","Hoefler Text",Georgia,serif;
+    font-style:italic;font-size:clamp(1.5rem,3.6vw,2.5rem);
+    margin:clamp(10px,2vw,20px) 0 0;letter-spacing:.01em;
+  }
+  .entries{max-width:760px;margin:clamp(22px,3.5vw,42px) auto 0;text-align:left}
+  .entry{
+    display:grid;grid-template-columns:clamp(120px,17vw,178px) 1fr;
+    gap:0 clamp(14px,2.5vw,30px);
+    border-top:1px solid rgba(20,18,14,.55);padding:11px 0 13px;
+  }
+  .entry:last-of-type{border-bottom:1px solid rgba(20,18,14,.55)}
+  .num{text-transform:uppercase;letter-spacing:.24em;font-size:.66rem;padding-top:.42em;opacity:.8}
+  .entry p{margin:0;font-size:.97rem;line-height:1.5}
+  .foot{
+    max-width:760px;margin:clamp(18px,2.5vw,30px) auto 0;text-align:left;
+    display:flex;flex-wrap:wrap;gap:8px 28px;justify-content:space-between;align-items:baseline;font-size:.87rem;
+  }
+  .foot .k{text-transform:uppercase;letter-spacing:.24em;font-size:.64rem;opacity:.8;margin-right:.9em}
+  a{color:#6E2A22;text-decoration:none;border-bottom:1px solid rgba(110,42,34,.4)}
+  .cr{opacity:.7;font-size:.8rem}
+  @media (max-width:620px){
+    .entry{grid-template-columns:1fr;gap:6px}
+    .num{padding-top:0}
+  }
+</style>
+</head>
+<body>
+<div class="sheet">
+
+  <p class="over">An independent theatrical distribution company</p>
+
+  <svg class="seal" id="seal" viewBox="0 0 1080 1080" role="img"
+       aria-label="Frontier Films seal built from black half and quarter circles, New York and Los Angeles">
+    <g id="tiles18"></g>
+    <g fill="none" stroke="#14120E" stroke-width="0.8">
+      <circle cx="540" cy="540" r="438"/>
+      <circle cx="540" cy="540" r="450"/>
+    </g>
+    <defs>
+      <path id="arcTop" d="M70,540 A470,470 0 0 1 1010,540" fill="none"/>
+      <path id="arcBot" d="M70,540 A470,470 0 0 0 1010,540" fill="none"/>
+    </defs>
+    <text font-family="Didot, Bodoni 72, Hoefler Text, Georgia, serif" fill="#14120E"
+          font-size="70" letter-spacing="12">
+      <textPath href="#arcTop" xlink:href="#arcTop" startOffset="50%" text-anchor="middle">FRONTIER FILMS</textPath>
+    </text>
+    <text font-family="Iowan Old Style, Palatino, Georgia, serif" fill="#14120E"
+          font-size="34" letter-spacing="9" dy="34">
+      <textPath href="#arcBot" xlink:href="#arcBot" startOffset="50%" text-anchor="middle">NEW YORK &#183; LOS ANGELES</textPath>
+    </text>
+  </svg>
+
+  <p class="tag">One room at a time.</p>
+
+  <div class="entries">
+    <div class="entry"><span class="num">01 / Placement</span>
+      <p>Original features, booked into single screens, museum auditoria, civic theatres, and large chains alike.</p></div>
+    <div class="entry"><span class="num">02 / Campaigns</span>
+      <p>Each release carries its own identity, materials, and calendar, made in-house.</p></div>
+    <div class="entry"><span class="num">03 / Presentation</span>
+      <p>Format, sound, and seating agreed with every room before it goes on sale.</p></div>
+  </div>
+
+  <div class="foot">
+    <span><span class="k">General inquiries</span><a href="mailto:hello@frontier-film.com">hello@frontier-film.com</a></span>
+    <span class="cr">&copy; 2026 Frontier Films</span>
+  </div>
+
+</div>
+
+<script>
+(function(){
+  var NS="http://www.w3.org/2000/svg";
+  var host=document.getElementById("tiles18");
+  var S=100, OX=140, OY=140, C=540;
+
+  /* one quadrant of the mandala, mirrored four ways.
+     canonical orientation is the top-left quadrant; the seal centre lies
+     at the bottom-right corner of cell [3][3]. */
+  var Q=[
+    [".", ".", "*s","hB"],
+    [".", "qi",".", "s" ],
+    ["s", ".", "hT","hR"],
+    ["qr","s", "hB","qi"]
+  ];
+
+  function motif(code,x,y){
+    var h=S/2, out=[];
+    switch(code){
+      case "qi": out.push(["M",x,",",y+S," A",S,",",S," 0 0 1 ",x+S,",",y," L",x+S,",",y+S,"Z"]); break;
+      case "qo": out.push(["M",x+S,",",y," A",S,",",S," 0 0 1 ",x,",",y+S," L",x,",",y,"Z"]); break;
+      case "qr": out.push(["M",x,",",y," A",S,",",S," 0 0 0 ",x+S,",",y+S," L",x+S,",",y,"Z"]); break;
+      case "ql": out.push(["M",x,",",y," A",S,",",S," 0 0 1 ",x+S,",",y+S," L",x,",",y+S,"Z"]); break;
+      case "hB": out.push(["M",x,",",y+S," A",h,",",h," 0 0 1 ",x+S,",",y+S,"Z"]); break;
+      case "hT": out.push(["M",x,",",y," A",h,",",h," 0 0 0 ",x+S,",",y,"Z"]); break;
+      case "hL": out.push(["M",x,",",y," A",h,",",h," 0 0 1 ",x,",",y+S,"Z"]); break;
+      case "hR": out.push(["M",x+S,",",y," A",h,",",h," 0 0 0 ",x+S,",",y+S,"Z"]); break;
+      case "c":  out.push(circle(x+h,y+h,h)); break;
+      case "s":  case "*s": out.push(circle(x+h,y+h,S*0.26)); break;
+    }
+    var i,d=[];
+    for(i=0;i<out.length;i++) d.push(out[i].join(""));
+    return d;
+  }
+  function circle(cx,cy,r){ return ["M",cx-r,",",cy," a",r,",",r," 0 1 0 ",r*2,",0 a",r,",",r," 0 1 0 ",-r*2,",0Z"]; }
+
+  var quad=document.createElementNS(NS,"g");
+  for(var r=0;r<4;r++){
+    for(var c=0;c<4;c++){
+      var code=Q[r][c];
+      if(code===".") continue;
+      var ds=motif(code, OX+c*S, OY+r*S), k;
+      for(k=0;k<ds.length;k++){
+        var p=document.createElementNS(NS,"path");
+        p.setAttribute("d", ds[k]);
+        p.setAttribute("fill", code.charAt(0)==="*" ? "#6E2A22" : "#14120E");
+        quad.appendChild(p);
+      }
+    }
+  }
+
+  var mirrors=["", "translate("+(2*C)+",0) scale(-1,1)",
+                   "translate(0,"+(2*C)+") scale(1,-1)",
+                   "translate("+(2*C)+","+(2*C)+") scale(-1,-1)"];
+  for(var m=0;m<mirrors.length;m++){
+    var g=quad.cloneNode(true);
+    if(mirrors[m]) g.setAttribute("transform", mirrors[m]);
+    host.appendChild(g);
+  }
+})();
+</script>
+</body>
+</html>

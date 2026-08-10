@@ -1,0 +1,111 @@
+<!-- Option 06 — Capsule Cluster: wireframe capsules and ellipsoids float in the upper field with solid black pebbles between them; the name is small and wide in letterspaced serif caps up top, the tagline huge and italic below. -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Frontier Films — 06 Capsule Cluster</title>
+<style>
+  :root{ --paper:#FFFDF8; --ink:#14120E; --muted:#6E6659; --rule:#D5CCB8; }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--paper);color:var(--ink);
+    font-family:"Baskerville","Big Caslon","Hoefler Text",Georgia,serif;min-height:100vh}
+  .page{min-height:100vh;display:flex;flex-direction:column;padding:clamp(22px,3vw,40px)}
+  .top{display:flex;justify-content:space-between;align-items:baseline;gap:16px;
+       border-bottom:1px solid var(--ink);padding-bottom:14px}
+  .wordmark{font-size:clamp(13px,2.1vw,22px);letter-spacing:.46em;text-transform:uppercase;margin:0;font-weight:400}
+  .top span{font-size:10.5px;letter-spacing:.3em;text-transform:uppercase;color:var(--muted)}
+  .stage{position:relative;flex:1;min-height:44vh;margin:0 auto;width:100%;max-width:1180px}
+  .stage svg{position:absolute;inset:0;width:100%;height:100%}
+  .descriptor{position:absolute;left:50%;top:8px;transform:translateX(-50%);text-align:center;
+    font-size:11px;letter-spacing:.3em;text-transform:uppercase;color:var(--muted);z-index:2}
+  .tag{margin:0;font-family:"Didot","Bodoni 72",serif;font-style:italic;
+       font-size:clamp(38px,10vw,132px);line-height:.9;letter-spacing:-.01em;text-align:center}
+  .items{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(20px,4vw,54px);margin:clamp(26px,4vw,48px) 0 0;
+    border-top:1px solid var(--rule);padding-top:24px}
+  .items section h2{margin:0 0 10px;font-size:11px;letter-spacing:.26em;text-transform:uppercase;font-weight:400;color:var(--muted)}
+  .items section h2 b{font-weight:400;font-family:"Didot","Bodoni 72",serif;font-size:17px;letter-spacing:0;margin-right:10px;color:var(--ink)}
+  .items section p{margin:0;font-size:16px;line-height:1.6;color:#413B32;font-family:"Iowan Old Style","Palatino",Georgia,serif}
+  .base{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:baseline;gap:16px;
+        margin-top:auto;padding-top:26px;font-size:10.5px;letter-spacing:.28em;text-transform:uppercase;color:var(--muted)}
+  .base a{font-size:16px;letter-spacing:.01em;text-transform:none;color:var(--ink);text-decoration:none;
+    border-bottom:1px solid var(--rule);font-style:italic}
+  @media(max-width:780px){ .items{grid-template-columns:1fr;gap:22px} .stage{min-height:38vh} }
+</style>
+</head>
+<body>
+  <div class="page">
+    <div class="top">
+      <h1 class="wordmark">Frontier Films</h1>
+      <span>New York · Los Angeles</span>
+    </div>
+    <div class="stage">
+      <p class="descriptor">An independent theatrical distribution company</p>
+      <svg id="art" viewBox="0 0 1180 620" preserveAspectRatio="xMidYMid meet" aria-hidden="true"></svg>
+    </div>
+    <p class="tag">One room at a time.</p>
+    <div class="items">
+      <section><h2><b>01</b>Placement</h2><p>Original features, booked into single screens, museum auditoria, civic theatres, and large chains alike.</p></section>
+      <section><h2><b>02</b>Campaigns</h2><p>Each release carries its own identity, materials, and calendar, made in-house.</p></section>
+      <section><h2><b>03</b>Presentation</h2><p>Format, sound, and seating agreed with every room before it goes on sale.</p></section>
+    </div>
+    <div class="base">
+      <span>General inquiries &nbsp; <a href="mailto:hello@frontier-film.com">hello@frontier-film.com</a></span>
+      <span>© 2026 Frontier Films</span>
+    </div>
+  </div>
+<script>
+(function(){
+  const NS='http://www.w3.org/2000/svg', svg=document.getElementById('art');
+  const el=(t,a,parent)=>{const e=document.createElementNS(NS,t);for(const k in a)e.setAttribute(k,a[k]);(parent||svg).appendChild(e);return e;};
+  const wire={fill:'none',stroke:'#14120E','stroke-width':.6,'vector-effect':'non-scaling-stroke'};
+  function blob(cx,cy,r,seed,w){
+    const n=13,pts=[];
+    for(let i=0;i<n;i++){const a=i/n*2*Math.PI,rad=r*(1+w*Math.sin(i*1.8+seed)+w*.5*Math.cos(i*3.1+seed*1.3));
+      pts.push([cx+rad*Math.cos(a),cy+rad*Math.sin(a)]);}
+    const mid=(a,b)=>[(a[0]+b[0])/2,(a[1]+b[1])/2];
+    let d='M'+mid(pts[n-1],pts[0]).map(v=>v.toFixed(1)).join(',');
+    for(let i=0;i<n;i++){const p=pts[i],m=mid(p,pts[(i+1)%n]);
+      d+=`Q${p[0].toFixed(1)},${p[1].toFixed(1)} ${m[0].toFixed(1)},${m[1].toFixed(1)}`;}
+    el('path',Object.assign({d:d+'Z',fill:'#14120E'},{}));
+  }
+  // wireframe ellipsoid: latitude ellipses + longitude arcs, rotated by `rot` degrees
+  function ellipsoid(cx,cy,rw,rh,rotd,nlat=7,nlon=8){
+    const g=el('g',{transform:`translate(${cx} ${cy}) rotate(${rotd})`});
+    el('ellipse',Object.assign({cx:0,cy:0,rx:rw,ry:rh},wire),g);
+    for(let i=1;i<nlat;i++){
+      const t=-1+2*i/nlat, y=t*rh, w=rw*Math.sqrt(Math.max(0,1-t*t));
+      el('ellipse',Object.assign({cx:0,cy:y,rx:w,ry:w*0.26},wire),g);
+    }
+    for(let j=0;j<nlon;j++){
+      const k=Math.cos(j/nlon*Math.PI);
+      el('path',Object.assign({d:`M0,${-rh} C${rw*k*1.34},${-rh*0.45} ${rw*k*1.34},${rh*0.45} 0,${rh}`},wire),g);
+    }
+    return g;
+  }
+  // wireframe capsule: rounded rect outline + ribs
+  function capsule(cx,cy,w,h,rotd,ribs=9){
+    const g=el('g',{transform:`translate(${cx} ${cy}) rotate(${rotd})`}), r=w/2;
+    el('path',Object.assign({d:`M${-r},${-h/2+r} A${r},${r} 0 0 1 ${r},${-h/2+r} L${r},${h/2-r} A${r},${r} 0 0 1 ${-r},${h/2-r} Z`},wire),g);
+    for(let i=1;i<ribs;i++){
+      const y=-h/2+r+(h-2*r)*i/ribs;
+      el('ellipse',Object.assign({cx:0,cy:y,rx:r,ry:r*.3},wire),g);
+    }
+    el('ellipse',Object.assign({cx:0,cy:-h/2+r,rx:r,ry:r*.3},wire),g);
+    el('ellipse',Object.assign({cx:0,cy:h/2-r,rx:r,ry:r*.3},wire),g);
+    el('path',Object.assign({d:`M0,${-h/2} L0,${h/2}`},wire),g);
+    return g;
+  }
+  blob(300,300,120,1.4,.17); blob(880,250,96,4.2,.2); blob(660,470,58,2.7,.24);
+  blob(150,470,34,6.1,.28); blob(1030,470,28,3.3,.3); blob(520,140,26,1.1,.26);
+  ellipsoid(300,290,120,74,-18);
+  ellipsoid(880,260,86,54,26);
+  ellipsoid(590,330,150,96,8,8,10);
+  capsule(430,220,86,210,-32);
+  capsule(760,410,70,180,24);
+  capsule(1050,300,54,140,-12);
+  capsule(180,400,48,124,44);
+})();
+</script>
+</body>
+</html>

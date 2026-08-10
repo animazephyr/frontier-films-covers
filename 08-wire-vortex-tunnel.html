@@ -1,0 +1,91 @@
+<!-- Option 08 — Wire Vortex Tunnel: a mesh funnel of concentric rings and radial lines recedes into a point, half-covered by a large solid black circle; the name in enormous Didot overlaps the mesh edge. -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Frontier Films — 08 Wire Vortex Tunnel</title>
+<style>
+  :root{ --paper:#FEFCF6; --ink:#14120E; --muted:#6C6457; --rule:#D3CAB6; }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--paper);color:var(--ink);
+    font-family:"Charter","Iowan Old Style",Georgia,serif;overflow-x:hidden}
+  .hero{position:relative;min-height:100vh;display:flex;flex-direction:column;justify-content:space-between;
+    padding:clamp(22px,3vw,42px)}
+  .art{position:absolute;top:50%;right:-2vw;transform:translateY(-50%);width:min(66vw,760px);z-index:0;pointer-events:none;opacity:.96}
+  .art svg{width:100%;height:auto;display:block}
+  .rail{position:relative;z-index:2;display:flex;justify-content:space-between;gap:16px;
+    font-size:10.5px;letter-spacing:.3em;text-transform:uppercase;color:var(--muted);
+    border-bottom:1px solid var(--ink);padding-bottom:12px}
+  .middle{position:relative;z-index:2;margin:clamp(28px,5vh,64px) 0}
+  h1{margin:0;font-family:"Didot","Bodoni 72","Hoefler Text",serif;font-weight:400;
+     font-size:clamp(56px,15.5vw,232px);line-height:.82;letter-spacing:-.02em;mix-blend-mode:multiply}
+  h1 .two{display:block;padding-left:.32em;font-style:italic}
+  .sub{margin:26px 0 0;max-width:30ch;font-size:clamp(16px,1.9vw,19px);line-height:1.6;color:#413B32}
+  .sub em{font-style:italic}
+  .cols{position:relative;z-index:2;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));
+    gap:clamp(18px,3vw,46px);border-top:1px solid var(--rule);padding-top:22px;max-width:1080px}
+  .cols h2{margin:0 0 8px;font-size:11px;letter-spacing:.26em;text-transform:uppercase;font-weight:400;color:var(--muted)}
+  .cols h2 b{font-weight:400;color:var(--ink);font-family:"Didot","Bodoni 72",serif;font-size:16px;letter-spacing:0;margin-right:8px}
+  .cols p{margin:0;font-size:15.5px;line-height:1.6;color:#443E34}
+  .close{position:relative;z-index:2;display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;
+    gap:18px;margin-top:clamp(24px,4vh,46px);border-top:1px solid var(--ink);padding-top:16px}
+  .close .tag{margin:0;font-family:"Didot","Bodoni 72",serif;font-style:italic;font-size:clamp(22px,3.4vw,40px)}
+  .close .cta{font-size:10.5px;letter-spacing:.28em;text-transform:uppercase;color:var(--muted);text-align:right}
+  .close .cta a{display:block;margin-top:6px;font-size:17px;text-transform:none;letter-spacing:.01em;
+    color:var(--ink);text-decoration:none;border-bottom:1px solid var(--rule)}
+  .copy{position:relative;z-index:2;margin:14px 0 0;font-size:10px;letter-spacing:.3em;text-transform:uppercase;color:#A79D89}
+  @media(max-width:820px){ .cols{grid-template-columns:1fr;gap:20px} .art{right:-24vw;width:110vw;opacity:.9} }
+</style>
+</head>
+<body>
+  <div class="hero">
+    <div class="art"><svg id="v" viewBox="0 0 800 800" aria-hidden="true"></svg></div>
+    <div class="rail"><span>Frontier Films</span><span>An independent theatrical distribution company</span><span>New York · Los Angeles</span></div>
+    <div class="middle">
+      <h1>Frontier<span class="two">Films</span></h1>
+      <p class="sub">Original features, taken to audiences <em>room by room</em> — booked, marketed, and presented by one company.</p>
+    </div>
+    <div class="cols">
+      <section><h2><b>01</b>Placement</h2><p>Original features, booked into single screens, museum auditoria, civic theatres, and large chains alike.</p></section>
+      <section><h2><b>02</b>Campaigns</h2><p>Each release carries its own identity, materials, and calendar, made in-house.</p></section>
+      <section><h2><b>03</b>Presentation</h2><p>Format, sound, and seating agreed with every room before it goes on sale.</p></section>
+    </div>
+    <div class="close">
+      <p class="tag">One room at a time.</p>
+      <div class="cta">General inquiries<a href="mailto:hello@frontier-film.com">hello@frontier-film.com</a></div>
+    </div>
+    <p class="copy">© 2026 Frontier Films</p>
+  </div>
+<script>
+(function(){
+  const NS='http://www.w3.org/2000/svg', svg=document.getElementById('v');
+  const el=(t,a,p)=>{const e=document.createElementNS(NS,t);for(const k in a)e.setAttribute(k,a[k]);(p||svg).appendChild(e);return e;};
+  const wire={fill:'none',stroke:'#14120E','stroke-width':.55,'vector-effect':'non-scaling-stroke'};
+  // solid black disc sits behind, half-covered by the mesh funnel
+  el('circle',{cx:520,cy:290,r:168,fill:'#14120E'});
+  el('circle',{cx:120,cy:150,r:34,fill:'#14120E'});
+  // funnel: rings receding toward a vanishing point deep inside the form
+  const g=el('g',{});
+  const CX=380, CY=420, VX=520, VY=330, N=34, R0=344;
+  const ring=t=>({ r:R0*Math.pow(1-t,1.5)+3,
+                   cx:CX+(VX-CX)*t, cy:CY+(VY-CY)*t, k:0.56+0.16*t });
+  for(let i=0;i<=N;i++){
+    const {r,cx,cy,k}=ring(i/N);
+    el('ellipse',Object.assign({cx,cy,rx:r,ry:r*k},wire),g);
+  }
+  // radial spokes connecting the rings
+  const SP=54;
+  for(let s=0;s<SP;s++){
+    const a=s/SP*2*Math.PI, pts=[];
+    for(let i=0;i<=N;i++){
+      const {r,cx,cy,k}=ring(i/N);
+      pts.push([cx+r*Math.cos(a), cy+r*k*Math.sin(a)]);
+    }
+    el('path',Object.assign({d:'M'+pts.map(p=>p[0].toFixed(1)+','+p[1].toFixed(1)).join('L')},wire),g);
+  }
+  el('circle',{cx:VX,cy:VY,r:4,fill:'#14120E'});
+})();
+</script>
+</body>
+</html>

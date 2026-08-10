@@ -1,0 +1,315 @@
+<!-- Option 13 — Sphere Grid Index: three wireframe mesh spheres of graduated size resting on one hairline shelf, each indexed beneath, under a tall Didot wordmark. -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Frontier Films — 13 Sphere Grid Index</title>
+<style>
+  :root{
+    --bg:#FFFDF9;
+    --ink:#14120E;
+    --ox:#6E2A22;
+    --hair:.6px;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0}
+  body{
+    background:var(--bg);
+    color:var(--ink);
+    font-family:"Iowan Old Style","Palatino","Palatino Linotype",Georgia,serif;
+    -webkit-font-smoothing:antialiased;
+    text-rendering:optimizeLegibility;
+  }
+  .wrap{
+    max-width:1340px;
+    margin:0 auto;
+    padding:clamp(20px,3.2vw,44px) clamp(20px,4vw,58px) clamp(28px,4vw,52px);
+    min-height:100vh;
+    display:flex;
+    flex-direction:column;
+  }
+
+  /* ---- small caps labels ---- */
+  .lab{
+    font-family:"Charter","Superclarendon",Georgia,serif;
+    text-transform:uppercase;
+    letter-spacing:.24em;
+    font-size:10px;
+    line-height:1.5;
+  }
+  .lab.ox{color:var(--ox)}
+
+  /* ---- masthead ---- */
+  .top{
+    display:flex;
+    justify-content:space-between;
+    align-items:baseline;
+    gap:18px;
+    padding-bottom:9px;
+    border-bottom:var(--hair) solid var(--ink);
+  }
+  .top .cities{text-align:right}
+
+  h1{
+    margin:clamp(14px,2.6vw,34px) 0 0;
+    font-family:"Didot","Bodoni 72","Hoefler Text",Georgia,serif;
+    font-weight:400;
+    font-size:clamp(2.9rem,11.6vw,10.4rem);
+    line-height:.86;
+    letter-spacing:-.012em;
+  }
+  h1 .l2{display:block;padding-left:.055em}
+  .subline{
+    display:flex;
+    justify-content:space-between;
+    align-items:baseline;
+    gap:16px;
+    margin:clamp(10px,1.6vw,18px) 0 clamp(18px,3.4vw,40px);
+  }
+  .descriptor{
+    font-family:"Cochin","Times New Roman",serif;
+    font-style:italic;
+    font-size:clamp(1rem,1.55vw,1.32rem);
+    line-height:1.25;
+  }
+
+  /* ---- the shelf ---- */
+  .shelf{
+    display:flex;
+    align-items:flex-end;
+    gap:clamp(8px,2.6vw,42px);
+    border-bottom:var(--hair) solid var(--ink);
+    flex:1 1 auto;
+  }
+  .obj{min-width:0}
+  .obj.a{flex:1.5 1 0}
+  .obj.b{flex:1 1 0}
+  .obj.c{flex:1 1 0}
+  .obj svg{display:block;width:100%;height:auto;overflow:visible}
+  .wire path,.wire line,.wire ellipse{
+    fill:none;
+    stroke:var(--ink);
+    stroke-width:.62;
+    vector-effect:non-scaling-stroke;
+  }
+  .solid path,.solid circle{fill:var(--ink);stroke:none}
+
+  /* ---- index ---- */
+  .index{
+    display:flex;
+    gap:clamp(8px,2.6vw,42px);
+    margin-top:0;
+  }
+  .index .cell{min-width:0;padding:14px 0 0}
+  .index .cell.a{flex:1.5 1 0}
+  .index .cell.b{flex:1 1 0}
+  .index .cell.c{flex:1 1 0}
+  .num{
+    font-family:"Didot","Bodoni 72","Hoefler Text",Georgia,serif;
+    font-size:clamp(1.5rem,2.5vw,2.1rem);
+    line-height:1;
+    display:block;
+  }
+  .cell h3{
+    margin:.5em 0 .55em;
+    font-family:"Charter","Superclarendon",Georgia,serif;
+    font-weight:400;
+    text-transform:uppercase;
+    letter-spacing:.24em;
+    font-size:10px;
+  }
+  .cell p{
+    margin:0;
+    max-width:30ch;
+    font-size:clamp(.88rem,1.05vw,1rem);
+    line-height:1.5;
+  }
+
+  /* ---- footer ---- */
+  footer{
+    margin-top:clamp(26px,4vw,56px);
+    border-top:var(--hair) solid var(--ink);
+    padding-top:12px;
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-end;
+    gap:20px;
+    flex-wrap:wrap;
+  }
+  .tagline{
+    font-family:"Didot","Bodoni 72","Hoefler Text",Georgia,serif;
+    font-style:italic;
+    font-size:clamp(1.35rem,3.4vw,2.6rem);
+    line-height:1;
+    margin:0;
+  }
+  .fright{text-align:right;display:flex;flex-direction:column;gap:6px;align-items:flex-end}
+  a{color:var(--ox);text-decoration:none;border-bottom:var(--hair) solid var(--ox)}
+  a:hover{color:var(--ink);border-color:var(--ink)}
+
+  @media (max-width:760px){
+    .shelf{gap:10px}
+    .index{flex-direction:column;gap:0}
+    .index .cell{border-top:var(--hair) solid var(--ink);padding:12px 0 14px}
+    .index .cell:first-child{border-top:none}
+    .cell p{max-width:46ch}
+    .obj.c{display:none}
+    .top .cities{text-align:right}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="top">
+    <div class="lab">Frontier Films — Cover</div>
+    <div class="lab cities">New York · Los Angeles</div>
+  </div>
+
+  <h1>Frontier<span class="l2">Films</span></h1>
+
+  <div class="subline">
+    <div class="descriptor">An independent theatrical distribution company</div>
+    <div class="lab" style="white-space:nowrap">Index of Practice</div>
+  </div>
+
+  <div class="shelf">
+    <div class="obj a">
+      <svg viewBox="0 0 420 372" preserveAspectRatio="xMidYMax meet" role="img" aria-label="Wireframe mesh sphere">
+        <g class="solid" id="s13a"></g>
+        <g class="wire" id="w13a"></g>
+      </svg>
+    </div>
+    <div class="obj b">
+      <svg viewBox="0 0 300 372" preserveAspectRatio="xMidYMax meet" role="img" aria-label="Wireframe mesh ellipsoid beside a solid disc">
+        <g class="solid" id="s13b"></g>
+        <g class="wire" id="w13b"></g>
+      </svg>
+    </div>
+    <div class="obj c">
+      <svg viewBox="0 0 300 372" preserveAspectRatio="xMidYMax meet" role="img" aria-label="Small wireframe mesh sphere and pebble">
+        <g class="solid" id="s13c"></g>
+        <g class="wire" id="w13c"></g>
+      </svg>
+    </div>
+  </div>
+
+  <div class="index">
+    <div class="cell a">
+      <span class="num">01</span>
+      <h3>Placement</h3>
+      <p>Original features, booked into single screens, museum auditoria, civic theatres, and large chains alike.</p>
+    </div>
+    <div class="cell b">
+      <span class="num">02</span>
+      <h3>Campaigns</h3>
+      <p>Each release carries its own identity, materials, and calendar, made in-house.</p>
+    </div>
+    <div class="cell c">
+      <span class="num">03</span>
+      <h3>Presentation</h3>
+      <p>Format, sound, and seating agreed with every room before it goes on sale.</p>
+    </div>
+  </div>
+
+  <footer>
+    <p class="tagline">One room at a time.</p>
+    <div class="fright">
+      <div class="lab">General inquiries <a href="mailto:hello@frontier-film.com">hello@frontier-film.com</a></div>
+      <div class="lab">© 2026 Frontier Films</div>
+    </div>
+  </footer>
+
+</div>
+
+<script>
+(function(){
+  var F = function(n){ return (Math.round(n*100)/100); };
+
+  /* project a point on a (possibly squashed) sphere, tilted about the X axis */
+  function pt(r, th, ph, tilt, ys){
+    var x = r*Math.cos(ph)*Math.cos(th),
+        y = r*ys*Math.sin(ph),
+        z = r*Math.cos(ph)*Math.sin(th),
+        ct = Math.cos(tilt), st = Math.sin(tilt),
+        y2 = y*ct - z*st;
+    return [x, -y2];
+  }
+
+  /* latitude / longitude wireframe mesh */
+  function mesh(cx, cy, r, o){
+    o = o || {};
+    var tilt = o.tilt == null ? 0.34 : o.tilt,
+        ys   = o.ys   == null ? 1    : o.ys,
+        nLat = o.nLat || 9,
+        nLon = o.nLon || 16,
+        seg  = o.seg  || 72,
+        out  = '', i, j, s, d, p;
+
+    for(i=1;i<nLat;i++){
+      var ph = -Math.PI/2 + i*Math.PI/nLat; d = '';
+      for(s=0;s<=seg;s++){
+        p = pt(r, s*2*Math.PI/seg, ph, tilt, ys);
+        d += (s?'L':'M') + F(cx+p[0]) + ' ' + F(cy+p[1]);
+      }
+      out += '<path d="'+d+'"/>';
+    }
+    for(j=0;j<nLon;j++){
+      var th = j*Math.PI/nLon; d = '';
+      for(s=0;s<=seg;s++){
+        p = pt(r, th, -Math.PI/2 + s*Math.PI/seg, tilt, ys);
+        d += (s?'L':'M') + F(cx+p[0]) + ' ' + F(cy+p[1]);
+      }
+      for(s=seg;s>=0;s--){
+        p = pt(r, th+Math.PI, -Math.PI/2 + s*Math.PI/seg, tilt, ys);
+        d += 'L' + F(cx+p[0]) + ' ' + F(cy+p[1]);
+      }
+      out += '<path d="'+d+'"/>';
+    }
+    return out;
+  }
+
+  /* closed catmull-rom through points -> smooth organic pebble */
+  function smooth(p){
+    var n = p.length, d = 'M'+F(p[0][0])+' '+F(p[0][1]), i, a, b, c, e, c1, c2;
+    for(i=0;i<n;i++){
+      a = p[(i-1+n)%n]; b = p[i]; c = p[(i+1)%n]; e = p[(i+2)%n];
+      c1 = [b[0]+(c[0]-a[0])/6, b[1]+(c[1]-a[1])/6];
+      c2 = [c[0]-(e[0]-b[0])/6, c[1]-(e[1]-b[1])/6];
+      d += 'C'+F(c1[0])+' '+F(c1[1])+','+F(c2[0])+' '+F(c2[1])+','+F(c[0])+' '+F(c[1]);
+    }
+    return d+'Z';
+  }
+  function pebble(cx, cy, r, seed, wob, sq){
+    var n = 26, p = [], i, a, rr;
+    wob = wob == null ? .16 : wob; sq = sq == null ? .9 : sq;
+    for(i=0;i<n;i++){
+      a = i*2*Math.PI/n;
+      rr = r*(1 + wob*(Math.sin(a*2+seed)*.55 + Math.sin(a*3+seed*1.7)*.3 + Math.sin(a*5+seed*2.4)*.15));
+      p.push([cx+rr*Math.cos(a), cy+rr*Math.sin(a)*sq]);
+    }
+    return '<path d="'+smooth(p)+'"/>';
+  }
+
+  var base = 360; /* shelf line inside every viewBox */
+
+  /* A — large sphere, a pebble tucked at its foot */
+  document.getElementById('w13a').innerHTML = mesh(196, base-152, 150, {tilt:.36, nLat:9, nLon:15});
+  document.getElementById('s13a').innerHTML =
+    pebble(372, base-26, 30, 1.2, .2, .78) +
+    pebble(36, base-16, 17, 3.4, .24, .72);
+
+  /* B — squashed ellipsoid next to a solid disc it half covers */
+  document.getElementById('s13b').innerHTML = '<circle cx="222" cy="'+(base-52)+'" r="52"/>';
+  document.getElementById('w13b').innerHTML = mesh(132, base-102, 100, {tilt:.5, ys:.82, nLat:8, nLon:14});
+
+  /* C — small sphere, pebble pair */
+  document.getElementById('w13c').innerHTML = mesh(120, base-66, 64, {tilt:.28, nLat:7, nLon:12});
+  document.getElementById('s13c').innerHTML =
+    pebble(232, base-22, 24, .7, .22, .8) +
+    pebble(276, base-11, 11, 2.1, .3, .8);
+})();
+</script>
+</body>
+</html>

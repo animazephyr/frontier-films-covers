@@ -1,0 +1,85 @@
+<!-- Option 12 — Spiky Cone Marquee: nested rotated polygons form a thin-line spiky cone meeting a large solid black circle; the name runs as a wide letterspaced serif banner between hairline rules. -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Frontier Films — 12 Spiky Cone Marquee</title>
+<style>
+  :root{ --paper:#FDFBF4; --ink:#14120E; --muted:#6C6457; --rule:#D2C9B5; --accent:#223040; }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--paper);color:var(--ink);font-family:"Hoefler Text","Baskerville",Georgia,serif}
+  .page{min-height:100vh;display:flex;flex-direction:column;padding:clamp(20px,2.6vw,38px)}
+  .banner{border-top:1px solid var(--ink);border-bottom:1px solid var(--ink);padding:clamp(14px,2vw,22px) 0;text-align:center}
+  .banner h1{margin:0;font-weight:400;font-size:clamp(18px,4.4vw,54px);letter-spacing:.3em;text-transform:uppercase;line-height:1.1}
+  .banner p{margin:12px 0 0;font-size:10.5px;letter-spacing:.34em;text-transform:uppercase;color:var(--muted)}
+  .art{position:relative;flex:1;min-height:46vh;display:grid;place-items:center;padding:clamp(14px,3vw,34px) 0}
+  .art svg{width:min(100%,940px);height:auto}
+  .art .side{position:absolute;top:50%;font-size:10.5px;letter-spacing:.3em;text-transform:uppercase;color:var(--muted)}
+  .art .l{left:0;transform:rotate(-90deg) translateX(-50%);transform-origin:left center}
+  .art .r{right:0;transform:rotate(90deg) translateX(50%);transform-origin:right center}
+  .strip{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--ink)}
+  .strip section{padding:22px clamp(14px,2vw,28px) 8px;border-right:1px solid var(--rule)}
+  .strip section:last-child{border-right:0}
+  .strip section:first-child{padding-left:0}
+  .strip h2{margin:0 0 10px;font-size:11px;letter-spacing:.28em;text-transform:uppercase;font-weight:400;color:var(--muted)}
+  .strip h2 b{font-weight:400;color:var(--accent);letter-spacing:0;font-size:16px;margin-right:8px;font-style:italic}
+  .strip p{margin:0;font-size:15.5px;line-height:1.6;color:#443E34}
+  .close{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:16px;
+    margin-top:clamp(20px,3vh,36px);padding-top:14px;border-top:1px solid var(--ink)}
+  .close .tag{margin:0;font-style:italic;font-size:clamp(22px,3.4vw,38px)}
+  .close .cta{text-align:right;font-size:10.5px;letter-spacing:.28em;text-transform:uppercase;color:var(--muted)}
+  .close .cta a{display:block;margin-top:6px;font-size:16px;text-transform:none;letter-spacing:.01em;
+    color:var(--accent);text-decoration:none;border-bottom:1px solid var(--accent)}
+  .copy{margin:12px 0 0;font-size:10px;letter-spacing:.3em;text-transform:uppercase;color:#A79D89;text-align:center}
+  @media(max-width:780px){ .strip{grid-template-columns:1fr} .strip section{border-right:0;border-bottom:1px solid var(--rule);padding-left:0} }
+</style>
+</head>
+<body>
+  <div class="page">
+    <div class="banner">
+      <h1>Frontier Films</h1>
+      <p>An independent theatrical distribution company · New York · Los Angeles</p>
+    </div>
+    <div class="art">
+      <span class="side l">Figure II</span>
+      <svg id="k" viewBox="0 0 940 520" aria-hidden="true"></svg>
+      <span class="side r">Nested Study</span>
+    </div>
+    <div class="strip">
+      <section><h2><b>01</b>Placement</h2><p>Original features, booked into single screens, museum auditoria, civic theatres, and large chains alike.</p></section>
+      <section><h2><b>02</b>Campaigns</h2><p>Each release carries its own identity, materials, and calendar, made in-house.</p></section>
+      <section><h2><b>03</b>Presentation</h2><p>Format, sound, and seating agreed with every room before it goes on sale.</p></section>
+    </div>
+    <div class="close">
+      <p class="tag">One room at a time.</p>
+      <div class="cta">General inquiries<a href="mailto:hello@frontier-film.com">hello@frontier-film.com</a></div>
+    </div>
+    <p class="copy">© 2026 Frontier Films</p>
+  </div>
+<script>
+(function(){
+  const NS='http://www.w3.org/2000/svg', svg=document.getElementById('k');
+  const el=(t,a,p)=>{const e=document.createElementNS(NS,t);for(const k in a)e.setAttribute(k,a[k]);(p||svg).appendChild(e);return e;};
+  const S={fill:'none',stroke:'#14120E','stroke-width':.6,'vector-effect':'non-scaling-stroke'};
+  // large solid disc
+  el('circle',{cx:470,cy:260,r:212,fill:'#14120E'});
+  // nested rotated polygons collapsing to a point on both sides — the spiky cone
+  function cone(x0,y0,x1,y1,r0,sides,steps,twist){
+    const g=el('g',{});
+    for(let i=0;i<steps;i++){
+      const t=i/(steps-1), cx=x0+(x1-x0)*t, cy=y0+(y1-y0)*t, r=r0*(1-t)+2;
+      const rot=twist*t, pts=[];
+      for(let s=0;s<sides;s++){
+        const a=rot+s/sides*2*Math.PI;
+        pts.push([cx+r*Math.cos(a), cy+r*0.72*Math.sin(a)]);
+      }
+      el('path',Object.assign({d:'M'+pts.map(p=>p[0].toFixed(1)+','+p[1].toFixed(1)).join('L')+'Z'},S),g);
+    }
+  }
+  cone(470,260,90,150,215,3,22,1.1);
+  cone(470,260,880,380,215,3,22,-1.1);
+})();
+</script>
+</body>
+</html>

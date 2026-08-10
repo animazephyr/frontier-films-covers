@@ -1,0 +1,226 @@
+<!-- Option 20 — Blob & Wire Diptych: two plates of one torus, solid black at left and quad-mesh wireframe at right, with the name banded across both and the copy set as a caption strip below. -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Frontier Films — 20 Blob &amp; Wire Diptych</title>
+<style>
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0}
+  body{
+    background:#FFFDF9;color:#14120E;
+    font-family:"Cochin","Times New Roman",Georgia,serif;
+    -webkit-font-smoothing:antialiased;
+    padding:clamp(18px,3vw,34px) clamp(16px,4vw,46px) clamp(20px,3vw,32px);
+  }
+  .sheet{max-width:1340px;margin:0 auto}
+
+  .top{
+    display:flex;justify-content:space-between;align-items:baseline;gap:14px;flex-wrap:wrap;
+    border-bottom:1px solid rgba(20,18,14,.55);padding-bottom:8px;
+  }
+  .top .a{
+    font-family:"Big Caslon","Baskerville",Georgia,serif;font-style:italic;
+    font-size:clamp(.95rem,1.5vw,1.14rem);
+  }
+  .sc{text-transform:uppercase;letter-spacing:.24em;font-size:.63rem;opacity:.82}
+
+  .diptych{margin-top:clamp(10px,1.8vw,20px)}
+  .plates{display:grid;grid-template-columns:1fr 1fr;gap:clamp(10px,1.6vw,22px)}
+  .plate svg{display:block;width:100%;height:auto}
+  .cap{margin-top:7px}
+
+  .band{
+    margin-top:clamp(8px,1.4vw,16px);
+    border-top:1px solid #14120E;border-bottom:1px solid #14120E;
+    padding:clamp(5px,.9vw,11px) 0 clamp(7px,1.1vw,14px);
+    text-align:center;
+  }
+  .band h1{
+    margin:0;font-family:"Big Caslon","Baskerville","Didot",Georgia,serif;font-weight:400;
+    text-transform:uppercase;letter-spacing:.17em;line-height:1;
+    font-size:clamp(1.35rem,6.6vw,4.6rem);white-space:nowrap;
+  }
+
+  .caption{
+    margin-top:clamp(18px,2.6vw,32px);
+    border-top:1px solid #14120E;padding-top:clamp(10px,1.4vw,15px);
+    display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(16px,3vw,44px);
+  }
+  .caption .lab{display:block;margin-bottom:7px}
+  .caption p{
+    margin:0;font-family:"Big Caslon","Baskerville",Georgia,serif;
+    font-size:clamp(.92rem,1.15vw,1.03rem);line-height:1.5;
+  }
+  .close{
+    margin-top:clamp(16px,2.2vw,26px);border-top:1px solid rgba(20,18,14,.55);padding-top:11px;
+    display:flex;flex-wrap:wrap;gap:10px 30px;justify-content:space-between;align-items:baseline;
+  }
+  .tag{
+    font-family:"Didot","Bodoni 72","Hoefler Text",Georgia,serif;font-style:italic;
+    font-size:clamp(1.4rem,3.4vw,2.35rem);margin:0;line-height:1;
+  }
+  .close .rgt{display:flex;flex-wrap:wrap;gap:6px 26px;align-items:baseline;font-size:.86rem}
+  a{color:#6E2A22;text-decoration:none;border-bottom:1px solid rgba(110,42,34,.4)}
+  .cr{opacity:.7;font-size:.8rem}
+
+  @media (max-width:760px){
+    .plates{grid-template-columns:1fr;gap:18px}
+    .band h1{white-space:normal;font-size:clamp(1.6rem,10vw,2.6rem)}
+    .caption{grid-template-columns:1fr;gap:0}
+    .caption > div + div{margin-top:15px;border-top:1px solid rgba(20,18,14,.35);padding-top:13px}
+  }
+</style>
+</head>
+<body>
+<div class="sheet">
+
+  <div class="top">
+    <span class="a">An independent theatrical distribution company</span>
+    <span class="sc">New York &#183; Los Angeles</span>
+  </div>
+
+  <div class="diptych">
+    <div class="plates">
+      <div class="plate">
+        <svg id="left" viewBox="0 0 600 440" role="img" aria-label="Plate one, solid black torus with pebbles">
+          <rect x="0.5" y="0.5" width="599" height="439" fill="none" stroke="#14120E" stroke-width="0.8"/>
+          <g id="lsol" fill="#14120E" stroke="#14120E" stroke-width="0.9"></g>
+        </svg>
+        <div class="cap sc">Plate i &mdash; mass</div>
+      </div>
+      <div class="plate">
+        <svg id="right" viewBox="0 0 600 440" role="img" aria-label="Plate two, the same torus drawn as a wireframe quad mesh">
+          <rect x="0.5" y="0.5" width="599" height="439" fill="none" stroke="#14120E" stroke-width="0.8"/>
+          <defs><clipPath id="cp20"></clipPath></defs>
+          <g id="rsol" fill="#14120E"></g>
+          <g id="rwire" fill="none" stroke="#14120E" stroke-width="0.6"></g>
+          <g id="rrev" fill="none" stroke="#FFFDF9" stroke-width="0.6" clip-path="url(#cp20)"></g>
+        </svg>
+        <div class="cap sc">Plate ii &mdash; mesh</div>
+      </div>
+    </div>
+    <div class="band"><h1>Frontier Films</h1></div>
+  </div>
+
+  <div class="caption">
+    <div><span class="lab sc">01 / Placement</span>
+      <p>Original features, booked into single screens, museum auditoria, civic theatres, and large chains alike.</p></div>
+    <div><span class="lab sc">02 / Campaigns</span>
+      <p>Each release carries its own identity, materials, and calendar, made in-house.</p></div>
+    <div><span class="lab sc">03 / Presentation</span>
+      <p>Format, sound, and seating agreed with every room before it goes on sale.</p></div>
+  </div>
+
+  <div class="close">
+    <p class="tag">One room at a time.</p>
+    <span class="rgt">
+      <span><span class="sc" style="margin-right:.9em">General inquiries</span><a href="mailto:hello@frontier-film.com">hello@frontier-film.com</a></span>
+      <span class="cr">&copy; 2026 Frontier Films</span>
+    </span>
+  </div>
+
+</div>
+
+<script>
+(function(){
+  var NS="http://www.w3.org/2000/svg";
+  var lsol=document.getElementById("lsol"),
+      rsol=document.getElementById("rsol"),
+      rwire=document.getElementById("rwire"),
+      rrev=document.getElementById("rrev"),
+      clip=document.getElementById("cp20");
+
+  function path(parent,d,extra){
+    var el=document.createElementNS(NS,"path");
+    el.setAttribute("d",d);
+    if(extra) el.setAttribute("fill",extra);
+    parent.appendChild(el);
+  }
+  function rnd(seed){var s=seed>>>0;return function(){s=(s*1664525+1013904223)>>>0;return s/4294967296;};}
+  function spline(p){
+    var n=p.length,d="M"+p[0][0].toFixed(2)+","+p[0][1].toFixed(2),i;
+    for(i=0;i<n;i++){
+      var a=p[(i-1+n)%n],b=p[i],c=p[(i+1)%n],e=p[(i+2)%n];
+      d+="C"+(b[0]+(c[0]-a[0])/6).toFixed(2)+","+(b[1]+(c[1]-a[1])/6).toFixed(2)
+       +" "+(c[0]-(e[0]-b[0])/6).toFixed(2)+","+(c[1]-(e[1]-b[1])/6).toFixed(2)
+       +" "+c[0].toFixed(2)+","+c[1].toFixed(2);
+    }
+    return d+"Z";
+  }
+  function pebble(cx,cy,r,seed,amp,squash,rot){
+    var R=rnd(seed),n=14,rs=[],i,k;
+    for(i=0;i<n;i++) rs.push(r*(1-amp+2*amp*R()));
+    for(k=0;k<1;k++){var t=rs.slice();for(i=0;i<n;i++) rs[i]=(t[i]*2+t[(i+1)%n]+t[(i-1+n)%n])/4;}
+    var pts=[];
+    for(i=0;i<n;i++){var a=rot+i/n*Math.PI*2;pts.push([cx+Math.cos(a)*rs[i],cy+Math.sin(a)*rs[i]*squash]);}
+    return spline(pts);
+  }
+  function disc(cx,cy,r){
+    return "M"+(cx-r)+","+cy+" a"+r+","+r+" 0 1 0 "+(2*r)+",0 a"+r+","+r+" 0 1 0 "+(-2*r)+",0Z";
+  }
+
+  /* ---------- one torus, two treatments ---------- */
+  var CFG={R:150,r:56,A:0.94,cx:300,cy:212,F:1500};
+  function tp(u,v){
+    var cv=Math.cos(v), sv=Math.sin(v), q=CFG.R+CFG.r*cv;
+    var x=q*Math.cos(u), y=q*Math.sin(u), z=CFG.r*sv;
+    var y2=y*Math.cos(CFG.A)-z*Math.sin(CFG.A);
+    var z2=y*Math.sin(CFG.A)+z*Math.cos(CFG.A);
+    var s=CFG.F/(CFG.F+z2);
+    return [CFG.cx+x*s, CFG.cy+y2*s];
+  }
+  var TAU=Math.PI*2, i, j, d, p;
+
+  /* left plate: solid — every quad of the surface filled flat black */
+  var NU=76, NV=30;
+  for(i=0;i<NU;i++){
+    for(j=0;j<NV;j++){
+      var u0=i/NU*TAU, u1=(i+1)/NU*TAU, v0=j/NV*TAU, v1=(j+1)/NV*TAU;
+      var a=tp(u0,v0), b=tp(u1,v0), c=tp(u1,v1), e=tp(u0,v1);
+      d="M"+a[0].toFixed(1)+","+a[1].toFixed(1)+"L"+b[0].toFixed(1)+","+b[1].toFixed(1)
+        +"L"+c[0].toFixed(1)+","+c[1].toFixed(1)+"L"+e[0].toFixed(1)+","+e[1].toFixed(1)+"Z";
+      path(lsol,d);
+    }
+  }
+  /* left plate: pebbles and a disc, massed around the form */
+  var lshapes=[
+    disc(492,300,62),
+    pebble(68,78,46,11,.34,.86,0.5),
+    pebble(538,92,28,29,.36,.84,1.4),
+    pebble(52,372,38,47,.34,.86,2.3),
+    pebble(286,404,20,61,.4,.8,0.9),
+    pebble(548,382,44,83,.32,.88,1.7)
+  ];
+  for(i=0;i<lshapes.length;i++) path(lsol,lshapes[i]);
+
+  /* right plate: solid shapes first (same family, fewer), then the mesh over them */
+  var rshapes=[
+    disc(492,300,62),
+    pebble(68,78,46,11,.34,.86,0.5),
+    pebble(548,382,44,83,.32,.88,1.7)
+  ];
+  for(i=0;i<rshapes.length;i++){ path(rsol,rshapes[i]); path(clip,rshapes[i]); }
+
+  /* right plate: quad mesh — tube rings and latitude loops */
+  function loop(list){
+    var s="",k;
+    for(k=0;k<list.length;k++) s += (k?"L":"M")+list[k][0].toFixed(2)+","+list[k][1].toFixed(2);
+    return s+"Z";
+  }
+  var MU=34, MV=13, STEP=64;
+  for(i=0;i<MU;i++){                       /* rings around the tube */
+    var u=i/MU*TAU, ring=[];
+    for(j=0;j<=STEP;j++) ring.push(tp(u, j/STEP*TAU));
+    d=loop(ring); path(rwire,d); path(rrev,d);
+  }
+  for(j=0;j<MV;j++){                       /* loops around the axis */
+    var v=j/MV*TAU, lat=[];
+    for(i=0;i<=STEP*2;i++) lat.push(tp(i/(STEP*2)*TAU, v));
+    d=loop(lat); path(rwire,d); path(rrev,d);
+  }
+})();
+</script>
+</body>
+</html>
