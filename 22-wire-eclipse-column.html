@@ -102,6 +102,7 @@
   .inq a:hover{color:var(--ox);border-bottom-color:var(--ox)}
 
   @media (max-width:880px){
+    .top{flex-direction:column;gap:6px;align-items:flex-start}
     .body{grid-template-columns:1fr;gap:clamp(16px,4vw,26px)}
     .namecol{justify-content:flex-start}
     h1.word{
@@ -203,14 +204,15 @@
     var gx=el('g',{'class':'mesh-ox'});
     var gd=el('g',{'class':'dot'});
 
-    /* one axis, three bodies: the middle one dominant, the outer two overlapping into it */
-    var axis=Math.round(w/2);
-    var r2=Math.min(w*0.40, h*0.187), r1=r2*0.78, r3=r2*0.755;
+    /* one axis, three bodies: the middle one dominant, the outer two overlapping into it.
+       the axis is pulled onto the page centre, not the centre of this cell */
+    var axis=Math.round(Math.min(Math.max(window.innerWidth/2-rect.left, w*0.28), w*0.72));
+    var r2=Math.min(w*0.42, h*0.198), r1=r2*0.78, r3=r2*0.755;
     var y2=h*0.5, y1=y2-(r1+r2)*0.855, y3=y2+(r2+r3)*0.855;
 
     var bodies=[
       {c:[axis,y1], r:r1, sq:.90, mer:7,  par:5, tilt:-0.34, roll:0.06},
-      {c:[axis,y2], r:r2, sq:.96, mer:15, par:10, tilt:-0.30, roll:-0.05},
+      {c:[axis,y2], r:r2, sq:.96, mer:13, par:9, tilt:-0.34, roll:-0.05},
       {c:[axis,y3], r:r3, sq:.90, mer:10, par:7, tilt:-0.38, roll:0.10}
     ];
 

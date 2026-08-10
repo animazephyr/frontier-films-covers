@@ -172,8 +172,8 @@
 
     /* the globe: right field on wide screens, crowning the page on a phone */
     var cx = narrow ? w*0.56 : w*0.715;
-    var R  = narrow ? Math.min(w*0.40, h*0.225) : Math.min(w*0.29, h*0.40);
-    var cy = narrow ? R*0.94 : h*0.375;
+    var R  = narrow ? Math.min(w*0.40, h*0.215) : Math.min(w*0.25, h*0.30);
+    var cy = narrow ? R*0.98 : h*0.42;
 
     var TILT=-0.32, ROLL=0.045;
     function view(lat,lon){
@@ -208,7 +208,7 @@
     svg.appendChild(defs);
 
     var dense=el('g',{'class':'mesh','clip-path':'url(#g23L)'});
-    cage(dense, narrow?20:26, narrow?13:17);
+    cage(dense, narrow?16:20, narrow?11:13);
     svg.appendChild(dense);
 
     var sparse=el('g',{'class':'mesh-s','clip-path':'url(#g23R)'});

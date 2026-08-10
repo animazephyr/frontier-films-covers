@@ -50,7 +50,7 @@
     font-family:"Hoefler Text","Didot","Bodoni 72",Georgia,serif;
     font-style:italic;
     font-weight:400;
-    font-size:clamp(2.8rem,10.4vw,8.8rem);
+    font-size:clamp(2.8rem,9.6vw,8rem);
     line-height:.9;
     letter-spacing:-.015em;
   }
@@ -73,7 +73,7 @@
     flex:1 1 auto;
     display:flex;
     align-items:center;
-    padding:clamp(10px,2vw,26px) 0;
+    padding:clamp(8px,1.3vw,16px) 0;
   }
   .row svg{display:block;width:100%;height:auto;overflow:visible}
   .solid path{fill:var(--ink);stroke:none}
@@ -91,7 +91,7 @@
   }
   .item .n{
     flex:0 0 auto;
-    font-family:"Hoefler Text","Didot",Georgia,serif;
+    font-family:"Didot","Bodoni 72","Hoefler Text",Georgia,serif;
     font-size:clamp(1.1rem,1.6vw,1.45rem);
     line-height:1;
     width:2.4em;
@@ -135,6 +135,8 @@
   a:hover{color:var(--ink);border-color:var(--ink)}
 
   @media (max-width:760px){
+    .wrap{min-height:0}
+    .row{flex:0 0 auto;padding:clamp(14px,4vw,26px) 0}
     .item{flex-wrap:wrap;gap:8px 14px}
     .item .name{flex:1 1 auto}
     .item p{flex:1 1 100%;max-width:52ch}
@@ -154,14 +156,14 @@
     <h1>Frontier Films</h1>
     <div class="undername">
       <span class="desc">An independent theatrical distribution company</span>
-      <span class="lab">Seven shapes, one screen at a time</span>
+      <span class="lab">Placement · Campaigns · Presentation</span>
     </div>
   </header>
 
   <div class="row">
     <svg id="pebRow" viewBox="0 0 1440 320" preserveAspectRatio="xMidYMid meet" role="img"
          aria-label="A row of solid black pebbles graduating in size, one replaced by a wireframe ellipsoid">
-      <g class="rule"><line x1="0" y1="176" x2="1440" y2="176"/></g>
+      <g class="rule" id="pebRule"></g>
       <g class="solid" id="pebSolid"></g>
       <g class="wire" id="pebWire"></g>
     </svg>
@@ -244,32 +246,46 @@
   }
 
   /* graduated radii, laid out along a common midline */
-  var radii = [15, 24, 35, 48, 63, 82, 104],
-      wireAt = 4,                 /* fifth shape becomes the wireframe ellipsoid */
-      gap = 30,
-      mid = 176,
-      total = 0, i;
+  var svg   = document.getElementById('pebRow'),
+      gRule = document.getElementById('pebRule'),
+      gSol  = document.getElementById('pebSolid'),
+      gWire = document.getElementById('pebWire');
 
-  for(i=0;i<radii.length;i++) total += radii[i]*2;
-  total += gap*(radii.length-1);
+  var WIDE   = {vb:[1440,300], mid:164, gap:42, wireAt:5,
+                r:[18,28,40,54,72,96,124],
+                sat:[[1392,84,17,2.2,.24,.82,.3],[46,250,11,4.1,.3,.8,1.1]]},
+      NARROW = {vb:[640,300], mid:150, gap:24, wireAt:3,
+                r:[18,30,48,72,100],
+                sat:[[68,52,14,2.2,.24,.82,.3],[26,252,9,4.1,.3,.8,1.1]]};
 
-  var x = (1440 - total)/2, solids = '', wires = '', cx;
-  for(i=0;i<radii.length;i++){
-    cx = x + radii[i];
-    if(i === wireAt){
-      wires += ellipsoid(cx, mid, radii[i]*1.06, radii[i]*.9, .42, 8, 13);
-    }else{
-      solids += pebble(cx, mid, radii[i], i*1.7+.6, .17, .88, i*.5);
+  function build(){
+    var c = window.innerWidth < 760 ? NARROW : WIDE,
+        radii = c.r, total = 0, solids = '', wires = '', i, x, cx;
+
+    for(i=0;i<radii.length;i++) total += radii[i]*2;
+    total += c.gap*(radii.length-1);
+
+    x = (c.vb[0] - total)/2;
+    for(i=0;i<radii.length;i++){
+      cx = x + radii[i];
+      if(i === c.wireAt){
+        wires += ellipsoid(cx, c.mid, radii[i]*1.06, radii[i]*.9, .42, 8, 13);
+      }else{
+        solids += pebble(cx, c.mid, radii[i], i*1.7+.6, .17, .88, i*.5);
+      }
+      x = cx + radii[i] + c.gap;
     }
-    x = cx + radii[i] + gap;
+    /* two loose satellites off the line */
+    for(i=0;i<c.sat.length;i++) solids += pebble.apply(null, c.sat[i]);
+
+    svg.setAttribute('viewBox','0 0 '+c.vb[0]+' '+c.vb[1]);
+    gRule.innerHTML = '<line x1="0" y1="'+c.mid+'" x2="'+c.vb[0]+'" y2="'+c.mid+'"/>';
+    gSol.innerHTML  = solids;
+    gWire.innerHTML = wires;
   }
 
-  /* two loose satellites off the line */
-  solids += pebble(1392, 92, 17, 2.2, .24, .82, .3);
-  solids += pebble(46, 262, 11, 4.1, .3, .8, 1.1);
-
-  document.getElementById('pebSolid').innerHTML = solids;
-  document.getElementById('pebWire').innerHTML  = wires;
+  build();
+  var t; window.addEventListener('resize', function(){ clearTimeout(t); t=setTimeout(build,150); });
 })();
 </script>
 </body>

@@ -49,7 +49,7 @@
   /* ---- the arch ---- */
   .arena{
     position:relative;
-    width:min(860px,64vw,96vh);
+    width:min(800px,60vw,90vh);
     margin:clamp(20px,4.2vh,58px) auto clamp(18px,3.4vh,46px);
   }
   .arena svg{display:block;width:100%;height:auto;overflow:visible}
@@ -65,8 +65,8 @@
     margin:0;text-align:center;
     font-family:"Didot","Bodoni 72","Hoefler Text",Georgia,serif;
     font-style:italic;
-    font-size:clamp(15px,2.05vw,32px);
-    line-height:1.14;
+    font-size:clamp(14px,1.72vw,26px);
+    line-height:1.18;
   }
 
   /* ---- ruled entries ---- */
@@ -180,10 +180,10 @@
   function build(){
     var narrow = window.innerWidth<880;
     var P = narrow
-      ? {W:1000,H:980,base:880,spring:560,outer:380,inner:250,steps:10,
-         crown:[40,66,92],corner:[42,74,106],rule:[20,980]}
-      : {W:1000,H:560,base:520,spring:340,outer:250,inner:152,steps:12,
-         crown:[30,52,74,84],corner:[46,74,102,130,156],rule:[30,970]};
+      ? {W:1000,H:980,base:880,spring:560,outer:380,inner:250,steps:6,
+         crown:[52,88],corner:[44,80,114],rule:[20,980]}
+      : {W:1000,H:600,base:560,spring:380,outer:250,inner:168,steps:6,
+         crown:[44,74],corner:[52,94,136],rule:[30,970]};
 
     while(svg.firstChild)svg.removeChild(svg.firstChild);
     svg.setAttribute('viewBox','0 0 '+P.W+' '+P.H);
@@ -208,17 +208,16 @@
       g.appendChild(el('path',{d:quarterRight(cx+P.outer,P.base,cr)}));
     });
 
-    /* the ground line, and a single mark on the axis at the springing */
+    /* the ground line, and a single small mark on the axis at the foot */
     gb.appendChild(el('path',{d:'M'+n(P.rule[0])+','+n(P.base)+'H'+n(P.rule[1])}));
-    g.appendChild(el('path',{d:'M'+n(cx)+','+n(apex-P.crown[P.crown.length-1]-18)+'V'+n(apex-4)}));
-    gd.appendChild(el('circle',{cx:n(cx),cy:n(P.spring),r:'3'}));
+    gd.appendChild(el('circle',{cx:n(cx),cy:n(P.base),r:'2.8'}));
 
     svg.appendChild(g);svg.appendChild(gb);svg.appendChild(gx);svg.appendChild(gd);
 
     /* place the tagline inside the open window */
-    var winTop=P.spring-P.inner, winCy=(winTop+P.base)/2;
+    var winTop=P.spring-P.inner, winCy=winTop+(P.base-winTop)*0.47;
     arena.style.setProperty('--tt', (winCy/P.H*100).toFixed(2)+'%');
-    arena.style.setProperty('--tw', (2*P.inner*0.84/P.W*100).toFixed(2)+'%');
+    arena.style.setProperty('--tw', (2*P.inner*0.94/P.W*100).toFixed(2)+'%');
   }
 
   var t;

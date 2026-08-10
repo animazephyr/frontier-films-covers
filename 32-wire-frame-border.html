@@ -142,8 +142,8 @@
     var T=narrow?24:46, rt=T/2;                 /* tube diameter / radius   */
     var m=narrow?15:33;                          /* page edge to tube edge   */
     var cr=narrow?26:66;                         /* corner radius            */
-    var SP=narrow?13:21;                         /* spacing between rings    */
-    var NV=narrow?10:14;                         /* lines running around     */
+    var SP=narrow?15:27;                         /* spacing between rings    */
+    var NV=narrow?10:12;                         /* lines running around     */
 
     var x0=m+rt, y0=m+rt, x1=w-m-rt, y1=h-m-rt;
     if(x1-x0<cr*2+20||y1-y0<cr*2+20){cr=Math.max(8,Math.min(x1-x0,y1-y0)/2-12);}

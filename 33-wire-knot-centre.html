@@ -26,24 +26,24 @@
                font-size:10.5px;letter-spacing:.24em;text-transform:uppercase;color:var(--muted)}
   .ledger span.right{color:var(--ink)}
 
-  .stage{flex:1;min-height:54vh;margin:clamp(6px,1.2vw,16px) 0 0;position:relative}
-  .stage svg{display:block;width:100%;height:100%;max-height:70vh}
+  .stage{flex:1;min-height:40vh;margin:clamp(4px,0.8vw,10px) 0 0;position:relative;overflow:hidden}
+  .stage svg{display:block;width:100%;height:100%;max-height:52vh}
 
-  .tag{margin:clamp(4px,1vw,14px) 0 0;text-align:center;
+  .tag{margin:clamp(4px,0.8vw,10px) 0 0;text-align:center;
        font-family:"Didot","Bodoni 72","Hoefler Text",Georgia,serif;font-style:italic;
-       font-size:clamp(24px,3.4vw,48px);line-height:1.05;letter-spacing:-.005em}
+       font-size:clamp(22px,2.9vw,40px);line-height:1.05;letter-spacing:-.005em}
 
   .items{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(18px,3.4vw,54px);
-         margin-top:clamp(20px,3vw,40px);
+         margin-top:clamp(16px,2.2vw,28px);
          border-top:1px solid var(--rule);padding-top:clamp(14px,1.8vw,22px)}
   .items h2{margin:0 0 9px;font-weight:400;
             font-family:"Didot","Bodoni 72","Hoefler Text",Georgia,serif;
             font-size:10.5px;letter-spacing:.24em;text-transform:uppercase;color:var(--muted)}
   .items h2 i{font-style:normal;color:var(--accent);margin-right:.9em}
-  .items p{margin:0;font-size:clamp(13.5px,1.05vw,16px);line-height:1.62;color:var(--body);max-width:34ch}
+  .items p{margin:0;font-size:clamp(13px,1vw,15px);line-height:1.58;color:var(--body);max-width:34ch}
 
   .base{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:baseline;gap:12px 22px;
-        margin-top:clamp(16px,2.4vw,30px);padding-top:12px;border-top:1px solid var(--ink);
+        margin-top:clamp(14px,1.8vw,24px);padding-top:11px;border-top:1px solid var(--ink);
         font-family:"Didot","Bodoni 72","Hoefler Text",Georgia,serif;
         font-size:10.5px;letter-spacing:.24em;text-transform:uppercase;color:var(--muted)}
   .base a{font-family:"Iowan Old Style","Palatino",Georgia,serif;font-style:italic;
@@ -68,7 +68,7 @@
     </header>
 
     <main class="stage">
-      <svg id="art" viewBox="0 0 1200 720" preserveAspectRatio="xMidYMid meet" role="img"
+      <svg id="art" viewBox="0 0 1200 620" preserveAspectRatio="xMidYMid meet" role="img"
            aria-label="Frontier Films — two interlocked wireframe rings">
         <title>Frontier Films</title>
       </svg>
@@ -177,7 +177,7 @@
   }
 
   // fit the knot into the plate
-  var BX = 46, BY = 18, BW = 1200 - BX*2, BH = 720 - BY*2;
+  var BX = 44, BY = 14, BW = 1200 - BX*2, BH = 620 - BY*2;
   var s = Math.min(BW / (maxX - minX), BH / (maxY - minY));
   var ox = BX + (BW - (maxX - minX) * s) / 2 - minX * s;
   var oy = BY + (BH - (maxY - minY) * s) / 2 - minY * s;
@@ -213,7 +213,7 @@
   for (k = 0; k < segs.length; k++) draw(segs[k], segs[k].z <= 0 ? behind : infront);
 
   var name = el('text', {
-    x: 600, y: 392, fill: INK, 'text-anchor':'middle',
+    x: 600, y: 348, fill: INK, 'text-anchor':'middle',
     'font-family':'"Didot","Bodoni 72","Hoefler Text",Georgia,serif',
     'font-size':152, 'letter-spacing':1.5
   }, typeG);

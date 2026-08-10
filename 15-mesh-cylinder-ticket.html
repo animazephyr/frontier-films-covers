@@ -69,7 +69,7 @@
     gap:10px;
   }
   .stub figure{margin:0;flex:1 1 auto;display:flex;align-items:center;justify-content:center}
-  .stub svg{display:block;width:100%;height:auto;max-height:60vh;overflow:visible}
+  .stub svg{display:block;width:100%;height:auto;max-height:64vh;overflow:visible}
   .wire path{fill:none;stroke:var(--ink);stroke-width:.66;vector-effect:non-scaling-stroke}
   .solid path,.solid circle{fill:var(--ink)}
   .stub .foot{text-align:center;padding-top:8px}
@@ -224,7 +224,7 @@
         <span class="lab ox">No. 15</span>
       </div>
       <figure>
-        <svg id="cap" viewBox="0 0 340 760" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Tall wireframe capsule mesh">
+        <svg id="cap" viewBox="0 0 340 718" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Tall wireframe capsule mesh">
           <g class="solid" id="capSolid"></g>
           <g class="wire" id="capWire"></g>
         </svg>
@@ -272,7 +272,7 @@
 
   <div class="bottomline">
     <div class="lab">© 2026 Frontier Films</div>
-    <div class="lab">One room at a time.</div>
+    <div class="lab">Frontier Films · Cover</div>
   </div>
 
 </div>
@@ -350,12 +350,12 @@
   }
 
   document.getElementById('capSolid').innerHTML =
-    '<circle cx="284" cy="640" r="46"/>' +
-    pebble(52, 690, 30, 1.4, .22, .8) +
-    pebble(300, 96, 20, 2.8, .26, .84);
+    '<circle cx="282" cy="628" r="48"/>' +
+    pebble(50, 674, 26, 1.4, .22, .8) +
+    pebble(298, 74, 21, 2.8, .26, .84);
 
   document.getElementById('capWire').innerHTML =
-    capsule(160, 372, 106, 400, .30, 12, 20);
+    capsule(162, 356, 112, 420, .30, 13, 20);
 })();
 </script>
 </body>

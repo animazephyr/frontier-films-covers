@@ -123,7 +123,8 @@
     line(pts,false);
   }
   // silhouette, drawn a touch stronger so the form reads as one object
-  el('circle',{cx:CX,cy:CY,r:R,fill:'none',stroke:'#14120E','stroke-width':'0.85'});
+  el('circle',{cx:CX,cy:CY,r:R,fill:'none',stroke:'#14120E','stroke-width':'0.9',
+               'vector-effect':'non-scaling-stroke'});
   // single accent: the near pole
   el('circle',{cx:pt(Math.PI/2,0)[0],cy:pt(Math.PI/2,0)[1],r:2.6,fill:'#6E2A22',stroke:'none'});
 })();

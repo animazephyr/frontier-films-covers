@@ -45,8 +45,10 @@
   .rowend{display:flex;justify-content:space-between;gap:18px;margin-top:12px}
 
   @media(max-width:900px){
-    .stage{aspect-ratio:1440/700;max-height:none}
-    .keys{margin:26px 0 4px}
+    .head{flex-direction:column;align-items:flex-start;gap:7px}
+    .stage{aspect-ratio:auto;max-height:none;display:flex;flex-direction:column}
+    .stage>svg{position:static;width:112%;margin:12px -6% 0;height:auto}
+    .keys{margin:22px 0 4px}
     .keys li{position:static;width:auto;padding:12px 0 14px;border-top:1px solid var(--rule);background:none}
     .keys li:first-child{border-top:1px solid var(--ink)}
     .foot{grid-template-columns:1fr}

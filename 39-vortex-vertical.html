@@ -16,8 +16,8 @@
   .page{position:relative;min-height:100vh;display:flex;flex-direction:column;
     justify-content:space-between;padding:clamp(20px,3vw,46px) clamp(20px,4vw,64px) clamp(18px,2.4vw,34px)}
 
-  .art{position:absolute;inset:0;z-index:0;pointer-events:none}
-  .art svg{width:100%;height:100%;display:block}
+  .art{position:absolute;top:-5vh;right:0;width:min(68vw,900px);z-index:0;pointer-events:none}
+  .art svg{width:100%;height:auto;display:block}
 
   .caps{font-size:10px;letter-spacing:.24em;text-transform:uppercase;color:var(--muted);margin:0}
 
@@ -46,10 +46,13 @@
     gap:18px;margin-top:clamp(20px,3vh,34px)}
   .close a{color:var(--ink);text-decoration:none;text-transform:none;letter-spacing:.05em;
     font-size:13px;border-bottom:1px solid var(--rule);margin-left:.9em}
+  .close{flex-direction:column;align-items:flex-start;gap:7px}
 
   @media(max-width:820px){
-    .column{width:min(46ch,88vw);margin-top:clamp(150px,34vh,300px)}
-    .close{flex-direction:column;gap:10px}
+    .art{width:112vw;right:-6vw;top:-3vh}
+    .column{width:min(46ch,88vw);margin-top:clamp(170px,36vh,320px)}
+    /* the rail is knocked out of the mesh so it stays legible */
+    .rail p{background:var(--paper);display:inline-block;padding:1px 8px 2px 0}
   }
 </style>
 </head>
@@ -57,7 +60,7 @@
   <div class="page">
 
     <div class="art">
-      <svg id="vx" viewBox="0 0 1000 900" preserveAspectRatio="xMidYMin slice" aria-hidden="true"></svg>
+      <svg id="vx" viewBox="0 0 1000 1000" aria-hidden="true"></svg>
     </div>
 
     <div class="rail">
@@ -89,12 +92,13 @@
 (function(){
   var NS='http://www.w3.org/2000/svg', svg=document.getElementById('vx');
   function el(t,a,p){var e=document.createElementNS(NS,t);for(var k in a)e.setAttribute(k,a[k]);(p||svg).appendChild(e);return e;}
-  var g=el('g',{fill:'none',stroke:'#14120E','stroke-width':'0.55','stroke-linecap':'round'});
+  var g=el('g',{fill:'none',stroke:'#14120E','stroke-width':'0.55',
+                'stroke-linecap':'round','vector-effect':'non-scaling-stroke'});
 
   // funnel geometry: the mouth sits above the top edge, the throat recedes to a vanishing point
-  var AX0=596, AY0=-190, R0=690;        // mouth centre + radius
-  var VX=628,  VY=742;                  // vanishing point
-  var N=44, SP=64;
+  var AX0=500, AY0=-150, R0=478;        // mouth centre + radius
+  var VX=540,  VY=800;                  // vanishing point
+  var N=32, SP=46;
 
   function ring(t){
     var e=Math.pow(t,0.74);
@@ -109,7 +113,8 @@
   // concentric rings
   for(i=0;i<=N;i++){
     var R=ring(i/N);
-    el('ellipse',{cx:R.cx.toFixed(1),cy:R.cy.toFixed(1),rx:R.r.toFixed(1),ry:(R.r*R.k).toFixed(1)},g);
+    el('ellipse',{cx:R.cx.toFixed(1),cy:R.cy.toFixed(1),rx:R.r.toFixed(1),ry:(R.r*R.k).toFixed(1),
+                  'vector-effect':'non-scaling-stroke'},g);
   }
   // radial lines running down the wall of the funnel
   for(s=0;s<SP;s++){
@@ -118,7 +123,7 @@
       var Q=ring(i/N);
       pts.push([Q.cx+Q.r*Math.cos(a), Q.cy+Q.r*Q.k*Math.sin(a)]);
     }
-    el('path',{d:d(pts)},g);
+    el('path',{d:d(pts),'vector-effect':'non-scaling-stroke'},g);
   }
   // the vanishing point itself — the only solid mark on the page
   el('circle',{cx:VX,cy:VY,r:3.4,fill:'#223040',stroke:'none'});

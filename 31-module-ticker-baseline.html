@@ -62,7 +62,7 @@
   .cap{display:flex;justify-content:space-between;gap:16px;margin-top:9px}
 
   /* ---------- ruled items ---------- */
-  .items{margin-top:clamp(20px,4vh,52px);flex:0 0 auto}
+  .items{margin-top:auto;padding-top:clamp(20px,4vh,52px);flex:0 0 auto}
   .items article{
     display:grid;grid-template-columns:minmax(150px,20%) minmax(0,1fr);
     gap:clamp(12px,3vw,48px);align-items:baseline;
@@ -75,7 +75,8 @@
 
   .base{
     display:flex;flex-wrap:wrap;justify-content:space-between;align-items:baseline;gap:10px 28px;
-    margin-top:auto;padding-top:clamp(14px,2vw,26px);
+    margin-top:clamp(16px,2.6vw,32px);padding-top:clamp(11px,1.3vw,16px);
+    border-top:1px solid var(--rule);
   }
   .inq{font-size:clamp(12.5px,.95vw,15px)}
   .inq b{font-weight:400;margin-right:.8em}

@@ -125,9 +125,12 @@
     .row{grid-template-columns:1fr;gap:clamp(16px,4vw,26px)}
     .item{border-top:1px solid var(--rule);padding-top:12px}
     .item:first-child{border-top:0;padding-top:0}
-    .top{flex-direction:column;gap:6px;align-items:flex-start}
-    .top .cities{text-align:left}
+    .top{flex-direction:column;gap:5px;align-items:stretch;margin-bottom:auto}
+    .top .cities{text-align:left;white-space:normal}
     .item p{max-width:46ch}
+    /* the type gathers at the foot of the page, leaving the top open for the mesh */
+    .lay{justify-content:flex-end}
+    .hero{flex:0 0 auto;padding:clamp(18px,4vh,34px) 0 clamp(14px,3vh,26px)}
   }
 </style>
 </head>
@@ -242,23 +245,23 @@
     var U=Math.min(w,h);
 
     /* ---- composition anchors: the torus owns the right field ---- */
-    var cx = narrow ? w*0.68 : w*0.735;
-    var cy = narrow ? h*0.155 : h*0.395;
-    var S  = narrow ? U*0.20 : Math.min(w*0.148, h*0.228);
+    var cx = narrow ? w*0.66 : w*0.735;
+    var cy = narrow ? h*0.215 : h*0.395;
+    var S  = narrow ? U*0.235 : Math.min(w*0.148, h*0.228);
 
     /* ---- solid black field: one big disc cropped by the top edge, plus pebbles.
            All of it kept out of the left column and the bottom band, where the type lives. ---- */
-    var disc = narrow ? [w*0.88, h*0.035, U*0.20] : [w*0.585, h*0.045, U*0.175];
+    var disc = narrow ? [w*0.86, h*0.055, U*0.19] : [w*0.585, h*0.045, U*0.175];
     var solids=[];
     solids.push('M'+disc[0].toFixed(2)+','+disc[1].toFixed(2)+
       'm'+(-disc[2]).toFixed(2)+',0a'+disc[2].toFixed(2)+','+disc[2].toFixed(2)+' 0 1 0 '+(disc[2]*2).toFixed(2)+',0'+
       'a'+disc[2].toFixed(2)+','+disc[2].toFixed(2)+' 0 1 0 '+(-disc[2]*2).toFixed(2)+',0Z');
 
     var seedsPeb = narrow ? [
-      [w*0.14, h*0.055, U*0.055],
-      [w*1.00, h*0.135, U*0.070],
-      [w*0.30, h*0.300, U*0.030],
-      [w*0.92, h*0.345, U*0.024]
+      [w*0.13, h*0.075, U*0.055],
+      [w*1.00, h*0.180, U*0.070],
+      [w*0.26, h*0.330, U*0.030],
+      [w*0.90, h*0.395, U*0.024]
     ] : [
       [w*0.520, h*0.100, U*0.045],
       [w*0.800, h*0.030, U*0.075],
@@ -279,7 +282,7 @@
     /* a single restrained oxblood pebble */
     var gOx=el('g',{'class':'solid-ox'});
     var oxD = narrow
-      ? pebble(w*0.10, h*0.235, U*0.022, rand, .9, .26, 10)
+      ? pebble(w*0.09, h*0.275, U*0.022, rand, .9, .26, 10)
       : pebble(w*0.945, h*0.440, U*0.023, rand, .9, .26, 10);
     gOx.appendChild(el('path',{d:oxD}));
     clip.appendChild(el('path',{d:oxD}));
